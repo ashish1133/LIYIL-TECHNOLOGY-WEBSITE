@@ -3,87 +3,542 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIYIL</title>
+    <title>LIYIL Technology</title>
     <link rel="icon" type="webp" href="liyil.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {--primary-color: #0a192f;--secondary-color: #172a45;--accent-color: #64ffda;--highlight-color: #90caf9;--text-color: #f8f9fa;
-        --shadow-color: rgba(96, 114, 110, 0.4); } /* Shadow color variable */
-        body {font-family: 'Roboto', sans-serif;margin: 0;line-height: 1.7;background-color: var(--primary-color);color: var(--text-color);overflow-x: hidden; transition: background-color 0.3s ease;}
-        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--secondary-color); } ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 5px; } ::-webkit-scrollbar-thumb:hover { background: #4bc6b6; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px 0; }
-        header {background-color: var(--secondary-color);box-shadow: 0 4px 10px rgba(0,0,0,.2);position: fixed;top: 0;left: 0;width: 100%;z-index: 100;backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);transition: background-color .3s ease, transform .3s ease;}
-        header.scrolled {background-color: rgba(23,42,69,.85);transform: scale(.98);}
-        nav {display: flex;justify-content: space-between;align-items: center;padding: 20px 0;position: relative;}
-        nav .logo {text-decoration: none;font-size: 1.8rem;font-weight: bold;color: var(--accent-color);letter-spacing: 1px;display: flex;align-items: center;transition: transform .2s ease-in-out; position: absolute; top: 10px; left: 20px}
-        nav .logo:hover {transform: scale(1.05);}
-        nav .logo img {width: 80px;height: auto;margin-right: 8px;box-shadow: 0 2px 5px rgba(100,255,218,.2);border-radius: 3px;transition: box-shadow .2s ease;}
-        nav .logo:hover img {box-shadow: 0 3px 7px rgba(100,255,218,.4);}
-        nav .logo span {font-size: 1.3rem;font-weight: 700;color: var(--text-color);transition: color .3s ease-in-out;}
-        nav .logo:hover span{color: var(--accent-color);}
-        nav ul {list-style: none;padding: 0;display: flex;position: relative;justify-content: center;flex: 1;}
-        nav ul li {margin-left: 25px;}
-        nav ul li a {text-decoration: none;color: var(--text-color);padding: 12px 18px;position: relative;transition: all .3s ease;display: block;border-radius: 8px;font-size: 1.1rem;}
-        nav ul li a::before {content: '';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: var(--accent-color);opacity: 0;transition: opacity .3s ease;z-index: -1;border-radius: inherit;}
-        nav ul li a:hover::before, nav ul li a:focus::before {opacity: .1;}
-        nav ul li a.active {color: var(--primary-color);font-weight: bold;position: relative;}
-        nav ul li a.active::before {opacity: 1;}
-        nav ul li a.active::after {content: '';position: absolute;left: 50%;bottom: 0;transform: translateX(-50%);width: 50%;height: 2px;background-color: var(--accent-color);}
-        nav ul li.dropdown { position: relative; }
-        nav ul li.dropdown > a::after {content: '\25BC';font-size: .8em;margin-left: 5px;vertical-align: middle; transition: transform .3s ease; display: inline-block;}
-        nav ul li.dropdown:hover > a::after {transform: rotate(180deg);}
-         nav ul li .dropdown-menu {position: absolute;top: 100%;left: 0;background-color: var(--secondary-color);border-radius: 12px;padding: 10px 0;list-style: none;display: none;opacity: 0;transform: translateY(-10px);transition: all .3s ease;min-width: 180px;box-shadow: 0 4px 10px rgba(0,0,0,.4);}
-         nav ul li.dropdown:hover .dropdown-menu, nav ul li.dropdown:focus .dropdown-menu {display: block;opacity: 1;transform: translateY(0);}
-          nav ul li .dropdown-menu li a {padding: 10px 20px;white-space: nowrap;font-size: 1rem;}
-        nav ul li .dropdown-menu li a:hover, nav ul li .dropdown-menu li a:focus {background-color: rgba(100,255,218,.1);}
-        .hamburger-icon {display: none;font-size: 2rem;cursor: pointer;color: var(--text-color);transition: all .3s ease; position: absolute; top: 10px; right: 20px}
-        .hamburger-icon:hover {color: var(--accent-color);}
-         .hamburger-icon.active i::before {transform: rotate(45deg);}
-        .hamburger-icon.active i::after{transform: rotate(-45deg) translate(-3px, -2px) ;}
-        .hamburger-icon i {display: block;position: relative;width: 25px;height: 3px;background-color: var(--text-color);transition: all .3s ease;}
-        .hamburger-icon i::before, .hamburger-icon i::after {content: "";position: absolute;width: 25px;height: 3px;background-color: var(--text-color);transition: all .3s ease;}
-        .hamburger-icon i::before {top: -7px;}
-        .hamburger-icon i::after {top: 7px;}
-        @media (max-width: 768px) {
-            nav ul {display: none;flex-direction: column;background-color: var(--secondary-color);position: relative;top: 100%;left: 0;width: 100%;padding: 10px 0;text-align: center;box-shadow: 0 4px 10px rgba(0,0,0,.2);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);transition: all .3s ease;border-radius: 12px;margin-top: 8px;flex: initial;}
-            nav ul.active {display: flex;}
-            nav ul li {margin: 15px 0;}
-            .hamburger-icon {display: block;}
-            nav .logo img {width: 70px;}
-            nav ul li a {font-size: 1.2rem;padding: 14px 20px;}
-            header{position: relative;}
-            nav {align-items: flex-start;justify-content: flex-start;}
+        /* Global Styles - Modified */
+        :root {
+            --primary-color: #1a1a1a; /* Darker charcoal for overall feel */
+            --secondary-color: #282828; /* Slightly lighter dark gray for contrast */
+            --accent-color: #26A69A; /* A more modern teal */
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0BEC5; /* A cooler light gray */
+            --shadow-color: rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+            --transition-speed: 0.3s;
         }
-         .hero { display: flex; align-items: center; justify-content: space-between; padding: 150px 0; position: relative; }.hero-content { flex: 1; padding-right: 50px; z-index: 1; }.hero-content h1 { font-size: 3.5rem; margin-bottom: 30px; letter-spacing: 1px; }.hero-content p { font-size: 1.4rem; margin-bottom: 40px; color: var(--highlight-color); }.hero-image { flex: 1; position: relative; display: flex; justify-content: center; }.hero-image img { max-width: 550px; display: block; border-radius: 10px; box-shadow: 0 5px 30px rgba(100, 255, 218, 0.4); transition: transform 0.4s ease; }.hero-image:hover img { transform: translateY(-15px); }.hero-image::before { content: ''; position: absolute; top: 50%; left: 50%; width: 90%; height: 90%; border: 2px dashed var(--accent-color); transform: translate(-50%, -50%); border-radius: 12px; pointer-events: none; z-index: 1; }.hero::before { content: ''; position: absolute; top: -50px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(100, 255, 218, 0.08) 0%, transparent 100%); pointer-events: none; }
-        @media (max-width: 768px) {.hero { flex-direction: column; }.hero-content { text-align: center; padding-right: 0; margin-bottom: 30px; }.hero-image { max-width: 90%; margin: 0 auto; } }
-        .features, .pricing, .services, .stats, .about, .testimonials { padding: 120px 0; text-align: center; position: relative; } .features::before, .services::before, .testimonials::before { content: ''; position: absolute; top: 0; right: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(100, 255, 218, 0.08) 0%, transparent 100%); pointer-events: none; }
-         .pricing::before, .stats::before, .about::before{content: ''; position: absolute;bottom: -50px; left: -100px; width: 500px; height: 500px;background: radial-gradient(circle, rgba(100, 255, 218, 0.08) 0%, transparent 100%);pointer-events: none;}
-       .features h2, .pricing h2, .services h2, .stats h2, .about h2, .testimonials h2, .contact h2 {margin-bottom: 70px; font-size: 2.7rem;letter-spacing: 1px; position: relative;}.features h2::after, .pricing h2::after, .services h2::after, .stats h2::after, .about h2::after, .testimonials h2::after, .contact h2::after {content: ''; position: absolute; bottom: -10px; left: 50%;width: 120px; height: 2px; background-color: var(--accent-color); transform: translateX(-50%);}
-         .features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards { display: flex; justify-content: space-around; flex-wrap: wrap; }
-         .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card {border: 1px solid rgba(100, 255, 218, 0.1); border-radius: 15px; background-color: var(--primary-color); transition: all 0.4s ease; padding: 50px 35px; margin: 20px; cursor: pointer;}
-        .feature-card:hover, .pricing-card:hover, .service-card:hover, .testimonial-card:hover {transform: translateY(-10px); box-shadow: 0 8px 30px rgba(100, 255, 218, 0.3);}
-        .service-card {
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 15px;
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
+            margin: 0;
+            line-height: 1.7;
             background-color: var(--primary-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed) ease;
+            font-size: 16px; /* Set a default font size */
+            -webkit-font-smoothing: antialiased;  /* Improve font rendering on webkit browsers */
+            -moz-osx-font-smoothing: grayscale;    /* Improve font rendering on Firefox */
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--secondary-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2E7D32; } /* Darker Teal on hover */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Styles - Modified */
+        header {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(40, 40, 40, 0.85); /* Semi-transparent Dark Gray */
+            transform: scale(0.98);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        nav .logo {
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: transform var(--transition-speed) ease-in-out;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        nav .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav .logo img {
+            width: 60px; /*  Reduced logo size */
+            height: auto;
+            margin-right: 8px;
+            box-shadow: 0 2px 5px rgba(38, 166, 154, 0.2); /* Teal Shadow */
+            border-radius: 3px;
+            transition: box-shadow var(--transition-speed) ease;
+        }
+
+        nav .logo:hover img {
+            box-shadow: 0 3px 7px rgba(38, 166, 154, 0.4);
+        }
+
+        nav .logo span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-speed) ease-in-out;
+        }
+
+        nav .logo:hover span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            position: relative;
+            justify-content: center;
+            flex: 1;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-primary);
+            padding: 12px 18px;
+            position: relative;
+            transition: all var(--transition-speed) ease;
+            display: block;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-color);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+            z-index: -1;
+            border-radius: inherit;
+        }
+
+        nav ul li a:hover::before, nav ul li a:focus::before {
+            opacity: 0.1;
+        }
+
+        nav ul li a.active {
+            color: var(--primary-color);
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav ul li a.active::before {
+            opacity: 1;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        nav ul li.dropdown {
+            position: relative;
+        }
+
+        nav ul li.dropdown > a::after {
+            content: '\25BC';
+            font-size: 0.8em;
+            margin-left: 5px;
+            vertical-align: middle;
+            transition: transform var(--transition-speed) ease;
+            display: inline-block;
+        }
+
+        nav ul li.dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        nav ul li .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            padding: 10px 0;
+            list-style: none;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all var(--transition-speed) ease;
+            min-width: 180px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        nav ul li.dropdown:hover .dropdown-menu, nav ul li.dropdown:focus .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        nav ul li .dropdown-menu li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        nav ul li .dropdown-menu li a:hover, nav ul li .dropdown-menu li a:focus {
+            background-color: rgba(38, 166, 154, 0.1); /* Teal hover */
+        }
+
+        .hamburger-icon {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all var(--transition-speed) ease;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .hamburger-icon:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger-icon.active i::before {
+            transform: rotate(45deg);
+        }
+
+        .hamburger-icon.active i::after {
+            transform: rotate(-45deg) translate(-3px, -2px);
+        }
+
+        .hamburger-icon i {
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .hamburger-icon i::before, .hamburger-icon i::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .hamburger-icon i::before {
+            top: -7px;
+        }
+
+        .hamburger-icon i::after {
+            top: 7px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: var(--secondary-color);
+                position: relative;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 10px 0;
+                text-align: center;
+                box-shadow: 0 4px 10px var(--shadow-color);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                transition: all var(--transition-speed) ease;
+                border-radius: 12px;
+                margin-top: 8px;
+                flex: initial;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hamburger-icon {
+                display: block;
+            }
+
+            nav .logo img {
+                width: 50px; /* Further reduced on mobile */
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 14px 20px;
+            }
+
+            header {
+                position: relative;
+            }
+
+            nav {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Hero Section Styles - Modified */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden; /* Prevent radial gradient overflow */
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+            z-index: 1;
+            text-align: left; /* Left-align text */
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem; /* Bigger, bolder heading */
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 550px; /* Limit width for better readability */
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+         .hero-image img {
+            max-width: 550px;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(38, 166, 154, 0.4); /* Teal shadow */
+            transition: transform 0.4s ease, opacity 0.4s ease; /* Add opacity transition */
+            opacity: 0; /* Initially hidden */
+            animation: fadeInHero 0.8s ease-out forwards 0.3s; /* Fade in with delay */
+        }
+
+        @keyframes fadeInHero {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-image:hover img {
+            transform: translateY(-15px) scale(1.03);
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            height: 90%;
+            border: 2px dashed var(--accent-color);
+            transform: translate(-50%, -50%);
+            border-radius: 12px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 120px 0;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 3.0rem;
+            }
+
+            .hero-image {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Generic Section Styles - Modified */
+        .features, .pricing, .services, .stats, .about, .testimonials {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .features::before, .services::before, .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            pointer-events: none;
+        }
+
+        .pricing::before, .stats::before, .about::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            pointer-events: none;
+        }
+
+        .features h2, .pricing h2, .services h2, .stats h2, .about h2, .testimonials h2, .contact h2 {
+            margin-bottom: 70px;
+            font-size: 2.7rem;
+            letter-spacing: 1px;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .features h2::after, .pricing h2::after, .services h2::after, .stats h2::after, .about h2::after, .testimonials h2::after, .contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 120px;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: translateX(-50%);
+        }
+
+        /* Card Layouts - Modified */
+        .features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 0 15px; /* Add some horizontal padding */
+        }
+
+        .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card {
+            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            border-radius: 15px;
+            background-color: var(--secondary-color);
             transition: all 0.4s ease;
-            padding: 40px;
+            padding: 30px 25px; /* Slightly reduced padding */
+            margin: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
+        }
+
+        .feature-card:hover, .pricing-card:hover, .service-card:hover, .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(38, 166, 154, 0.3); /* Teal shadow */
+        }
+
+        .service-card {
+            border: 1px solid rgba(38, 166, 154, 0.1);
+            border-radius: 15px;
+            background-color: var(--secondary-color);
+            transition: all var(--transition-speed) ease;
+            padding: 30px;
             cursor: pointer;
             width: 320px;
             display: flex;
             flex-direction: column;
             text-align: left;
         }
-        .service-card .service-card-content {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
+
+        .service-card.clicked {
+             transform: scale(0.95); /* Slightly scale down */
+             box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Reduce shadow */
         }
+
+        .service-card .service-card-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 30px var(--shadow-color);/* Updated shadow variable */
+            box-shadow: 0 8px 30px var(--shadow-color);
         }
-         .service-card i {
+
+        .service-card i {
             font-size: 3.5rem;
             color: var(--accent-color);
             margin-bottom: 20px;
@@ -92,51 +547,386 @@
         .service-card h3 {
             font-size: 1.9rem;
             margin-bottom: 15px;
+            color: var(--text-primary);
         }
-        .service-card p {
-            color: var(--highlight-color);
-            margin-bottom: auto;/* Push price and button to the bottom */
-            flex: 1
-        }
-         .service-card .price-cta {
-           display: flex;
-           align-items: center;
-           justify-content: space-between;
-           margin-top: 20px;
-        }
-        .service-card .price {
-           font-size: 1.6rem;
-           color: var(--accent-color);
-           white-space: nowrap;
 
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: auto; /* Push price and button to the bottom */
+            flex: 1;
         }
-       .stats-card { width: 290px;}.testimonial-card {width: 400px; }.feature-card i, .service-card i, .stats-card i {font-size: 3.5rem; color: var(--accent-color); margin-bottom: 25px; }
-       .pricing-card {width: 350px; border: 2px solid rgba(100, 255, 218, 0.1); }.feature-card h3 {font-size: 1.7rem; margin-bottom: 18px; }.pricing-card h3 { font-size: 2.2rem; margin-bottom: 25px; }.stats-card .number { font-size: 3.2rem; font-weight: bold; color: var(--accent-color); margin-bottom: 15px;}
-       .feature-card p, .pricing-card ul li, .stats-card p, .testimonial-card p {color: var(--highlight-color);}
-       .pricing-card .price { font-size: 2rem; margin-bottom: 40px; color: var(--accent-color); }.pricing-card ul { list-style: none; padding: 0; margin-bottom: 30px; } .pricing-card ul li { padding: 14px 0; border-bottom: 1px solid rgba(100, 255, 218, 0.1); }
-         .pricing-card.popular { border-color: var(--accent-color); }.testimonial-card p {font-style: italic; margin-bottom: 30px; line-height: 1.9;}.client-info {display: flex; align-items: center; }.client-info img {width: 80px; height: 80px; border-radius: 50%; margin-right: 20px; }.client-name {font-weight: bold; margin: 0;}
-        .about p { max-width: 800px; margin: 0 auto; line-height: 1.9; color: var(--highlight-color); }
-        .contact { padding: 120px 0; text-align: center; }.contact form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; }.form-group { margin-bottom: 35px; text-align: left; }.form-group label { display: block; margin-bottom: 12px; font-weight: bold; color: var(--highlight-color); }.form-group input, .form-group textarea { width: 100%; padding: 20px; border: 1px solid rgba(100, 255, 218, 0.1); border-radius: 12px; background-color: var(--primary-color); color: var(--text-color); }.form-group textarea { resize: vertical; }
-        .btn-primary { background-color: var(--accent-color); color: var(--primary-color); padding: 16px 35px; border: none; border-radius: 12px; cursor: pointer; font-size: 1.1rem; transition: background-color 0.3s ease, transform 0.2s ease; font-weight: bold; }.btn-primary:hover { background-color: #4bc6b6; transform: translateY(-3px); }
-         footer { background-color: var(--secondary-color); padding: 25px; text-align: center; border-top: 1px solid rgba(100, 255, 218, 0.1); color: var(--highlight-color); position: relative; z-index: 100; display: flex; justify-content: center; align-items: center; flex-direction: column}
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: translateY(0px)} } .hero, .features, .pricing, .services, .stats, .about, .testimonials, .contact, footer { animation: fadeIn 1s ease-in-out; }
-        .app-info {padding: 120px 0;text-align: center;}
-        .app-info h2 {font-size: 2.7rem;letter-spacing: 1px;margin-bottom: 70px;position: relative;}
-        .app-info h2::after {content: '';position: absolute;bottom: -10px;left: 50%;width: 120px;height: 2px;background-color: var(--accent-color);transform: translateX(-50%);}
-        .app-info-cards {display: flex;justify-content: space-around;flex-wrap: wrap;}
-        .app-info-card {border: 1px solid rgba(100,255,218,.1);border-radius: 15px;background-color: var(--primary-color);transition: all .4s ease;padding: 50px 35px;margin: 20px;cursor: pointer;text-align: center;width: 300px;}
-        .app-info-card:hover {transform: translateY(-10px);box-shadow: 0 8px 30px rgba(100,255,218,.3);}
-         .app-info-card h3 {font-size: 1.8rem;margin-bottom: 20px;}
-        .app-info-card p {color: var(--highlight-color);margin-bottom: 30px;}
-        .app-info-card img {max-width: 80px;margin-bottom: 20px;}
-        .super-app-section {padding: 120px 0;text-align: center;position: relative;}
-       .super-app-section::before {content: '';position: absolute;top: 0;right: -200px;width: 500px;height: 500px;background: radial-gradient(circle, rgba(100,255,218,.08) 0%, transparent 100%);pointer-events: none;}
-        .super-app-section h2 {font-size: 2.7rem;letter-spacing: 1px;margin-bottom: 70px;position: relative;}
-        .super-app-section h2::after {content: '';position: absolute;bottom: -10px;left: 50%;width: 120px;height: 2px;background-color: var(--accent-color);transform: translateX(-50%);}
-        .super-app-section p {max-width: 800px;margin: 0 auto;line-height: 1.9;color: var(--highlight-color);}
-        .project-worth {margin-top: 30px;color: var(--highlight-color);font-size: 1.2rem;}
-        @media (max-width: 768px) { .service-card {width: calc(50% - 40px)}}
-        @media (max-width: 500px) { .service-card {width: 100%}}
+
+        .service-card .price-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .service-card .price {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
+        .stats-card {
+            width: 290px;
+        }
+
+        .testimonial-card {
+            width: 400px;
+        }
+
+        .feature-card i, .service-card i, .stats-card i {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow to icons */
+        }
+
+        .pricing-card {
+            width: 350px;
+            border: 2px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            background-color: var(--secondary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+        }
+
+        .pricing-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+
+        .stats-card .number {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p, .pricing-card ul li, .stats-card p, .testimonial-card p {
+            color: var(--text-secondary);
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card ul li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent-color);
+            background-color: rgba(38, 166, 154, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.9;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .client-name {
+            font-weight: bold;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Form Styles - Modified */
+        .contact {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
+        }
+
+        .form-group {
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            border-radius: 12px;
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif; /* Consistent font */
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Button Styles - Modified */
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 16px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+            text-decoration: none; /* Remove underlines from links styled as buttons */
+            display: inline-block; /* Ensure proper padding and width */
+        }
+
+        .btn-primary:hover {
+            background-color: #2E7D32; /* Darker Teal hover */
+            transform: translateY(-3px);
+        }
+
+        /* Footer Styles - Modified */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Fade-in Animation - Modified */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        .hero, .features, .pricing, .services, .stats, .about, .testimonials, .contact, footer {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .app-info {
+            padding: 120px 0;
+            text-align: center;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
+        }
+
+        .app-info h2 {
+            font-size: 2.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 70px;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .app-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 120px;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: translateX(-50%);
+        }
+
+        .app-info-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .app-info-card {
+            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            border-radius: 15px;
+            background-color: var(--secondary-color);
+            transition: all 0.4s ease;
+            padding: 50px 35px;
+            margin: 20px;
+            cursor: pointer;
+            text-align: center;
+            width: 300px;
+        }
+
+        .app-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(38, 166, 154, 0.3); /* Teal shadow */
+        }
+
+        .app-info-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .app-info-card p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .app-info-card img {
+            max-width: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Super App Section */
+        .super-app-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .super-app-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            pointer-events: none;
+        }
+
+        .super-app-section h2 {
+            font-size: 2.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 70px;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .super-app-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 120px;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: translateX(-50%);
+        }
+
+        .super-app-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .project-worth {
+            margin-top: 30px;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Footer Social Icons */
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Adjustments - Modified */
+        @media (max-width: 768px) {
+            .service-card {
+                width: calc(50% - 40px);
+            }
+
+            .testimonial-card {
+                width: 100%; /* Take full width */
+            }
+
+            .testimonial-cards {
+                flex-direction: column; /* Stack vertically */
+                align-items: center;   /* Center items horizontally */
+            }
+
+            .client-info {
+                flex-direction: column;  /* Stack client info vertically */
+                text-align: center;      /* Center text */
+            }
+
+            .client-info img {
+                margin: 0 0 10px 0; /* Adjust margins */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .service-card {
+                width: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -163,7 +953,8 @@
         <section class="hero" id="hero"><div class="hero-content">
             <h1>Transforming the Future Through Technology</h1>
             <p>We craft innovative SaaS solutions to empower your business, accelerate your growth, and drive digital transformation.</p>
-            <button class="btn-primary">Get Started</button></div>
+            <a href#" class="btn-primary">Get Started</a></div>
+
             <div class="hero-image"><img src="liyil.webp" alt="LIYIL Technology SaaS"></div>
         </section>
         <section class="features" id="features"><h2>Our Key Features</h2><div class="features-cards">
@@ -181,7 +972,7 @@
                         <p>Tailored Android and iOS applications for your unique business needs.</p>
                         <div class="price-cta">
                           <span class="price">Rs 30,000</span>
-                          <button class="btn-primary">Explore More</button>
+                          <a href="#" class="btn-primary">Explore More</a>
                          </div>
                    </div>
                 </div>
@@ -192,7 +983,7 @@
                         <p>Professional website design and development to elevate your online presence.</p>
                          <div class="price-cta">
                           <span class="price">Rs 13,000</span>
-                          <button class="btn-primary">Explore More</button>
+                          <a href="#" class="btn-primary">Explore More</a>
                         </div>
                     </div>
                 </div>
@@ -203,88 +994,102 @@
                         <p>Boost your brand visibility with strategic digital marketing campaigns.</p>
                           <div class="price-cta">
                           <span class="price">Rs 6,000</span>
-                          <button class="btn-primary">Explore More</button>
+                          <a href="#" class="btn-primary">Explore More</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="stats" id="stats"><h2>Our Achievements</h2><div class="stats-cards">
-            <div class="stats-card"><i class="fas fa-mobile-alt"></i><p class="number" data-target="80">0</p><p>Mobile Apps Developed</p></div>
-            <div class="stats-card"><i class="fas fa-laptop-code"></i><p class="number" data-target="132">0</p><p>Websites Developed</p></div>
-             <div class="stats-card"><i class="fas fa-bullhorn"></i><p class="number" data-target="282">0</p><p>Digital Marketing Campaigns</p></div>
-             <div class="stats-card"><i class="fas fa-users"></i><p class="number" data-target="80">0</p><p>Happy Clients</p></div>
-        </div></section>
-        <section class="about" id="about"><h2>Our Vision</h2>
-            <p>At LIYIL Technology, we're committed to pioneering cutting-edge technology that drives unprecedented innovation and simplifies complex challenges. We empower businesses of all sizes with robust, scalable, and user-friendly SaaS solutions.</p>
-        </section>
-        <section class="testimonials" id="testimonials"><h2>What Our Clients Are Saying</h2><div class="testimonial-cards">
-            <div class="testimonial-card"><p>"The performance and support from LIYIL are truly exceptional, significantly streamlining our operations and driving remarkable results."</p><div class="client-info">
-                <img src="images/client1.jpg" alt="Client 1"><p class="client-name">John Smith, CEO Company A</p></div>
-             </div>
-            <div class="testimonial-card"><p>"LIYIL Technology is a true partner, providing a platform that is both powerful and incredibly user-friendly. Our team has become significantly more efficient."</p><div class="client-info">
-                <img src="images/client2.jpg" alt="Client 2"><p class="client-name">Jane Doe, Marketing Director Company B</p></div>
-            </div>
-        </div></section>
-        <section class="contact" id="contact"><h2>Contact Our Team</h2>
-            <form action="#">
-                <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your Name" required></div>
-                <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="Your Email" required></div>
-                <div class="form-group"><label for="message">Message</label><textarea id="message" rows="5" placeholder="Your Message" required></textarea></div>
-                <button type="submit" class="btn-primary">Send Message</button>
-            </form>
-        </section>
-        <section class="app-info" id="apps">
-            <h2>Our Mobile Applications</h2>
-            <div class="app-info-cards">
-                <div class="app-info-card">
-                  <img src="liyil_AI.webp" alt="LIYIL AI Icon"/>
-                   <h3>LIYIL AI</h3>
-                   <p>Your intelligent assistant for everyday tasks.</p>
-                    <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN"><button class="btn-primary">Download Now</button></a>
-                </div>
-                 <div class="app-info-card">
-                     <img src="liyil_jobs.webp" alt="LIYIL Jobs Icon"/>
-                    <h3>LIYIL Jobs</h3>
-                    <p>Find your ideal career with ease.</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN"><button class="btn-primary">Download Now</button></a>
-                </div>
-                 <div class="app-info-card">
-                      <img src="liyil_games.webp" alt="LIYIL Games Icon"/>
-                    <h3>LIYIL Games</h3>
-                    <p>Fun and engaging games for relaxation.</p>
-                    <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN"><button class="btn-primary">Download Now</button></a>
+
+                <div class="stats-card"><i class="fas fa-mobile-alt"></i><p class="number" data-target="80">0</p><p>Mobile Apps Developed</p></div>
+                <div class="stats-card"><i class="fas fa-laptop-code"></i><p class="number" data-target="132">0</p><p>Websites Developed</p></div>
+                 <div class="stats-card"><i class="fas fa-bullhorn"></i><p class="number" data-target="282">0</p><p>Digital Marketing Campaigns</p></div>
+                 <div class="stats-card"><i class="fas fa-users"></i><p class="number" data-target="80">0</p><p>Happy Clients</p></div>
+            </div></section>
+            <section class="about" id="about"><h2>Our Vision</h2>
+                <p>At LIYIL Technology, we're committed to pioneering cutting-edge technology that drives unprecedented innovation and simplifies complex challenges. We empower businesses of all sizes with robust, scalable, and user-friendly SaaS solutions.</p>
+            </section>
+            <section class="testimonials" id="testimonials"><h2>What Our Clients Are Saying</h2><div class="testimonial-cards">
+                <div class="testimonial-card"><p>"The performance and support from LIYIL are truly exceptional, significantly streamlining our operations and driving remarkable results."</p><div class="client-info">
+                    <img src="images/client1.jpg" alt="Client 1"><p class="client-name">John Smith, CEO Company A</p></div>
                  </div>
-             </div>
-        </section>
-        <section class="super-app-section" id="super-app">
-            <h2>Our Super App</h2>
-            <p>
-              We're excited to announce that we are currently working on a super app that will bring together the best features of all our current apps, along with new functionalities. This app is designed to provide a seamless user experience, making it even easier to accomplish your goals, access different services all within a single platform.
-            </p>
-        </section>
+                <div class="testimonial-card"><p>"LIYIL Technology is a true partner, providing a platform that is both powerful and incredibly user-friendly. Our team has become significantly more efficient."</p><div class="client-info">
+                    <img src="images/client2.jpg" alt="Client 2"><p class="client-name">Jane Doe, Marketing Director Company B</p></div>
+                </div>
+            </div></section>
+            <section class="contact" id="contact"><h2>Contact Our Team</h2>
+                <form action="#">
+                    <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><label for="message">Message</label><textarea id="message" rows="5" placeholder="Your Message" required></textarea></div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </section>
+            <section class="app-info" id="apps">
+                <h2>Our Mobile Applications</h2>
+                <div class="app-info-cards">
+                    <div class="app-info-card">
+                      <img src="liyil_AI.webp" alt="LIYIL AI Icon"/>
+                       <h3>LIYIL AI</h3>
+                       <p>Your intelligent assistant for everyday tasks.</p>
+                        <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN" class="btn-primary">Download Now</a>
+                    </div>
+                     <div class="app-info-card">
+                         <img src="liyil_jobs.webp" alt="LIYIL Jobs Icon"/>
+                        <h3>LIYIL Jobs</h3>
+                        <p>Find your ideal career with ease.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN" class="btn-primary">Download Now</a>
+                    </div>
+                     <div class="app-info-card">
+                          <img src="liyil_games.webp" alt="LIYIL Games Icon"/>
+                        <h3>LIYIL Games</h3>
+                        <p>Fun and engaging games for relaxation.</p>
+                        <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN" class="btn-primary">Download Now</a>
+                     </div>
+                 </div>
+            </section>
+            <section class="super-app-section" id="super-app">
+                <h2>Our Super App</h2>
+                <p>
+                  We're excited to announce that we are currently working on a super app that will bring together the best features of all our current apps, along with new functionalities. This app is designed to provide a seamless user experience, making it even easier to accomplish your goals, access different services all within a single platform.
+                </p>
+            </section>
 
-    </main>
-    <footer>
-        <p>© 2023 LIYIL Technology</p>
-        <p class="project-worth">Project worth: 20 Lakhs</p>
-        <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET">LIYIL on Justdial</a>
-    </footer>
-    <script>
-        const navList = document.querySelector('nav ul'), hamburgerIcon = document.querySelector('.hamburger-icon'), header = document.querySelector('header'),navLinks = document.querySelectorAll('nav ul li a'),sections = document.querySelectorAll('section');
-        hamburgerIcon.addEventListener('click', () => { navList.classList.toggle('active'); hamburgerIcon.classList.toggle('active') });
-        function trackActiveMenuItem() { let currentSectionId = 'hero'; sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) { currentSectionId = section.id; } });navLinks.forEach(navLink => { if (navLink.getAttribute('href') === `#${currentSectionId}`) { navLinks.forEach(link => link.classList.remove('active')); navLink.classList.add('active'); } });}
-        navLinks.forEach(navLink => { navLink.addEventListener('click', (event) => { event.preventDefault(); const targetId = navLink.getAttribute('href'), targetElement = document.querySelector(targetId); window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });if(window.innerWidth < 768) { navList.classList.remove('active'); hamburgerIcon.classList.remove('active'); } });});
-        window.addEventListener('scroll', () => { trackActiveMenuItem();  if(window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled') } });
-        const counters = document.querySelectorAll('.number'), speed = 200; counters.forEach(counter => { const target = +counter.dataset.target, updateCount = () => { const count = +counter.innerText, inc = target / speed; if(count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 1); } else { counter.innerText = target; } }; updateCount() });
+        </main>
+        <footer>
+            <p>© copyright on 2023 with LIYIL Technology</p>
 
-        document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const serviceType = this.dataset.service;
-            console.log(`Navigating to ${serviceType} service details`);
-            // You can add further actions, like opening a modal or navigating to the specific service page
-          });
-        });
-    </script>
-</body>
-</html>
+            <div class="footer-social">
+               <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/ashish-s-y-b4207b247/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET">LIYIL on Justdial</a>
+        </footer>
+        <script>
+            const navList = document.querySelector('nav ul'), hamburgerIcon = document.querySelector('.hamburger-icon'), header = document.querySelector('header'),navLinks = document.querySelectorAll('nav ul li a'),sections = document.querySelectorAll('section');
+            hamburgerIcon.addEventListener('click', () => { navList.classList.toggle('active'); hamburgerIcon.classList.toggle('active') });
+            function trackActiveMenuItem() { let currentSectionId = 'hero'; sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) { currentSectionId = section.id; } });navLinks.forEach(navLink => { if (navLink.getAttribute('href') === `#${currentSectionId}`) { navLinks.forEach(link => link.classList.remove('active')); navLink.classList.add('active'); } });}
+            navLinks.forEach(navLink => { navLink.addEventListener('click', (event) => { event.preventDefault(); const targetId = navLink.getAttribute('href'), targetElement = document.querySelector(targetId); window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });if(window.innerWidth < 768) { navList.classList.remove('active'); hamburgerIcon.classList.remove('active'); } });});
+            window.addEventListener('scroll', () => { trackActiveMenuItem();  if(window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled') } });
+            const counters = document.querySelectorAll('.number'), speed = 200; counters.forEach(counter => { const target = +counter.dataset.target, updateCount = () => { const count = +counter.innerText, inc = target / speed; if(count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 1); } else { counter.innerText = target; } }; updateCount() });
+
+              document.querySelectorAll('.service-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const serviceType = this.dataset.service;
+                        console.log(`Navigating to ${serviceType} service details`);
+
+                        // Add 'clicked' class to trigger animation
+                        this.classList.add('clicked');
+
+                        // Remove the class after the animation duration
+                        setTimeout(() => {
+                          this.classList.remove('clicked');
+                        }, 300);  // Adjust duration to match your CSS transition time
+                    });
+                });
+        </script>
+    </body>
+    </html>
