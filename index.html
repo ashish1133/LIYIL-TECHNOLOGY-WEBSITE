@@ -3,91 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIYIL Technology</title>
+    <title>LIYIL Technology - Awesome 3D UI</title>
 
+    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/webp" href="liyil.webp">
 
+    <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         /* Global Styles - Modified */
         :root {
-            --primary-color: #1a1a1a; /* Darker charcoal for overall feel */
-            --secondary-color: #282828; /* Slightly lighter dark gray for contrast */
-            --accent-color: #26A69A; /* A more modern teal */
+            --primary-color: #1a1a1a;
+            --secondary-color: #282828;
+            --accent-color: #26A69A; /* Teal */
+            --accent-darker: #2E7D32; /* Darker Green/Teal */
             --text-primary: #FFFFFF;
-            --text-secondary: #B0BEC5; /* A cooler light gray */
-            --shadow-color: rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+            --text-secondary: #B0BEC5; /* Lighter Grey */
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --highlight-color-light: rgba(255, 255, 255, 0.2);
+            --shadow-color-dark: rgba(0, 0, 0, 0.4);
             --transition-speed: 0.3s;
         }
 
         body {
-            font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             line-height: 1.7;
             background-color: var(--primary-color);
             color: var(--text-primary);
             overflow-x: hidden;
             transition: background-color var(--transition-speed) ease;
-            font-size: 16px; /* Set a default font size */
-            -webkit-font-smoothing: antialiased;  /* Improve font rendering on webkit browsers */
-            -moz-osx-font-smoothing: grayscale;    /* Improve font rendering on Firefox */
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--secondary-color); }
         ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #2E7D32; } /* Darker Teal on hover */
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-darker); }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 20px 0; /* Adjusted padding for container inside sections */
         }
 
         /* Header Styles - Modified */
         header {
-            background-color: var(--secondary-color);
+            background-color: rgba(40, 40, 40, 0.8); /* Slightly transparent base */
             box-shadow: 0 2px 10px var(--shadow-color);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000; /* Ensure header is on top */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
         }
 
         header.scrolled {
-            background-color: rgba(40, 40, 40, 0.85); /* Semi-transparent Dark Gray */
-            transform: scale(0.98);
+            background-color: rgba(26, 26, 26, 0.85); /* Darker on scroll */
+            /* Add transform style via JS if hiding on scroll */
+             /* transform: translateY(0); */
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            position: relative;
+            padding: 15px 0; /* Reduced padding */
+            position: relative; /* Needed for absolute positioned mobile menu */
+        }
+
+        nav .container {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             position: relative;
+             padding: 0 15px; /* Padding inside nav container */
         }
 
         nav .logo {
             text-decoration: none;
-            font-size: 1.8rem;
             font-weight: bold;
             color: var(--accent-color);
             letter-spacing: 1px;
             display: flex;
             align-items: center;
             transition: transform var(--transition-speed) ease-in-out;
-            position: absolute;
-            top: 10px;
-            left: 20px;
+            flex-shrink: 0; /* Prevent shrinking */
+            margin-right: auto; /* Push nav items to the right */
         }
 
         nav .logo:hover {
@@ -95,10 +108,10 @@
         }
 
         nav .logo img {
-            width: 60px; /*  Reduced logo size */
+            width: 45px; /* Smaller logo */
             height: auto;
-            margin-right: 8px;
-            box-shadow: 0 2px 5px rgba(38, 166, 154, 0.2); /* Teal Shadow */
+            margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(38, 166, 154, 0.2);
             border-radius: 3px;
             transition: box-shadow var(--transition-speed) ease;
         }
@@ -108,7 +121,7 @@
         }
 
         nav .logo span {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Smaller text */
             font-weight: 700;
             color: var(--text-primary);
             transition: color var(--transition-speed) ease-in-out;
@@ -122,24 +135,26 @@
             list-style: none;
             padding: 0;
             display: flex;
-            position: relative;
-            justify-content: center;
-            flex: 1;
+            justify-content: center; /* Center items */
+            align-items: center;
+            margin: 0;
+            flex-grow: 1; /* Allow menu to take space */
         }
 
         nav ul li {
-            margin-left: 25px;
+            margin-left: 20px; /* Reduced spacing */
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-primary);
-            padding: 12px 18px;
+            padding: 10px 15px; /* Reduced padding */
             position: relative;
             transition: all var(--transition-speed) ease;
             display: block;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Smaller font */
+            white-space: nowrap; /* Prevent wrapping */
         }
 
         nav ul li a::before {
@@ -154,945 +169,1426 @@
             transition: opacity var(--transition-speed) ease;
             z-index: -1;
             border-radius: inherit;
+            transform: scale(0.8);
         }
 
         nav ul li a:hover::before, nav ul li a:focus::before {
-            opacity: 0.1;
+            opacity: 0.15;
+            transform: scale(1);
         }
 
         nav ul li a.active {
-            color: var(--primary-color);
-            font-weight: bold;
-            position: relative;
-            z-index: 2;
+            color: var(--accent-color); /* Use accent color for active link */
+            font-weight: 600;
         }
+        /* Removed ::before override for active to keep it simple */
 
-        nav ul li a.active::before {
-            opacity: 1;
-        }
-
-        nav ul li a.active::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 2px;
-            background-color: var(--accent-color);
-        }
-
-        nav ul li.dropdown {
-            position: relative;
-        }
-
-        nav ul li.dropdown > a::after {
-            content: '\25BC';
-            font-size: 0.8em;
-            margin-left: 5px;
+        nav ul li.dropdown { position: relative; }
+        nav ul li.dropdown > a::after { /* Style the arrow on the main dropdown link */
+            content: '\25BC'; /* Down arrow */
+            font-size: 0.7em;
+            margin-left: 4px;
             vertical-align: middle;
             transition: transform var(--transition-speed) ease;
             display: inline-block;
         }
-
-        nav ul li.dropdown:hover > a::after {
-            transform: rotate(180deg);
-        }
+        nav ul li.dropdown:hover > a::after { transform: rotate(180deg); }
 
         nav ul li .dropdown-menu {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 5px); /* Position below link with gap */
             left: 0;
-            background-color: var(--secondary-color);
+            background-color: rgba(40, 40, 40, 0.9); /* Match header */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 12px;
             padding: 10px 0;
             list-style: none;
-            display: none;
+            display: none; /* Hidden by default */
             opacity: 0;
-            transform: translateY(-10px);
-            transition: all var(--transition-speed) ease;
+            transform: translateY(-10px) scale(0.95);
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, visibility var(--transition-speed) ease;
             min-width: 180px;
-            box-shadow: 0 4px 10px var(--shadow-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            visibility: hidden;
+            z-index: 100; /* Above other nav items */
         }
-
-        nav ul li.dropdown:hover .dropdown-menu, nav ul li.dropdown:focus .dropdown-menu {
+        /* Show on hover/focus-within for desktop */
+        nav ul li.dropdown:hover .dropdown-menu,
+        nav ul li.dropdown:focus-within .dropdown-menu {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0px) scale(1);
+            visibility: visible;
         }
-
         nav ul li .dropdown-menu li a {
             padding: 10px 20px;
             white-space: nowrap;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary); /* Slightly muted color */
         }
+        nav ul li .dropdown-menu li a:hover,
+        nav ul li .dropdown-menu li a:focus {
+            background-color: rgba(38, 166, 154, 0.15);
+            color: var(--text-primary); /* Brighten on hover */
+        }
+        nav ul li .dropdown-menu li a::before { display: none; } /* No hover effect needed here */
 
-        nav ul li .dropdown-menu li a:hover, nav ul li .dropdown-menu li a:focus {
-            background-color: rgba(38, 166, 154, 0.1); /* Teal hover */
-        }
 
         .hamburger-icon {
-            display: none;
-            font-size: 2rem;
+            display: none; /* Hidden by default */
+            font-size: 1.8rem;
             cursor: pointer;
             color: var(--text-primary);
             transition: all var(--transition-speed) ease;
-            position: absolute;
-            top: 10px;
-            right: 20px;
+            order: 3; /* Ensure it's last in flex order */
+            margin-left: 15px; /* Space from nav items */
+            padding: 10px;
+            line-height: 1;
+            z-index: 1001; /* Above overlay */
         }
+        .hamburger-icon:hover { color: var(--accent-color); }
 
-        .hamburger-icon:hover {
-            color: var(--accent-color);
-        }
-
-        .hamburger-icon.active i::before {
-            transform: rotate(45deg);
-        }
-
-        .hamburger-icon.active i::after {
-            transform: rotate(-45deg) translate(-3px, -2px);
-        }
-
+        /* Hamburger Lines */
         .hamburger-icon i {
             display: block;
             position: relative;
             width: 25px;
             height: 3px;
-            background-color: var(--text-primary);
+            background-color: currentColor;
             transition: all var(--transition-speed) ease;
+            border-radius: 2px;
         }
-
         .hamburger-icon i::before, .hamburger-icon i::after {
             content: "";
             position: absolute;
+            left: 0;
             width: 25px;
             height: 3px;
-            background-color: var(--text-primary);
+            background-color: currentColor;
             transition: all var(--transition-speed) ease;
+            border-radius: 2px;
+        }
+        .hamburger-icon i::before { top: -7px; }
+        .hamburger-icon i::after { top: 7px; }
+
+        /* Hamburger Active State (X) */
+        .hamburger-icon.active i { background-color: transparent; }
+        .hamburger-icon.active i::before { transform: translateY(7px) rotate(45deg); }
+        .hamburger-icon.active i::after { transform: translateY(-7px) rotate(-45deg); }
+
+         /* Mobile Menu Styles */
+         @media (max-width: 992px) {
+             nav ul {
+                 display: none; /* Hide by default, shown via JS */
+                 position: fixed; /* Full screen */
+                 top: 0;
+                 left: 0;
+                 width: 100%;
+                 height: 100vh; /* Full viewport height */
+                 background-color: rgba(26, 26, 26, 0.98); /* Darker overlay */
+                 backdrop-filter: blur(5px);
+                 -webkit-backdrop-filter: blur(5px);
+                 flex-direction: column;
+                 padding: 100px 0 50px; /* Padding top for header space, bottom */
+                 justify-content: flex-start; /* Align items top */
+                 align-items: center; /* Center items horizontally */
+                 text-align: center;
+                 box-shadow: none;
+                 margin-top: 0;
+                 opacity: 0;
+                 visibility: hidden;
+                 transform: translateX(100%); /* Slide in from right */
+                 transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+                 z-index: 999; /* Below header but above content */
+                 overflow-y: auto; /* Allow scrolling if content overflows */
+             }
+             nav ul.active { /* Class added by JS */
+                 display: flex;
+                 opacity: 1;
+                 visibility: visible;
+                 transform: translateX(0);
+             }
+             nav ul li { margin: 15px 0; margin-left: 0; width: 80%; }
+             nav ul li a { font-size: 1.4rem; padding: 15px 20px; justify-content: center; /* Center text */ }
+             .hamburger-icon { display: block; } /* Show hamburger */
+
+             /* Mobile Dropdown specific adjustments */
+             nav ul li.dropdown > a::after { /* Ensure arrow shows */
+                 display: inline-block;
+             }
+             nav ul li.dropdown:hover > a::after { transform: none; } /* Disable hover rotation */
+
+             nav ul li .dropdown-menu {
+                 position: static; /* Not absolute on mobile */
+                 display: none; /* Controlled by JS click */
+                 background-color: transparent;
+                 box-shadow: none;
+                 padding: 10px 0 10px 30px; /* Indent sub-items */
+                 opacity: 1;
+                 transform: none;
+                 border: none;
+                 width: 100%;
+                 margin-top: 5px;
+                 text-align: center; /* Or left if preferred */
+             }
+              /* No hover effect needed to show mobile dropdown */
+              nav ul li.dropdown:hover .dropdown-menu,
+              nav ul li.dropdown:focus-within .dropdown-menu {
+                   display: none; /* Keep hidden unless clicked */
+              }
+              /* Style for when JS makes it visible */
+              nav ul li .dropdown-menu[style*="display: block"] {
+                   display: block !important; /* Ensure JS style takes precedence */
+              }
+              nav ul li .dropdown-menu li a {
+                  font-size: 1.1rem; /* Smaller sub-items */
+                  padding: 10px 15px;
+                  color: var(--text-secondary);
+              }
+              nav ul li .dropdown-menu li a:hover,
+              nav ul li .dropdown-menu li a:focus {
+                   background-color: rgba(38, 166, 154, 0.1);
+                   color: var(--text-primary);
+              }
         }
 
-        .hamburger-icon i::before {
-            top: -7px;
-        }
-
-        .hamburger-icon i::after {
-            top: 7px;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                background-color: var(--secondary-color);
-                position: relative;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 10px 0;
-                text-align: center;
-                box-shadow: 0 4px 10px var(--shadow-color);
-                backdrop-filter: blur(5px);
-                -webkit-backdrop-filter: blur(5px);
-                transition: all var(--transition-speed) ease;
-                border-radius: 12px;
-                margin-top: 8px;
-                flex: initial;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            .hamburger-icon {
-                display: block;
-            }
-
-            nav .logo img {
-                width: 50px; /* Further reduced on mobile */
-            }
-
-            nav ul li a {
-                font-size: 1.2rem;
-                padding: 14px 20px;
-            }
-
-            header {
-                position: relative;
-            }
-
-            nav {
-                align-items: flex-start;
-                justify-content: flex-start;
-            }
-        }
 
         /* Hero Section Styles - Modified */
         .hero {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 150px 0;
+            justify-content: center; /* Center content */
+            min-height: 100vh; /* Full viewport height */
+            padding: 120px 0 80px; /* Adjust padding, top more for fixed header */
             position: relative;
-            overflow: hidden; /* Prevent radial gradient overflow */
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--primary-color) 60%, var(--secondary-color) 100%); /* Gradient background */
+        }
+        .hero .container { /* Ensure container is setup for flex */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+             flex-wrap: wrap; /* Allow wrapping on smaller screens */
+             gap: 40px;
         }
 
         .hero-content {
-            flex: 1;
-            padding-right: 50px;
+            flex: 1 1 500px; /* Allow shrinking but prefer 500px */
+            padding-right: 30px;
             z-index: 1;
-            text-align: left; /* Left-align text */
+            text-align: left;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem; /* Bigger, bolder heading */
-            margin-bottom: 30px;
+            font-size: clamp(2.5rem, 6vw, 4.2rem); /* Responsive font size */
+            margin-bottom: 25px;
             letter-spacing: 1px;
             color: var(--text-primary);
             line-height: 1.2;
+            font-weight: 700;
+             opacity: 0; /* Start hidden for animation */
+             will-change: transform, opacity;
+             transform: translateY(20px); /* Start slightly down */
         }
 
         .hero-content p {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+            margin-bottom: 35px;
             color: var(--text-secondary);
             line-height: 1.7;
-            max-width: 550px; /* Limit width for better readability */
+            max-width: 550px;
+             opacity: 0; /* Start hidden for animation */
+             will-change: transform, opacity;
+             transform: translateY(20px); /* Start slightly down */
         }
 
+        .hero-content .btn-primary {
+              opacity: 0; /* Start hidden for animation */
+              will-change: transform, opacity;
+             transform: translateY(20px); /* Start slightly down */
+        }
+
+        /* --- Hero Image 3D Effect & Parallax Container --- */
         .hero-image {
-            flex: 1;
+            flex: 1 1 500px; /* Allow shrinking but prefer 500px */
             position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+            perspective: 1500px; /* Increased perspective */
+            min-width: 300px; /* Prevent excessive shrinking */
+             /* Style applied via JS for parallax */
+             transition: transform 0.4s ease; /* Default transition for reset/hover */
+             will-change: transform; /* Optimize for parallax */
         }
 
-         .hero-image img {
-            max-width: 550px;
+        .hero-image img {
+            max-width: 100%; /* Responsive */
+            width: 500px; /* Max width */
+            height: auto;
             display: block;
-            border-radius: 10px;
-            box-shadow: 0 5px 30px rgba(38, 166, 154, 0.4); /* Teal shadow */
-            transition: transform 0.4s ease, opacity 0.4s ease; /* Add opacity transition */
-            opacity: 0; /* Initially hidden */
-            animation: fadeInHero 0.8s ease-out forwards 0.3s; /* Fade in with delay */
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(38, 166, 154, 0.4); /* Enhanced shadow */
+            transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0; /* Start hidden for animation */
+            will-change: transform, opacity;
+            /* Remove direct animation - will be applied via JS */
+             transform: scale(0.9); /* Start slightly small */
         }
 
-        @keyframes fadeInHero {
-            to {
-                opacity: 1;
-            }
+        /* Hover directly on image */
+        .hero-image img:hover {
+            transform: scale(1.05); /* Simple scale on direct hover */
+        }
+         /* Hover on the container (parallax overrides this unless hovering image itself) */
+        .hero-image:hover {
+             /* Hover effect is now managed by parallax logic mostly */
         }
 
-        .hero-image:hover img {
-            transform: translateY(-15px) scale(1.03);
-        }
 
+        /* Dashed border pseudo element */
         .hero-image::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 90%;
-            height: 90%;
-            border: 2px dashed var(--accent-color);
-            transform: translate(-50%, -50%);
-            border-radius: 12px;
+            width: 98%; /* Slightly larger */
+            height: 98%;
+            border: 3px dashed rgba(38, 166, 154, 0.4);
+            transform: translate(-50%, -50%) translateZ(-40px); /* Push back */
+            border-radius: 22px;
             pointer-events: none;
-            z-index: 1;
+            z-index: -1;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            will-change: transform;
         }
 
-        .hero::before {
+         .hero-image:hover::before {
+             transform: translate(-50%, -50%) translateZ(-20px) scale(1.03); /* Bring forward */
+             border-color: rgba(38, 166, 154, 0.7);
+        }
+
+        /* Background Elements */
+        .hero::after { /* Changed hero::before to hero::after to avoid overlap issues */
             content: '';
             position: absolute;
-            top: -50px;
-            left: -200px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            bottom: -150px; /* Positioned lower */
+            left: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 65%);
             pointer-events: none;
+            filter: blur(60px);
+            z-index: 0; /* Behind content */
         }
 
+        @media (max-width: 992px) {
+             .hero { min-height: auto; padding: 150px 0 80px; }
+             .hero .container { flex-direction: column; text-align: center; }
+             .hero-content { padding-right: 0; margin-bottom: 40px; text-align: center; order: 2; }
+             .hero-image { order: 1; margin-bottom: 30px; width: 80%; max-width: 400px; perspective: none; /* Disable perspective on mobile */ }
+             .hero-image img { width: 100%; }
+             .hero-image::before { display: none; } /* Hide dashed border on mobile */
+        }
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                padding: 120px 0;
-            }
-
-            .hero-content {
-                text-align: center;
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
-
-            .hero-content h1 {
-                font-size: 3.0rem;
-            }
-
-            .hero-image {
-                max-width: 90%;
-                margin: 0 auto;
-            }
+            .hero-content h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+            .hero-content p { font-size: clamp(0.9rem, 4vw, 1.1rem); }
         }
+
 
         /* Generic Section Styles - Modified */
-        .features, .pricing, .services, .stats, .about, .testimonials {
-            padding: 120px 0;
+        .features, .pricing, .services, .stats, .about, .testimonials, .app-info, .super-app-section, .contact {
+            padding: 100px 0;
             text-align: center;
             position: relative;
+            overflow: hidden; /* Contain background elements */
         }
 
-        .features::before, .services::before, .testimonials::before {
+        /* Shared Background Elements for Sections */
+        .features::after, .services::after, .testimonials::after, .super-app-section::after {
             content: '';
             position: absolute;
-            top: 0;
-            right: -200px;
+            bottom: -100px;
+            right: -250px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.06) 0%, transparent 70%);
             pointer-events: none;
+            z-index: -1;
+            filter: blur(40px);
+            transform: rotate(30deg); /* Add some rotation */
         }
 
-        .pricing::before, .stats::before, .about::before {
+        .pricing::before, .stats::before, .about::before, .contact::before, .app-info::before {
             content: '';
             position: absolute;
-            bottom: -50px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
+            top: -80px;
+            left: -150px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.07) 0%, transparent 70%);
             pointer-events: none;
+            z-index: -1;
+            filter: blur(40px);
+            transform: rotate(-25deg); /* Add some rotation */
         }
 
-        .features h2, .pricing h2, .services h2, .stats h2, .about h2, .testimonials h2, .contact h2 {
-            margin-bottom: 70px;
-            font-size: 2.7rem;
-            letter-spacing: 1px;
+        /* Section Headings */
+         h2 {
+            margin-bottom: 60px;
+            font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive heading */
+            letter-spacing: 0.5px;
             position: relative;
             color: var(--text-primary);
-        }
+            font-weight: 600;
+         }
 
-        .features h2::after, .pricing h2::after, .services h2::after, .stats h2::after, .about h2::after, .testimonials h2::after, .contact h2::after {
+         h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
-            width: 120px;
-            height: 2px;
+            width: 100px;
+            height: 3px;
             background-color: var(--accent-color);
             transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        /* Card Layouts - Modified */
-        .features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards {
+        /* Card Layouts - Add Perspective */
+        .features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards, .app-info-cards {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
-            padding: 0 15px; /* Add some horizontal padding */
+            gap: 30px;
+            padding: 0 15px;
+            perspective: 1800px; /* Perspective for card 3D effects */
         }
 
-        .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card {
-            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
-            border-radius: 15px;
-            background-color: var(--secondary-color);
-            transition: all 0.4s ease;
-            padding: 30px 25px; /* Slightly reduced padding */
-            margin: 20px;
+        /* --- Card 3D Base & Hover --- */
+        .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card, .app-info-card {
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+            border-radius: 18px;
+            background-color: rgba(40, 40, 40, 0.75); /* Semi-transparent */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 35px 30px;
+            margin: 0; /* Use gap */
             cursor: pointer;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Slightly stronger base shadow */
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            /* Animation properties set via JS */
+            opacity: 0; /* Start hidden - JS will change this */
+            will-change: transform, opacity;
         }
 
-        .feature-card:hover, .pricing-card:hover, .service-card:hover, .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(38, 166, 154, 0.3); /* Teal shadow */
+        .feature-card:hover,
+        .pricing-card:hover,
+        .service-card:hover,
+        .stats-card:hover,
+        .testimonial-card:hover,
+        .app-info-card:hover {
+             transform: translateY(-15px) translateZ(70px) rotateX(7deg) rotateY(-3deg); /* More dynamic tilt */
+             box-shadow: 0 20px 50px rgba(38, 166, 154, 0.4); /* Enhanced hover shadow */
+             background: linear-gradient(160deg, rgba(45, 45, 45, 0.8), rgba(50, 50, 50, 0.9)); /* Hover background */
         }
 
-        .service-card {
-            border: 1px solid rgba(38, 166, 154, 0.1);
-            border-radius: 15px;
-            background-color: var(--secondary-color);
-            transition: all var(--transition-speed) ease;
-            padding: 30px;
-            cursor: pointer;
-            width: 320px;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
+         /* Specific Card Widths (adjust as needed) */
+         .feature-card, .service-card, .pricing-card, .app-info-card { width: calc(33.333% - 20px); min-width: 280px; max-width: 340px;}
+         .stats-card   { width: calc(25% - 23px); min-width: 200px; max-width: 250px; }
+         .testimonial-card { width: calc(50% - 15px); min-width: 320px; max-width: 480px;}
 
-        .service-card.clicked {
-             transform: scale(0.95); /* Slightly scale down */
-             box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Reduce shadow */
-        }
 
-        .service-card .service-card-content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px var(--shadow-color);
-        }
-
-        .service-card i {
-            font-size: 3.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.9rem;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: auto; /* Push price and button to the bottom */
-            flex: 1;
-        }
-
-        .service-card .price-cta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .service-card .price {
-            font-size: 1.6rem;
-            color: var(--accent-color);
-            white-space: nowrap;
-        }
-
-        .stats-card {
-            width: 290px;
-        }
-
-        .testimonial-card {
-            width: 400px;
-        }
-
+        /* --- Card Icon 3D --- */
         .feature-card i, .service-card i, .stats-card i {
-            font-size: 3.5rem;
-            color: var(--accent-color);
-            margin-bottom: 25px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow to icons */
-        }
-
-        .pricing-card {
-            width: 350px;
-            border: 2px solid rgba(38, 166, 154, 0.1); /* Teal border */
-            background-color: var(--secondary-color);
-        }
-
-        .feature-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 18px;
-        }
-
-        .pricing-card h3 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            color: var(--text-primary);
-        }
-
-        .stats-card .number {
             font-size: 3.2rem;
-            font-weight: bold;
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Match card transition */
+            display: inline-block;
+            transform: translateZ(0); /* Base Z */
+            will-change: transform;
         }
 
-        .feature-card p, .pricing-card ul li, .stats-card p, .testimonial-card p {
-            color: var(--text-secondary);
+        .feature-card:hover i,
+        .service-card:hover i,
+        .stats-card:hover i {
+            transform: translateZ(50px) scale(1.15) rotate(-8deg); /* Enhance effect */
         }
 
-        .pricing-card .price {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: var(--accent-color);
+        /* Service Card Specifics */
+        .service-card { display: flex; flex-direction: column; text-align: left; }
+        .service-card.clicked { /* Style added via JS */
+             transform: scale(0.96) translateZ(15px);
+             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
+        .service-card .service-card-content { display: flex; flex-direction: column; flex-grow: 1; }
+        .service-card h3 { font-size: 1.7rem; margin-bottom: 15px; color: var(--text-primary); font-weight: 600; }
+        .service-card p { color: var(--text-secondary); margin-bottom: 25px; flex-grow: 1; }
+        .service-card .price-cta { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .service-card .price { font-size: 1.5rem; color: var(--accent-color); white-space: nowrap; font-weight: 600; }
 
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 30px;
-        }
+        /* Pricing Card Specifics */
+         .pricing-card { border: 2px solid rgba(38, 166, 154, 0.1); background-color: var(--secondary-color); }
+         .pricing-card h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--text-primary); }
+         .pricing-card .price { font-size: 2.2rem; font-weight: 700; margin-bottom: 30px; color: var(--accent-color); }
+         .pricing-card ul { list-style: none; padding: 0; margin-bottom: 30px; text-align: left; }
+         .pricing-card ul li { padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
+         .pricing-card ul li:last-child { border-bottom: none; }
+         .pricing-card.popular {
+             border-color: var(--accent-color);
+             background-color: rgba(38, 166, 154, 0.08);
+             transform: scale(1.03) translateZ(15px); /* Make popular stand out */
+             box-shadow: 0 10px 30px rgba(38, 166, 154, 0.2);
+         }
+         .pricing-card.popular:hover {
+             transform: translateY(-15px) translateZ(80px) rotateX(7deg) rotateY(-3deg) scale(1.03); /* Enhance hover */
+             box-shadow: 0 22px 55px rgba(38, 166, 154, 0.45);
+         }
 
-        .pricing-card ul li {
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
-        }
+        /* Stats Card Specifics */
+        .stats-card .number { font-size: clamp(2.5rem, 6vw, 3rem); font-weight: 700; color: var(--accent-color); margin-bottom: 8px; }
+        .stats-card p:last-child { color: var(--text-secondary); font-size: 0.9rem; }
 
-        .pricing-card.popular {
-            border-color: var(--accent-color);
-            background-color: rgba(38, 166, 154, 0.1);
-        }
+        /* Testimonial Card Specifics */
+         .testimonial-card { text-align: left; background-color: rgba(45, 45, 45, 0.8); } /* Slightly different bg */
+         .testimonial-card p:first-of-type { font-style: italic; margin-bottom: 25px; line-height: 1.8; color: var(--text-secondary); font-size: 1.05rem; position: relative; padding-left: 35px; }
+         .testimonial-card p:first-of-type::before {
+             content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: -5px; font-size: 1.8rem; color: var(--accent-color); opacity: 0.4;
+         }
+        .client-info { display: flex; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .client-info img { width: 60px; height: 60px; border-radius: 50%; margin-right: 15px; border: 2px solid var(--accent-color); }
+        .client-name { font-weight: 600; margin: 0; color: var(--text-primary); font-size: 1.05rem; }
 
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 30px;
-            line-height: 1.9;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .client-info img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .client-name {
-            font-weight: bold;
-            margin: 0;
-            color: var(--text-primary);
-        }
-
-        .about p {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.9;
-            color: var(--text-secondary);
-        }
+        /* About Section Text */
+        .about p { max-width: 800px; margin: 0 auto; line-height: 1.9; color: var(--text-secondary); font-size: 1.1rem; }
 
         /* Contact Form Styles - Modified */
-        .contact {
-            padding: 120px 0;
-            text-align: center;
-        }
-
+        .contact { padding: 100px 0; text-align: center; }
         .contact form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
+             max-width: 650px; margin: 40px auto 0; display: flex; flex-direction: column;
+             opacity: 0; /* Start hidden - JS controls visibility */
+             will-change: transform, opacity;
+             transform: translateY(20px); /* Start slightly down for animation */
         }
-
-        .form-group {
-            margin-bottom: 35px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 12px;
-            font-weight: bold;
-            color: var(--text-secondary);
-        }
-
+        .form-group { margin-bottom: 30px; text-align: left; position: relative; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-secondary); font-size: 0.95rem; }
         .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 20px;
-            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
-            border-radius: 12px;
-            background-color: var(--secondary-color);
-            color: var(--text-primary);
-            font-family: 'Poppins', sans-serif; /* Consistent font */
-            transition: border-color var(--transition-speed) ease;
+            width: 100%; box-sizing: border-box; padding: 18px 20px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; background-color: rgba(40, 40, 40, 0.8); /* Match cards */ color: var(--text-primary); font-family: 'Poppins', sans-serif; font-size: 1rem; transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
         }
-
         .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
+            outline: none; border-color: var(--accent-color); box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25), 0 0 0 3px rgba(38, 166, 154, 0.3);
         }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+         .contact form button[type="submit"] { align-self: center; margin-top: 15px; }
 
-        .form-group textarea {
-            resize: vertical;
-        }
 
-        /* Button Styles - Modified */
+        /* --- Button 3D Styles --- */
         .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-darker));
+            color: var(--text-primary);
             padding: 16px 35px;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             font-size: 1.1rem;
-            transition: background-color var(--transition-speed) ease, transform 0.2s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-            text-decoration: none; /* Remove underlines from links styled as buttons */
-            display: inline-block; /* Ensure proper padding and width */
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease, box-shadow var(--transition-speed) ease;
+            font-weight: 600;
+            box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.25), inset 0 1px 2px var(--highlight-color-light), 0 5px 12px var(--shadow-color-dark);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            transform: translateZ(0);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            overflow: hidden; /* For shine effect */
+             will-change: transform, box-shadow; /* Optimize */
         }
 
         .btn-primary:hover {
-            background-color: #2E7D32; /* Darker Teal hover */
-            transform: translateY(-3px);
+            background: linear-gradient(145deg, #2bc4b4, #388e3c); /* Slightly brighter hover */
+            transform: translateY(-5px) translateZ(20px) scale(1.03); /* Enhanced hover */
+            box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.25), inset 0 1px 2px var(--highlight-color-light), 0 12px 25px rgba(0, 0, 0, 0.5);
         }
+        .btn-primary:active {
+            transform: translateY(1px) translateZ(5px) scale(1); /* Press effect */
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, var(--accent-darker), var(--accent-color));
+        }
+        /* --- Button Shine Effect --- */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -10%; /* Extend slightly above/below */
+            left: 0;
+            width: 60px; /* Width of the shine */
+            height: 120%; /* Extend slightly */
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: translateX(-120%) skewX(-25deg); /* Start off-screen */
+            opacity: 0;
+            transition: none; /* Animation handles movement */
+            pointer-events: none; /* Don't interfere with clicks */
+        }
+        .btn-primary:hover::after {
+            animation: buttonShine 0.85s ease-out;
+        }
+
 
         /* Footer Styles - Modified */
         footer {
             background-color: var(--secondary-color);
-            padding: 25px;
+            padding: 40px 25px; /* Slightly more padding */
             text-align: center;
-            border-top: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
             position: relative;
-            z-index: 100;
+            z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin-top: 50px;
         }
 
-        /* Fade-in Animation - Modified */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0px);
-            }
+        /* --- Keyframes for Animations --- */
+        @keyframes cardEnter { /* Scroll-in animation for cards */
+          from {
+            opacity: 0;
+            transform: perspective(1000px) rotateY(-25deg) scale(0.9) translateZ(-60px);
+          }
+          to {
+            opacity: 1;
+            transform: perspective(1000px) rotateY(0) scale(1) translateZ(0);
+          }
+        }
+        @keyframes heroTextEnter { /* Entrance for hero text/button */
+          from { opacity: 0; transform: translateY(35px) rotateX(-15deg) skewX(5deg); }
+          to { opacity: 1; transform: translateY(0) rotateX(0) skewX(0); }
+        }
+        @keyframes heroImageEnter { /* Entrance for hero image */
+         from { opacity: 0; transform: scale(0.8) rotateZ(-10deg) translateZ(-100px); }
+         to { opacity: 1; transform: scale(1) rotateZ(0) translateZ(0); }
+        }
+        @keyframes buttonShine { /* Shine effect for buttons */
+          0% { transform: translateX(-110%) skewX(-25deg); opacity: 0.5; }
+          100% { transform: translateX(130%) skewX(-25deg); opacity: 0; } /* Go further off screen */
+        }
+        /* Generic fade in (not used by default now but kept for reference) */
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0px); } }
+
+
+        /* --- Apply Animations (JS adds 'is-visible' or 'animate-in') --- */
+        /* Elements start hidden if JS is enabled (handled in JS now) */
+        /* .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card, .app-info-card, .contact form {
+            opacity: 0;
+            will-change: transform, opacity;
+        } */
+
+        /* Style for when elements become visible (added by JS) */
+        .is-visible {
+            animation: cardEnter 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smooth cubic-bezier */
+        }
+        .contact form.is-visible {
+             animation-duration: 1.1s; /* Slightly longer for form */
+             animation-name: cardEnter; /* Use same animation or a custom one */
         }
 
-        .hero, .features, .pricing, .services, .stats, .about, .testimonials, .contact, footer {
-            animation: fadeIn 1s ease-in-out;
-        }
+        /* Hero Element Entrance Animations */
+        .hero-content h1.animate-in { animation: heroTextEnter 0.8s ease-out 0.2s forwards; }
+        .hero-content p.animate-in { animation: heroTextEnter 0.8s ease-out 0.4s forwards; }
+        .hero-content .btn-primary.animate-in { animation: heroTextEnter 0.8s ease-out 0.6s forwards; }
+        .hero-image img.animate-in { animation: heroImageEnter 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards; }
 
-        .app-info {
-            padding: 120px 0;
-            text-align: center;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 0.7s ease-out forwards; /* Fade in */
-        }
 
-        .app-info h2 {
-            font-size: 2.7rem;
-            letter-spacing: 1px;
-            margin-bottom: 70px;
-            position: relative;
-            color: var(--text-primary);
-        }
+        /* App Info Section */
+         .app-info h2 {} /* Uses general heading styles */
+         .app-info-cards {} /* Uses general card container styles */
+         .app-info-card { padding: 40px 30px; text-align: center; }
+         .app-info-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--text-primary); }
+         .app-info-card p { color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; }
+         .app-info-card img { max-width: 65px; height: 65px; margin-bottom: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        .app-info h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 120px;
-            height: 2px;
-            background-color: var(--accent-color);
-            transform: translateX(-50%);
-        }
-
-        .app-info-cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .app-info-card {
-            border: 1px solid rgba(38, 166, 154, 0.1); /* Teal border */
-            border-radius: 15px;
-            background-color: var(--secondary-color);
-            transition: all 0.4s ease;
-            padding: 50px 35px;
-            margin: 20px;
-            cursor: pointer;
-            text-align: center;
-            width: 300px;
-        }
-
-        .app-info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(38, 166, 154, 0.3); /* Teal shadow */
-        }
-
-        .app-info-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .app-info-card p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .app-info-card img {
-            max-width: 80px;
-            margin-bottom: 20px;
-        }
 
         /* Super App Section */
         .super-app-section {
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
+             background: linear-gradient(45deg, rgba(38, 166, 154, 0.05), rgba(46, 125, 50, 0.08)); /* Subtle gradient bg */
+             border-radius: 20px; margin: 50px auto; width: 95%; padding: 80px 50px;
         }
-
-        .super-app-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -200px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(38, 166, 154, 0.08) 0%, transparent 100%); /* Teal radial gradient */
-            pointer-events: none;
-        }
-
-        .super-app-section h2 {
-            font-size: 2.7rem;
-            letter-spacing: 1px;
-            margin-bottom: 70px;
-            position: relative;
-            color: var(--text-primary);
-        }
-
-        .super-app-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            width: 120px;
-            height: 2px;
-            background-color: var(--accent-color);
-            transform: translateX(-50%);
-        }
-
-        .super-app-section p {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.9;
-            color: var(--text-secondary);
-        }
-
-        .project-worth {
-            margin-top: 30px;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-        }
+        .super-app-section h2 {} /* Uses general heading styles */
+        .super-app-section p { max-width: 750px; margin: 0 auto 30px; line-height: 1.8; color: var(--text-secondary); font-size: 1.05rem; }
 
         /* Footer Social Icons */
-        .footer-social {
-            margin-top: 20px;
-        }
-
+        .footer-social { margin-top: 15px; margin-bottom: 15px; }
         .footer-social a {
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            transition: color var(--transition-speed) ease;
+            display: inline-block; margin: 0 12px; font-size: 1.6rem; color: var(--text-secondary);
+            transition: color var(--transition-speed) ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncier transition */
+        }
+        .footer-social a:hover { color: var(--accent-color); transform: scale(1.2) translateY(-4px); }
+
+        /* Justdial Link */
+         footer a[href*="justdial"] { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; margin-top: 10px; transition: color var(--transition-speed) ease; }
+         footer a[href*="justdial"]:hover { color: var(--accent-color); text-decoration: underline; }
+
+        /* Responsive Adjustments - Consolidated */
+        @media (max-width: 1200px) {
+            .feature-card, .service-card, .pricing-card, .app-info-card { width: calc(50% - 15px); max-width: 400px; }
+            .testimonial-card { width: calc(50% - 15px); max-width: none; }
+            .stats-card { width: calc(50% - 15px); max-width: 280px; }
         }
 
-        .footer-social a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Responsive Adjustments - Modified */
         @media (max-width: 768px) {
-            .service-card {
-                width: calc(50% - 40px);
-            }
+             h2 { font-size: clamp(1.8rem, 6vw, 2.1rem); margin-bottom: 50px; }
+              h2::after { width: 80px; }
+             .features, .pricing, .services, .stats, .about, .testimonials, .app-info, .contact { padding: 80px 0; }
+             .feature-card, .service-card, .pricing-card, .stats-card, .testimonial-card, .app-info-card { width: calc(100% - 30px); max-width: 450px; margin-left: auto; margin-right: auto; }
 
-            .testimonial-card {
-                width: 100%; /* Take full width */
-            }
+             /* Simpler hover on mobile (optional, can remove if touch feedback is enough) */
+             .feature-card:hover, .pricing-card:hover, .service-card:hover, .stats-card:hover, .testimonial-card:hover, .app-info-card:hover {
+                 transform: translateY(-8px) translateZ(30px); /* Less intense */
+                 box-shadow: 0 12px 30px rgba(38, 166, 154, 0.25);
+                 background: rgba(40, 40, 40, 0.75); /* Reset background on hover for mobile */
+             }
+             .pricing-card.popular:hover { /* Keep popular slightly distinct */
+                 transform: translateY(-8px) translateZ(40px) scale(1.03);
+                 box-shadow: 0 15px 35px rgba(38, 166, 154, 0.3);
+             }
 
-            .testimonial-cards {
-                flex-direction: column; /* Stack vertically */
-                align-items: center;   /* Center items horizontally */
-            }
-
-            .client-info {
-                flex-direction: column;  /* Stack client info vertically */
-                text-align: center;      /* Center text */
-            }
-
-            .client-info img {
-                margin: 0 0 10px 0; /* Adjust margins */
-            }
+             .testimonial-cards { gap: 25px; }
+             .contact form { max-width: 90%; }
+             .super-app-section { padding: 60px 30px; width: 90%; }
+             .footer-social a { font-size: 1.5rem; margin: 0 10px; }
+             footer { padding: 30px 15px; }
         }
-
         @media (max-width: 500px) {
-            .service-card {
-                width: 100%;
-            }
+             /* Further adjustments for very small screens if needed */
+             .stats-card { width: calc(100% - 30px); } /* Stack stats cards */
+             .btn-primary { padding: 14px 28px; font-size: 1rem; }
+             .hero-content h1 { font-size: clamp(1.8rem, 7vw, 2.2rem); }
+             .hero-content p { font-size: clamp(0.85rem, 3.5vw, 1rem); }
+             .service-card h3 { font-size: 1.5rem; }
+             .service-card .price { font-size: 1.3rem; }
+             .pricing-card .price { font-size: 1.9rem; }
         }
-
     </style>
 </head>
 <body>
     <header>
-        <nav><div class="container">
-             <a href="#hero" class="logo"><img src="liyil_logo.png" alt="LIYIL Technology Logo"><span>LIYIL TECHNOLOGY</span></a>
-            <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li class="dropdown"><a href="#">Services</a><ul class="dropdown-menu">
-                    <li><a href="#mobile-development">Mobile Development</a></li>
-                    <li><a href="#web-development">Web Development</a></li>
-                    <li><a href="#digital-marketing">Digital Marketing</a></li>
-                </ul></li>
-                <li><a href="#services">Services & Pricing</a></li>
-                <li><a href="#stats">Achievements</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-           <div class="hamburger-icon"><i></i></div></div>
+        <nav>
+            <div class="container">
+                 <a href="#hero" class="logo">
+                     <img src="liyil_logo.png" alt="LIYIL Technology Logo"> <!-- Check path -->
+                     <span>LIYIL TECH</span>
+                 </a>
+                 <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#services">Services</a> <!-- Main link for dropdown -->
+                        <ul class="dropdown-menu">
+                            <li><a href="#services">Mobile Development</a></li>
+                            <li><a href="#services">Web Development</a></li>
+                            <li><a href="#services">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#stats">Achievements</a></li>
+                    <li><a href="#about">About Us</a></li>
+                     <li><a href="#apps">Our Apps</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+               <div class="hamburger-icon" aria-label="Toggle Menu" aria-expanded="false"><i></i></div>
+           </div>
         </nav>
     </header>
-    <main class="container">
-        <section class="hero" id="hero"><div class="hero-content">
-            <h1>Transforming the Future Through Technology</h1>
-            <p>We craft innovative SaaS solutions to empower your business, accelerate your growth, and drive digital transformation.</p>
-            <a href="#" class="btn-primary">Get Started</a></div>
 
-            <div class="hero-image"><img src="liyil.webp" alt="LIYIL Technology SaaS"></div>
-        </section>
-        <section class="features" id="features"><h2>Our Key Features</h2><div class="features-cards">
-            <div class="feature-card"><i class="fas fa-rocket"></i><h3>Scalable Infrastructure</h3><p>Engineered to handle rapid growth without performance bottlenecks.</p></div>
-            <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>End-to-End Security</h3><p>Data protection through rigorous security protocols and encryption.</p></div>
-            <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Real-time Analytics</h3><p>Make data-driven decisions with powerful visualization and reporting.</p></div>
-        </div></section>
-       <section class="services" id="services">
-            <h2>Custom Development Services</h2>
-            <div class="service-cards">
-                <div class="service-card" data-service="mobile">
-                     <div class="service-card-content">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>Mobile App Development</h3>
-                        <p>Tailored Android and iOS applications for your unique business needs.</p>
-                        <div class="price-cta">
-                          <span class="price">Rs 30,000</span>
-                          <a href="#" class="btn-primary">Explore More</a>
-                         </div>
-                   </div>
+    <main>
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- h1, p, button will get animate-in class via JS -->
+                    <h1>Future-Forward Digital Solutions</h1>
+                    <p>We craft innovative SaaS products and custom digital experiences that empower your business, accelerate growth, and drive meaningful transformation.</p>
+                    <a href="#contact" class="btn-primary">Let's Build Together</a>
                 </div>
-                <div class="service-card" data-service="web">
-                    <div class="service-card-content">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>Website Development</h3>
-                        <p>Professional website design and development to elevate your online presence.</p>
-                         <div class="price-cta">
-                          <span class="price">Rs 13,000</span>
-                          <a href="#" class="btn-primary">Explore More</a>
+                <div class="hero-image"> <!-- Container for parallax -->
+                     <!-- img will get animate-in class via JS -->
+                    <img src="liyil.webp" alt="LIYIL Technology - Innovative Solutions"> <!-- Check path -->
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+             <div class="container">
+                <h2>Core Strengths</h2>
+                <div class="features-cards">
+                    <!-- Cards will get is-visible class via JS -->
+                    <div class="feature-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Scalable & Robust</h3>
+                        <p>Engineered to handle rapid growth and peak loads without bottlenecks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Ironclad Security</h3>
+                        <p>Protecting your data with rigorous protocols, encryption, and best practices.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovative Edge</h3>
+                        <p>Leveraging the latest technologies to provide creative and effective solutions.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+       <section class="services" id="services">
+             <div class="container">
+                <h2>Custom Development</h2>
+                <div class="service-cards">
+                    <!-- Cards will get is-visible class via JS -->
+                    <div class="service-card" data-service="mobile">
+                         <div class="service-card-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile App Mastery</h3>
+                            <p>Bespoke Android & iOS apps designed for seamless user experience and business goals.</p>
+                            <div class="price-cta">
+                              <span class="price">From ₹30k</span>
+                              <a href="#contact" class="btn-primary">Get Quote</a>
+                             </div>
+                       </div>
+                    </div>
+                    <div class="service-card" data-service="web">
+                        <div class="service-card-content">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Web Presence Perfected</h3>
+                            <p>Professional, responsive websites built to elevate your brand and drive conversions.</p>
+                             <div class="price-cta">
+                              <span class="price">From ₹13k</span>
+                              <a href="#contact" class="btn-primary">Get Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card" data-service="digital">
+                         <div class="service-card-content">
+                            <i class="fas fa-bullhorn"></i>
+                            <h3>Digital Growth Engine</h3>
+                            <p>Strategic marketing campaigns to boost visibility, engagement, and ROI.</p>
+                              <div class="price-cta">
+                              <span class="price">From ₹6k</span>
+                              <a href="#contact" class="btn-primary">Get Quote</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="service-card" data-service="digital">
-                     <div class="service-card-content">
-                        <i class="fas fa-bullhorn"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Boost your brand visibility with strategic digital marketing campaigns.</p>
-                          <div class="price-cta">
-                          <span class="price">Rs 6,000</span>
-                          <a href="#" class="btn-primary">Explore More</a>
+             </div>
+        </section>
+
+        <section class="stats" id="stats">
+             <div class="container">
+                <h2>Our Impact</h2>
+                <div class="stats-cards">
+                    <!-- Cards will get is-visible class via JS -->
+                    <div class="stats-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p class="number" data-target="80">0</p>
+                        <p>Apps Developed</p>
+                    </div>
+                    <div class="stats-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <p class="number" data-target="132">0</p>
+                        <p>Websites Launched</p>
+                    </div>
+                     <div class="stats-card">
+                        <i class="fas fa-rocket"></i> <!-- Changed icon -->
+                        <p class="number" data-target="282">0</p>
+                        <p>Projects Delivered</p>
+                     </div>
+                     <div class="stats-card">
+                        <i class="fas fa-handshake"></i> <!-- Changed icon -->
+                        <p class="number" data-target="80">0</p>
+                        <p>Happy Partners</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2>Our Vision</h2>
+                <p>At LIYIL Technology, we are driven by a passion for pioneering technology that simplifies complexity and sparks innovation. We empower businesses with robust, scalable, and intuitive digital solutions, fostering sustainable growth and success in a dynamic digital world.</p>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2>Partner Success Stories</h2>
+                <div class="testimonial-cards">
+                     <!-- Cards will get is-visible class via JS -->
+                    <div class="testimonial-card">
+                        <p>"LIYIL's support and the performance of their solution have been exceptional. They significantly streamlined our operations and delivered remarkable results."</p>
+                        <div class="client-info">
+                            <img src="images/client1.jpg" alt="Client Suresh Kumar"> <!-- Check path -->
+                            <p class="client-name">Suresh Kumar, Principal, Jaya Engineering College</p>
+                        </div>
+                     </div>
+                    <div class="testimonial-card">
+                        <p>"Working with LIYIL feels like a true partnership. The platform they built is powerful yet incredibly user-friendly, boosting our team's efficiency dramatically."</p>
+                        <div class="client-info">
+                            <img src="images/client2.jpg" alt="Client Priyanka"> <!-- Check path -->
+                            <p class="client-name">Priyanka, CEO, Source Box</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="stats" id="stats"><h2>Our Achievements</h2><div class="stats-cards">
 
-                <div class="stats-card"><i class="fas fa-mobile-alt"></i><p class="number" data-target="80">0</p><p>Mobile Apps Developed</p></div>
-                <div class="stats-card"><i class="fas fa-laptop-code"></i><p class="number" data-target="132">0</p><p>Websites Developed</p></div>
-                 <div class="stats-card"><i class="fas fa-bullhorn"></i><p class="number" data-target="282">0</p><p>Digital Marketing Campaigns</p></div>
-                 <div class="stats-card"><i class="fas fa-users"></i><p class="number" data-target="80">0</p><p>Happy Clients</p></div>
-            </div></section>
-            <section class="about" id="about"><h2>Our Vision</h2>
-                <p>At LIYIL Technology, we're committed to pioneering cutting-edge technology that drives unprecedented innovation and simplifies complex challenges. We empower businesses of all sizes with robust, scalable, and user-friendly SaaS solutions.</p>
-            </section>
-            <section class="testimonials" id="testimonials"><h2>What Our Clients Are Saying</h2><div class="testimonial-cards">
-                <div class="testimonial-card"><p>"The performance and support from LIYIL are truly exceptional, significantly streamlining our operations and driving remarkable results."</p><div class="client-info">
-                    <img src="images/client1.jpg" alt="Client 1"><p class="client-name">Suresh Kumar, Principle at Jaya Engineering college</p></div>
-                 </div>
-                <div class="testimonial-card"><p>"LIYIL Technology is a true partner, providing a platform that is both powerful and incredibly user-friendly. Our team has become significantly more efficient."</p><div class="client-info">
-                    <img src="images/client2.jpg" alt="Client 2"><p class="client-name">Priyanka , CEO of Source box</p></div>
-                </div>
-            </div></section>
-            <section class="contact" id="contact"><h2>Contact Our Team</h2>
-                <form action="#">
-                    <div class="form-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your Name" required></div>
-                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="Your Email" required></div>
-                    <div class="form-group"><label for="message">Message</label><textarea id="message" rows="5" placeholder="Your Message" required></textarea></div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
-            </section>
-            <section class="app-info" id="apps">
-                <h2>Our Mobile Applications</h2>
-                <div class="app-info-cards">
-                    <div class="app-info-card">
-                      <img src="liyil_AI.webp" alt="LIYIL AI Icon"/>
-                       <h3>LIYIL AI</h3>
-                       <p>Your intelligent assistant for everyday tasks.</p>
-                        <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN" class="btn-primary">Download Now</a>
-                    </div>
-                     <div class="app-info-card">
-                         <img src="liyil_jobs.webp" alt="LIYIL Jobs Icon"/>
-                        <h3>LIYIL Jobs</h3>
-                        <p>Find your ideal career with ease.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN" class="btn-primary">Download Now</a>
-                    </div>
-                     <div class="app-info-card">
-                          <img src="liyil_games.webp" alt="LIYIL Games Icon"/>
-                        <h3>LIYIL Games</h3>
-                        <p>Fun and engaging games for relaxation.</p>
-                        <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN" class="btn-primary">Download Now</a>
+         <section class="app-info" id="apps">
+                <div class="container">
+                    <h2>Explore Our Apps</h2>
+                    <div class="app-info-cards">
+                        <!-- Cards will get is-visible class via JS -->
+                        <div class="app-info-card">
+                          <img src="liyil_AI.webp" alt="LIYIL AI Icon"/> <!-- Check path -->
+                           <h3>LIYIL AI</h3>
+                           <p>Your intelligent assistant for quick answers and task assistance on the go.</p>
+                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                        </div>
+                         <div class="app-info-card">
+                             <img src="liyil_jobs.webp" alt="LIYIL Jobs Icon"/> <!-- Check path -->
+                            <h3>LIYIL Jobs</h3>
+                            <p>Find your ideal career path and connect with relevant job opportunities easily.</p>
+                            <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                        </div>
+                         <div class="app-info-card">
+                              <img src="liyil_games.webp" alt="LIYIL Games Icon"/> <!-- Check path -->
+                            <h3>LIYIL Games</h3>
+                            <p>Unwind with a collection of fun and engaging games for moments of relaxation.</p>
+                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                         </div>
                      </div>
                  </div>
             </section>
-            <section class="super-app-section" id="super-app">
-                <h2>Our Super App</h2>
+
+        <section class="super-app-section" id="super-app">
+            <div class="container">
+                <h2>The Future is Integrated: LIYIL Super App</h2>
                 <p>
-                  We're excited to announce that we are currently working on a super app that will bring together the best features of all our current apps, along with new functionalities. This app is designed to provide a seamless user experience, making it even easier to accomplish your goals, access different services all within a single platform.
+                  Exciting developments are underway! We're building the LIYIL Super App – a unified platform combining the best of our services with innovative new features. Experience seamless access to all LIYIL tools and solutions in one intuitive interface designed for maximum productivity and convenience. Stay tuned!
                 </p>
-            </section>
-
-        </main>
-        <footer>
-            <p>© copyright on 2023 with LIYIL Technology</p>
-
-            <div class="footer-social">
-               <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/liyilstory/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/ashish-s-y-b4207b247/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                 <!-- Optional: Add a teaser button or input for updates -->
+                 <!-- <a href="#" class="btn-primary">Get Updates</a> -->
             </div>
-            <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET">LIYIL on Justdial</a>
-        </footer>
-        <script>
-            const navList = document.querySelector('nav ul'), hamburgerIcon = document.querySelector('.hamburger-icon'), header = document.querySelector('header'),navLinks = document.querySelectorAll('nav ul li a'),sections = document.querySelectorAll('section');
-            hamburgerIcon.addEventListener('click', () => { navList.classList.toggle('active'); hamburgerIcon.classList.toggle('active') });
-            function trackActiveMenuItem() { let currentSectionId = 'hero'; sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) { currentSectionId = section.id; } });navLinks.forEach(navLink => { if (navLink.getAttribute('href') === `#${currentSectionId}`) { navLinks.forEach(link => link.classList.remove('active')); navLink.classList.add('active'); } });}
-            navLinks.forEach(navLink => { navLink.addEventListener('click', (event) => { event.preventDefault(); const targetId = navLink.getAttribute('href'), targetElement = document.querySelector(targetId); window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });if(window.innerWidth < 768) { navList.classList.remove('active'); hamburgerIcon.classList.remove('active'); } });});
-            window.addEventListener('scroll', () => { trackActiveMenuItem();  if(window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled') } });
-            const counters = document.querySelectorAll('.number'), speed = 200; counters.forEach(counter => { const target = +counter.dataset.target, updateCount = () => { const count = +counter.innerText, inc = target / speed; if(count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 1); } else { counter.innerText = target; } }; updateCount() });
+        </section>
 
-              document.querySelectorAll('.service-card').forEach(card => {
-                    card.addEventListener('click', function() {
-                        const serviceType = this.dataset.service;
-                        console.log(`Navigating to ${serviceType} service details`);
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2>Let's Connect</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: -20px auto 40px; font-size: 1.05rem;">Have a project in mind or just want to learn more? Send us a message!</p>
+                <!-- Form will get is-visible class via JS -->
+                <form action="#" method="POST"> <!-- Replace # with your form processing endpoint -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="e.g., Alex Chen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="e.g., alex.chen@company.com" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="subject">Subject (Optional)</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Mobile App Inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message / Project Details</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us about your project or ask a question..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
 
-                        // Add 'clicked' class to trigger animation
-                        this.classList.add('clicked');
+    </main>
 
-                        // Remove the class after the animation duration
-                        setTimeout(() => {
-                          this.classList.remove('clicked');
-                        }, 300);  // Adjust duration to match your CSS transition time
-                    });
+    <footer>
+        <p>© 2023 - Present | LIYIL Technology. All Rights Reserved.</p>
+        <div class="footer-social">
+           <!-- Replace # with actual social media links -->
+           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/liyilstory/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ashish-s-y-b4207b247/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET" target="_blank" rel="noopener noreferrer">Find LIYIL on Justdial</a>
+    </footer>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        (function() { // IIFE to encapsulate scope and avoid global pollution
+            'use strict'; // Enforce stricter parsing and error handling
+
+            // --- Element Selections ---
+            const navList = document.querySelector('nav ul');
+            const hamburgerIcon = document.querySelector('.hamburger-icon');
+            const header = document.querySelector('header');
+            const navLinks = document.querySelectorAll('nav ul li a:not(.dropdown-menu a)');
+            const sections = document.querySelectorAll('main section[id]'); // Target only main sections
+            const counters = document.querySelectorAll('.stats-card .number'); // More specific selector
+            const serviceCards = document.querySelectorAll('.service-card');
+            const dropdowns = document.querySelectorAll('nav ul li.dropdown');
+            const animatedElements = document.querySelectorAll('.feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card, .app-info-card, .contact form');
+            const heroHeading = document.querySelector('.hero-content h1');
+            const heroParagraph = document.querySelector('.hero-content p');
+            const heroButton = document.querySelector('.hero-content .btn-primary');
+            const heroImage = document.querySelector('.hero-image img');
+            const heroImageContainer = document.querySelector('.hero-image');
+            const heroSection = document.getElementById('hero');
+
+            let isMobile = window.innerWidth <= 992;
+            let countersAnimated = false;
+            let lastScrollTop = 0;
+            let parallaxRAFId = null; // To store the requestAnimationFrame ID for parallax
+
+            // --- Debounce Function ---
+            function debounce(func, wait, immediate) {
+                let timeout;
+                return function executedFunction() {
+                    const context = this;
+                    const args = arguments;
+                    const later = function() {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
+                };
+            }
+
+             // --- Window Resize Handler ---
+             const handleResize = debounce(() => {
+                let previouslyMobile = isMobile;
+                isMobile = window.innerWidth <= 992;
+
+                 // If resizing into mobile view, reset parallax
+                 if (isMobile && heroImageContainer) {
+                     cancelAnimationFrame(parallaxRAFId);
+                     parallaxRAFId = null; // Clear the ID
+                     resetParallax(true); // Force reset without transition
+                 }
+
+                 // If resizing from mobile to desktop, re-enable parallax listeners if needed
+                 if (!isMobile && previouslyMobile) {
+                    setupParallaxListeners(); // Re-attach listeners
+                 }
+
+                 // Close mobile menu if resizing to desktop view while open
+                 if (!isMobile && navList.classList.contains('active')) {
+                     closeMobileMenu();
+                 }
+
+             }, 250);
+             window.addEventListener('resize', handleResize);
+
+
+            // --- Hamburger Menu Toggle ---
+            if (hamburgerIcon && navList) {
+                hamburgerIcon.addEventListener('click', () => {
+                    const isActive = navList.classList.toggle('active');
+                    hamburgerIcon.classList.toggle('active');
+                    hamburgerIcon.setAttribute('aria-expanded', isActive); // Accessibility
+                    document.body.style.overflow = isActive ? 'hidden' : ''; // Prevent body scroll
+
+                    if (!isActive) {
+                        closeAllMobileDropdowns(); // Close open dropdowns when closing menu
+                    }
                 });
-        </script>
-    </body>
-    </html>
+            }
+             function closeMobileMenu() {
+                 navList.classList.remove('active');
+                 hamburgerIcon.classList.remove('active');
+                 hamburgerIcon.setAttribute('aria-expanded', 'false');
+                 document.body.style.overflow = ''; // Restore scroll
+                 closeAllMobileDropdowns();
+             }
+
+             function closeAllMobileDropdowns() {
+                 dropdowns.forEach(d => {
+                     const menu = d.querySelector('.dropdown-menu');
+                     if (menu) {
+                        menu.style.display = 'none';
+                     }
+                 });
+             }
+
+            // --- Mobile Dropdown Toggle ---
+            function setupMobileDropdowns() {
+                dropdowns.forEach(dropdown => {
+                    const link = dropdown.querySelector('a:not(.dropdown-menu a)'); // Target the main dropdown link
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (link && menu) {
+                        link.addEventListener('click', (event) => {
+                           if (isMobile) { // Only activate toggle on mobile
+                                if (dropdown.contains(menu)) { // Check if it actually has a menu
+                                    event.preventDefault(); // Prevent navigation only if it's a dropdown trigger
+                                    const isDisplayed = menu.style.display === 'block';
+
+                                    // Close others before opening current
+                                    if (!isDisplayed) {
+                                         closeAllMobileDropdowns();
+                                    }
+                                    // Toggle current
+                                    menu.style.display = isDisplayed ? 'none' : 'block';
+                                }
+                            }
+                            // On desktop, the :hover/:focus-within CSS handles it
+                        });
+                    }
+                });
+            }
+
+
+            // --- Active Nav Link Highlighting ---
+            function trackActiveMenuItem() {
+                let currentSectionId = '';
+                const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+                const headerHeight = header ? header.offsetHeight : 70;
+                const triggerOffset = headerHeight + 50; // Adjust as needed
+
+                // Determine current section
+                 if (scrollPosition < (sections[0]?.offsetTop || 0) - triggerOffset) {
+                     currentSectionId = sections[0]?.id || ''; // Default to first section or empty
+                 } else {
+                     for (let i = sections.length - 1; i >= 0; i--) {
+                         const section = sections[i];
+                         const sectionTop = section.offsetTop;
+                         if (scrollPosition >= sectionTop - triggerOffset) {
+                             currentSectionId = section.id;
+                             break; // Found the current or last section above viewport top
+                         }
+                     }
+                 }
+
+                 // Special case for bottom of page
+                 const bottomThreshold = 100; // Pixels from bottom
+                 if ((window.innerHeight + scrollPosition) >= document.body.offsetHeight - bottomThreshold) {
+                      const lastSection = sections[sections.length - 1];
+                      if(lastSection) currentSectionId = lastSection.id;
+                 }
+
+                // Update nav links
+                navLinks.forEach(navLink => {
+                    const linkHref = navLink.getAttribute('href');
+                    const isActive = linkHref === `#${currentSectionId}`;
+                    navLink.classList.toggle('active', isActive);
+
+                     // Optional: Highlight parent dropdown if active link is inside
+                     // const parentDropdown = navLink.closest('.dropdown');
+                     // if (parentDropdown) {
+                     //     const parentLink = parentDropdown.querySelector('a:not(.dropdown-menu a)');
+                     //     // Add/remove a class like 'active-parent' based on isActive
+                     // }
+                });
+            }
+
+
+            // --- Smooth Scrolling ---
+            navLinks.forEach(navLink => {
+                navLink.addEventListener('click', (event) => {
+                    const targetId = navLink.getAttribute('href');
+                    if (targetId && targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            event.preventDefault();
+                            const headerOffset = (header ? header.offsetHeight : 70) + 15; // Extra space
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+                            // Close mobile menu after clicking a link
+                            if (isMobile && navList.classList.contains('active')) {
+                                closeMobileMenu();
+                            }
+                        }
+                    }
+                });
+            });
+
+
+            // --- Header Scroll Effect ---
+            function handleHeaderScroll() {
+                const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+                header.classList.toggle('scrolled', currentScrollTop > 50);
+
+                // Optional: Hide header on scroll down (uncomment if desired)
+                // const isScrollingDown = currentScrollTop > lastScrollTop;
+                // const isHeaderTallEnough = currentScrollTop > header.offsetHeight;
+                // if (isHeaderTallEnough) { // Only hide if scrolled past header height
+                //      header.style.transform = isScrollingDown ? 'translateY(-100%)' : 'translateY(0)';
+                // } else {
+                //      header.style.transform = 'translateY(0)'; // Always show near top
+                // }
+
+                lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+            }
+
+
+            // --- Counter Animation (Smoother with requestAnimationFrame & Easing) ---
+            const counterDuration = 1800; // ms
+            const easeOutQuad = t => t * (2 - t); // Simple easing function
+
+            function animateCounters() {
+                if (countersAnimated) return;
+                countersAnimated = true; // Set flag immediately
+
+                counters.forEach((counter, index) => {
+                    const target = +counter.dataset.target;
+                    if (isNaN(target)) {
+                        console.error(`Invalid data-target on counter:`, counter);
+                        return; // Skip if target is not a number
+                    }
+
+                    let startTime = null;
+                    counter.innerText = '0'; // Start from 0
+
+                    const step = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = timestamp - startTime;
+                        const percentage = Math.min(progress / counterDuration, 1); // 0 to 1
+                        const easedPercentage = easeOutQuad(percentage);
+                        const currentValue = Math.floor(easedPercentage * target);
+
+                        counter.innerText = currentValue.toLocaleString(); // Format with commas
+
+                        if (percentage < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            counter.innerText = target.toLocaleString(); // Ensure final value is exact
+                        }
+                    };
+
+                    // Stagger the start slightly
+                    setTimeout(() => {
+                         requestAnimationFrame(step);
+                    }, index * 80); // Stagger delay
+                });
+            }
+
+
+            // --- Intersection Observer for Scroll Animations ---
+            function setupScrollAnimations() {
+                if (!('IntersectionObserver' in window)) {
+                    console.warn("IntersectionObserver not supported. Animations disabled.");
+                    animatedElements.forEach(el => el.style.opacity = '1'); // Fallback: make visible
+                    if (counters.length > 0 && document.getElementById('stats')) animateCounters(); // Try animating counters
+                    return;
+                }
+
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -12% 0px', // Trigger a bit earlier
+                    threshold: 0.1
+                };
+
+                const animationObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            const element = entry.target;
+                            // Apply staggered delay only to cards within a group
+                            const cardParent = element.closest('.features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards, .app-info-cards');
+                            if(cardParent) {
+                                // Find index within its own group for better stagger
+                                const cardsInGroup = Array.from(cardParent.children);
+                                const cardIndex = cardsInGroup.indexOf(element);
+                                const delay = (cardIndex % 4) * 110; // Stagger delay resets every 4 items
+                                element.style.animationDelay = `${delay}ms`;
+                            }
+
+                            element.classList.add('is-visible');
+
+                            if (element.closest('#stats') && !countersAnimated) {
+                                animateCounters();
+                            }
+
+                            observer.unobserve(element); // Stop observing once animated
+                        }
+                    });
+                }, observerOptions);
+
+                animatedElements.forEach(el => {
+                     el.style.opacity = '0'; // Ensure start hidden for JS animation
+                     animationObserver.observe(el);
+                });
+            }
+
+
+            // --- Hero Entrance Animation Trigger ---
+            function triggerHeroAnimation() {
+                heroHeading?.classList.add('animate-in');
+                heroParagraph?.classList.add('animate-in');
+                heroButton?.classList.add('animate-in');
+                heroImage?.classList.add('animate-in');
+            }
+
+
+            // --- Hero Image Mouse Parallax (Refined) ---
+            let currentX = 0, currentY = 0;
+            let targetX = 0, targetY = 0;
+            const parallaxFactor = 0.05; // Not directly used, smoothing handles it
+            const smoothingFactor = 0.08; // Adjust for desired smoothness
+
+            function updateParallax() {
+                if (isMobile || !heroImageContainer || !parallaxRAFId) { // Check if loop should stop
+                     cancelAnimationFrame(parallaxRAFId);
+                     parallaxRAFId = null;
+                     return;
+                }
+
+                // Smoothly interpolate current position towards target position
+                currentX += (targetX - currentX) * smoothingFactor;
+                currentY += (targetY - currentY) * smoothingFactor;
+
+                // Reduce rotation slightly for subtlety
+                const maxRotate = 2.5;
+                const rotateY = currentX * maxRotate;
+                const rotateX = -currentY * maxRotate;
+                const translateZ = (Math.abs(currentX) + Math.abs(currentY)) * 12; // Adjust Z sensitivity
+
+                // Apply transform using current smoothed values
+                heroImageContainer.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+
+                 // Continue the loop ONLY if there's still movement needed
+                 if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+                     parallaxRAFId = requestAnimationFrame(updateParallax);
+                 } else {
+                     // Stop the loop if close enough to target (prevents unnecessary computation)
+                     cancelAnimationFrame(parallaxRAFId);
+                     parallaxRAFId = null;
+                 }
+             }
+
+             function handleMouseMoveParallax(event) {
+                 if (isMobile || !heroSection || !heroImageContainer) return;
+
+                 const { clientX, clientY } = event;
+                 const rect = heroSection.getBoundingClientRect();
+
+                 // Calculate mouse position relative to the center of the hero section (-1 to 1 range)
+                 targetX = ((clientX - rect.left) / rect.width - 0.5) * 2;
+                 targetY = ((clientY - rect.top) / rect.height - 0.5) * 2;
+
+                 // Start the animation loop if it's not already running
+                 if (!parallaxRAFId) {
+                    // Ensure smooth transition for the start of JS control
+                    heroImageContainer.style.transition = 'transform 0.1s linear';
+                    parallaxRAFId = requestAnimationFrame(updateParallax);
+                 }
+             }
+
+             function resetParallax(immediate = false) {
+                 targetX = 0;
+                 targetY = 0;
+
+                 if (heroImageContainer) {
+                     if (immediate) {
+                          cancelAnimationFrame(parallaxRAFId);
+                          parallaxRAFId = null;
+                          heroImageContainer.style.transition = 'none'; // Disable transition for immediate snap
+                          heroImageContainer.style.transform = 'perspective(1500px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                          // Re-enable transitions shortly after for potential future interactions
+                          setTimeout(() => {
+                             if(heroImageContainer) heroImageContainer.style.transition = 'transform 0.4s ease';
+                          }, 50);
+                     } else {
+                         // Allow the update loop to smoothly return to center if running
+                         if (!parallaxRAFId) {
+                             parallaxRAFId = requestAnimationFrame(updateParallax);
+                         }
+                          // Ensure the CSS transition takes over for the final smooth reset
+                          heroImageContainer.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                     }
+                 }
+             }
+
+             function setupParallaxListeners() {
+                  if (heroSection && heroImageContainer) {
+                     heroSection.addEventListener('mousemove', handleMouseMoveParallax);
+                     heroSection.addEventListener('mouseleave', () => resetParallax(false));
+                     // Let CSS handle direct hover on container
+                     heroImageContainer.addEventListener('mouseenter', () => {
+                          if(!isMobile) {
+                               cancelAnimationFrame(parallaxRAFId); // Let CSS take over
+                               parallaxRAFId = null;
+                               heroImageContainer.style.transition = 'transform 0.4s ease'; // Ensure CSS transition is set
+                          }
+                     });
+                     heroImageContainer.addEventListener('mouseleave', () => {
+                          // When leaving the container itself, restart the parallax smooth reset
+                          if(!isMobile) resetParallax(false);
+                     });
+                  }
+             }
+
+
+            // --- Service Card Click Visual Feedback ---
+            function setupServiceCardClicks() {
+                 if (serviceCards) {
+                     serviceCards.forEach(card => {
+                         const pressHandler = () => card.classList.add('clicked');
+                         const releaseHandler = () => card.classList.remove('clicked');
+
+                         card.addEventListener('mousedown', pressHandler);
+                         card.addEventListener('mouseup', releaseHandler);
+                         card.addEventListener('mouseleave', releaseHandler);
+                         card.addEventListener('touchstart', pressHandler, { passive: true });
+                         card.addEventListener('touchend', releaseHandler);
+                         card.addEventListener('touchcancel', releaseHandler);
+                     });
+                 }
+            }
+
+            // --- Initialization ---
+            document.addEventListener('DOMContentLoaded', () => {
+                 isMobile = window.innerWidth <= 992;
+
+                 setupScrollAnimations();
+                 setupServiceCardClicks();
+                 setupMobileDropdowns();
+
+                 setTimeout(triggerHeroAnimation, 200); // Trigger hero animations
+
+                 if (!isMobile) { // Setup parallax only on desktop initially
+                     setupParallaxListeners();
+                 }
+
+                 trackActiveMenuItem(); // Initial call
+                 handleHeaderScroll(); // Initial call
+
+                 // Add scroll listener (debounced)
+                 window.addEventListener('scroll', debounce(() => {
+                    trackActiveMenuItem();
+                    handleHeaderScroll();
+                 }, 15), { passive: true });
+
+                  // Close mobile menu/dropdowns if clicking outside
+                  document.addEventListener('click', (event) => {
+                      if (isMobile && navList.classList.contains('active')) {
+                          if (!header.contains(event.target) && !hamburgerIcon.contains(event.target)) {
+                                closeMobileMenu();
+                          }
+                      }
+                  });
+
+            }); // End DOMContentLoaded
+
+        })(); // End IIFE
+    </script>
+
+</body>
+</html>
