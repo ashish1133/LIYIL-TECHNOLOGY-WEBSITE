@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIYIL Technology - Awesome 3D UI</title>
+    <title>LIYIL Technology </title>
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -1031,14 +1031,14 @@
                     <div class="testimonial-card">
                         <p>"LIYIL's support and the performance of their solution have been exceptional. They significantly streamlined our operations and delivered remarkable results."</p>
                         <div class="client-info">
-                            <img src="images/client1.jpg" alt="Client Suresh Kumar"> <!-- Check path -->
+                            <img src="https://i1.rgstatic.net/ii/profile.image/11431281128251988-1679317795945_Q512/V-Kumar-39.jpg" alt="Client Suresh Kumar"> <!-- Check path -->
                             <p class="client-name">Suresh Kumar, Principal, Jaya Engineering College</p>
                         </div>
                      </div>
                     <div class="testimonial-card">
                         <p>"Working with LIYIL feels like a true partnership. The platform they built is powerful yet incredibly user-friendly, boosting our team's efficiency dramatically."</p>
                         <div class="client-info">
-                            <img src="images/client2.jpg" alt="Client Priyanka"> <!-- Check path -->
+                            <img src="https://media.licdn.com/dms/image/v2/C4D03AQGxHeyRj4RE9w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1657542601042?e=2147483647&v=beta&t=xJIAg6qo6yDkQE8ylWXfmMBlD2eKLKNVPpGuGwzAu-E" alt="Client Priyanka"> <!-- Check path -->
                             <p class="client-name">Priyanka, CEO, Source Box</p>
                         </div>
                     </div>
@@ -1089,7 +1089,7 @@
                 <h2>Let's Connect</h2>
                 <p style="color: var(--text-secondary); max-width: 600px; margin: -20px auto 40px; font-size: 1.05rem;">Have a project in mind or just want to learn more? Send us a message!</p>
                 <!-- Form will get is-visible class via JS -->
-                <form action="#" method="POST"> <!-- Replace # with your form processing endpoint -->
+                <form action="#" method="POST"> <!-- action and method are less relevant for mailto:, but fine to keep -->
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="e.g., Alex Chen" required>
@@ -1146,6 +1146,7 @@
             const heroImage = document.querySelector('.hero-image img');
             const heroImageContainer = document.querySelector('.hero-image');
             const heroSection = document.getElementById('hero');
+            const contactForm = document.querySelector('.contact form'); // Added for contact form
 
             let isMobile = window.innerWidth <= 992;
             let countersAnimated = false;
@@ -1285,13 +1286,6 @@
                     const linkHref = navLink.getAttribute('href');
                     const isActive = linkHref === `#${currentSectionId}`;
                     navLink.classList.toggle('active', isActive);
-
-                     // Optional: Highlight parent dropdown if active link is inside
-                     // const parentDropdown = navLink.closest('.dropdown');
-                     // if (parentDropdown) {
-                     //     const parentLink = parentDropdown.querySelector('a:not(.dropdown-menu a)');
-                     //     // Add/remove a class like 'active-parent' based on isActive
-                     // }
                 });
             }
 
@@ -1323,18 +1317,7 @@
             // --- Header Scroll Effect ---
             function handleHeaderScroll() {
                 const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-
                 header.classList.toggle('scrolled', currentScrollTop > 50);
-
-                // Optional: Hide header on scroll down (uncomment if desired)
-                // const isScrollingDown = currentScrollTop > lastScrollTop;
-                // const isHeaderTallEnough = currentScrollTop > header.offsetHeight;
-                // if (isHeaderTallEnough) { // Only hide if scrolled past header height
-                //      header.style.transform = isScrollingDown ? 'translateY(-100%)' : 'translateY(0)';
-                // } else {
-                //      header.style.transform = 'translateY(0)'; // Always show near top
-                // }
-
                 lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
             }
 
@@ -1372,11 +1355,7 @@
                             counter.innerText = target.toLocaleString(); // Ensure final value is exact
                         }
                     };
-
-                    // Stagger the start slightly
-                    setTimeout(() => {
-                         requestAnimationFrame(step);
-                    }, index * 80); // Stagger delay
+                    setTimeout(() => { requestAnimationFrame(step); }, index * 80);
                 });
             }
 
@@ -1385,14 +1364,14 @@
             function setupScrollAnimations() {
                 if (!('IntersectionObserver' in window)) {
                     console.warn("IntersectionObserver not supported. Animations disabled.");
-                    animatedElements.forEach(el => el.style.opacity = '1'); // Fallback: make visible
-                    if (counters.length > 0 && document.getElementById('stats')) animateCounters(); // Try animating counters
+                    animatedElements.forEach(el => el.style.opacity = '1');
+                    if (counters.length > 0 && document.getElementById('stats')) animateCounters();
                     return;
                 }
 
                 const observerOptions = {
                     root: null,
-                    rootMargin: '0px 0px -12% 0px', // Trigger a bit earlier
+                    rootMargin: '0px 0px -12% 0px',
                     threshold: 0.1
                 };
 
@@ -1400,29 +1379,24 @@
                     entries.forEach((entry, index) => {
                         if (entry.isIntersecting) {
                             const element = entry.target;
-                            // Apply staggered delay only to cards within a group
                             const cardParent = element.closest('.features-cards, .pricing-cards, .service-cards, .stats-cards, .testimonial-cards, .app-info-cards');
                             if(cardParent) {
-                                // Find index within its own group for better stagger
                                 const cardsInGroup = Array.from(cardParent.children);
                                 const cardIndex = cardsInGroup.indexOf(element);
-                                const delay = (cardIndex % 4) * 110; // Stagger delay resets every 4 items
+                                const delay = (cardIndex % 4) * 110;
                                 element.style.animationDelay = `${delay}ms`;
                             }
-
                             element.classList.add('is-visible');
-
                             if (element.closest('#stats') && !countersAnimated) {
                                 animateCounters();
                             }
-
-                            observer.unobserve(element); // Stop observing once animated
+                            observer.unobserve(element);
                         }
                     });
                 }, observerOptions);
 
                 animatedElements.forEach(el => {
-                     el.style.opacity = '0'; // Ensure start hidden for JS animation
+                     el.style.opacity = '0';
                      animationObserver.observe(el);
                 });
             }
@@ -1440,34 +1414,24 @@
             // --- Hero Image Mouse Parallax (Refined) ---
             let currentX = 0, currentY = 0;
             let targetX = 0, targetY = 0;
-            const parallaxFactor = 0.05; // Not directly used, smoothing handles it
-            const smoothingFactor = 0.08; // Adjust for desired smoothness
+            const smoothingFactor = 0.08;
 
             function updateParallax() {
-                if (isMobile || !heroImageContainer || !parallaxRAFId) { // Check if loop should stop
+                if (isMobile || !heroImageContainer || !parallaxRAFId) {
                      cancelAnimationFrame(parallaxRAFId);
                      parallaxRAFId = null;
                      return;
                 }
-
-                // Smoothly interpolate current position towards target position
                 currentX += (targetX - currentX) * smoothingFactor;
                 currentY += (targetY - currentY) * smoothingFactor;
-
-                // Reduce rotation slightly for subtlety
                 const maxRotate = 2.5;
                 const rotateY = currentX * maxRotate;
                 const rotateX = -currentY * maxRotate;
-                const translateZ = (Math.abs(currentX) + Math.abs(currentY)) * 12; // Adjust Z sensitivity
-
-                // Apply transform using current smoothed values
+                const translateZ = (Math.abs(currentX) + Math.abs(currentY)) * 12;
                 heroImageContainer.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
-
-                 // Continue the loop ONLY if there's still movement needed
                  if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
                      parallaxRAFId = requestAnimationFrame(updateParallax);
                  } else {
-                     // Stop the loop if close enough to target (prevents unnecessary computation)
                      cancelAnimationFrame(parallaxRAFId);
                      parallaxRAFId = null;
                  }
@@ -1475,17 +1439,11 @@
 
              function handleMouseMoveParallax(event) {
                  if (isMobile || !heroSection || !heroImageContainer) return;
-
                  const { clientX, clientY } = event;
                  const rect = heroSection.getBoundingClientRect();
-
-                 // Calculate mouse position relative to the center of the hero section (-1 to 1 range)
                  targetX = ((clientX - rect.left) / rect.width - 0.5) * 2;
                  targetY = ((clientY - rect.top) / rect.height - 0.5) * 2;
-
-                 // Start the animation loop if it's not already running
                  if (!parallaxRAFId) {
-                    // Ensure smooth transition for the start of JS control
                     heroImageContainer.style.transition = 'transform 0.1s linear';
                     parallaxRAFId = requestAnimationFrame(updateParallax);
                  }
@@ -1494,23 +1452,19 @@
              function resetParallax(immediate = false) {
                  targetX = 0;
                  targetY = 0;
-
                  if (heroImageContainer) {
                      if (immediate) {
                           cancelAnimationFrame(parallaxRAFId);
                           parallaxRAFId = null;
-                          heroImageContainer.style.transition = 'none'; // Disable transition for immediate snap
+                          heroImageContainer.style.transition = 'none';
                           heroImageContainer.style.transform = 'perspective(1500px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                          // Re-enable transitions shortly after for potential future interactions
                           setTimeout(() => {
                              if(heroImageContainer) heroImageContainer.style.transition = 'transform 0.4s ease';
                           }, 50);
                      } else {
-                         // Allow the update loop to smoothly return to center if running
                          if (!parallaxRAFId) {
                              parallaxRAFId = requestAnimationFrame(updateParallax);
                          }
-                          // Ensure the CSS transition takes over for the final smooth reset
                           heroImageContainer.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                      }
                  }
@@ -1520,16 +1474,14 @@
                   if (heroSection && heroImageContainer) {
                      heroSection.addEventListener('mousemove', handleMouseMoveParallax);
                      heroSection.addEventListener('mouseleave', () => resetParallax(false));
-                     // Let CSS handle direct hover on container
                      heroImageContainer.addEventListener('mouseenter', () => {
                           if(!isMobile) {
-                               cancelAnimationFrame(parallaxRAFId); // Let CSS take over
+                               cancelAnimationFrame(parallaxRAFId);
                                parallaxRAFId = null;
-                               heroImageContainer.style.transition = 'transform 0.4s ease'; // Ensure CSS transition is set
+                               heroImageContainer.style.transition = 'transform 0.4s ease';
                           }
                      });
                      heroImageContainer.addEventListener('mouseleave', () => {
-                          // When leaving the container itself, restart the parallax smooth reset
                           if(!isMobile) resetParallax(false);
                      });
                   }
@@ -1542,7 +1494,6 @@
                      serviceCards.forEach(card => {
                          const pressHandler = () => card.classList.add('clicked');
                          const releaseHandler = () => card.classList.remove('clicked');
-
                          card.addEventListener('mousedown', pressHandler);
                          card.addEventListener('mouseup', releaseHandler);
                          card.addEventListener('mouseleave', releaseHandler);
@@ -1553,6 +1504,69 @@
                  }
             }
 
+            // --- Contact Form Submission (mailto:) ---
+            function setupContactForm() {
+                if (!contactForm) return;
+
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const nameInput = document.getElementById('name');
+                    const emailInput = document.getElementById('email');
+                    const subjectInput = document.getElementById('subject'); // Optional
+                    const messageInput = document.getElementById('message');
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+
+                    // Basic validation (though HTML5 'required' helps)
+                    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+                        alert('Please fill in all required fields (Name, Email, Message).');
+                        return;
+                    }
+
+                    submitButton.textContent = 'Preparing...';
+                    submitButton.disabled = true;
+
+                    // --- IMPORTANT: SET YOUR RECIPIENT EMAIL ADDRESS HERE ---
+                    const recipientEmail = 'liyilstory@gmail.com'; // << REPLACE WITH YOUR ACTUAL EMAIL
+                    // ---
+
+                    let mailtoSubject = subjectInput.value.trim() ? subjectInput.value.trim() : 'New Inquiry from LIYIL Technology Website';
+                    let mailtoBody = `Hello LIYIL Technology,\n\nYou have a new message from your website contact form:\n\n`;
+                    mailtoBody += `Name: ${nameInput.value.trim()}\n`;
+                    mailtoBody += `Email: ${emailInput.value.trim()}\n`;
+                    if (subjectInput.value.trim()) {
+                        mailtoBody += `Subject: ${subjectInput.value.trim()}\n`;
+                    }
+                    mailtoBody += `\nMessage:\n${messageInput.value.trim()}\n\n`;
+                    mailtoBody += `-----\nThis email was generated from the contact form on liyil.com`;
+
+
+                    // Encode components for the mailto link
+                    const encodedSubject = encodeURIComponent(mailtoSubject);
+                    const encodedBody = encodeURIComponent(mailtoBody);
+
+                    const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+
+                    try {
+                        window.location.href = mailtoLink;
+                        // Give a brief moment for the mail client to potentially open
+                        setTimeout(() => {
+                            alert('Your message is being prepared to be sent via your default email application. Please complete sending it there. The form has been cleared.');
+                            contactForm.reset(); // Clear the form
+                            submitButton.textContent = originalButtonText;
+                            submitButton.disabled = false;
+                        }, 300);
+                    } catch (e) {
+                        console.error("Failed to open mailto link:", e);
+                        alert('Could not automatically open your email client. Please copy your message and send it manually to ' + recipientEmail);
+                        submitButton.textContent = originalButtonText;
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+
+
             // --- Initialization ---
             document.addEventListener('DOMContentLoaded', () => {
                  isMobile = window.innerWidth <= 992;
@@ -1560,23 +1574,22 @@
                  setupScrollAnimations();
                  setupServiceCardClicks();
                  setupMobileDropdowns();
+                 setupContactForm(); // Initialize contact form handler
 
-                 setTimeout(triggerHeroAnimation, 200); // Trigger hero animations
+                 setTimeout(triggerHeroAnimation, 200);
 
-                 if (!isMobile) { // Setup parallax only on desktop initially
+                 if (!isMobile) {
                      setupParallaxListeners();
                  }
 
-                 trackActiveMenuItem(); // Initial call
-                 handleHeaderScroll(); // Initial call
+                 trackActiveMenuItem();
+                 handleHeaderScroll();
 
-                 // Add scroll listener (debounced)
                  window.addEventListener('scroll', debounce(() => {
                     trackActiveMenuItem();
                     handleHeaderScroll();
                  }, 15), { passive: true });
 
-                  // Close mobile menu/dropdowns if clicking outside
                   document.addEventListener('click', (event) => {
                       if (isMobile && navList.classList.contains('active')) {
                           if (!header.contains(event.target) && !hamburgerIcon.contains(event.target)) {
@@ -1584,10 +1597,9 @@
                           }
                       }
                   });
+            });
 
-            }); // End DOMContentLoaded
-
-        })(); // End IIFE
+        })();
     </script>
 
 </body>
