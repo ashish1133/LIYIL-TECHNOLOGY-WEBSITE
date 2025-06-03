@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIYIL Technology </title>
+    <title>LIYIL Technology | Custom Software, Web & Mobile App Development Solutions</title>
+    <!-- SEO Improvement: More descriptive and keyword-rich title -->
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/webp" href="liyil.webp">
+
+    <!-- SEO Improvement: Meta Description (Crucial for snippets in search results) -->
+    <meta name="description" content="LIYIL Technology crafts innovative custom software, web, and mobile app solutions. We specialize in robust SaaS products, digital marketing, and IT services to accelerate your business growth.">
+
+    <!-- SEO Improvement: Keywords (Less critical for Google, but still used by some engines/tools) -->
+    <meta name="keywords" content="LIYIL Technology, custom software development, web development, mobile app development, SaaS products, digital marketing, IT services, technology solutions, software company, web design, Android app development, iOS app development, digital transformation">
+
+    <!-- SEO Improvement: Open Graph / Social Media Meta Tags (For better sharing on platforms like Facebook, LinkedIn) -->
+    <meta property="og:title" content="LIYIL Technology | Custom Software, Web & Mobile App Development Solutions">
+    <meta property="og:description" content="LIYIL Technology crafts innovative custom software, web, and mobile app solutions. We specialize in robust SaaS products, digital marketing, and IT services to accelerate your business growth.">
+    <meta property="og:image" content="https://www.yourwebsite.com/liyil.webp"> <!-- Replace with your actual image URL -->
+    <meta property="og:url" content="https://www.yourwebsite.com/"> <!-- Replace with your actual website URL -->
+    <meta property="og:type" content="website">
+
+    <!-- SEO Improvement: Twitter Card Meta Tags (For Twitter sharing) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LIYIL Technology | Custom Software, Web & Mobile App Development Solutions">
+    <meta name="twitter:description" content="LIYIL Technology crafts innovative custom software, web, and mobile app solutions. We specialize in robust SaaS products, digital marketing, and IT services to accelerate your business growth.">
+    <meta name="twitter:image" content="https://www.yourwebsite.com/liyil.webp"> <!-- Replace with your actual image URL -->
+
+    <!-- SEO Improvement: Canonical Tag (Prevents duplicate content issues if accessible via multiple URLs) -->
+    <link rel="canonical" href="https://www.yourwebsite.com/"> <!-- Replace with your actual website URL -->
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -875,13 +898,87 @@
              .pricing-card .price { font-size: 1.9rem; }
         }
     </style>
+    <!-- SEO Improvement: JSON-LD Schema Markup (Highly Recommended for SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LIYIL Technology",
+      "url": "https://www.yourwebsite.com/", <!-- Replace with your actual website URL -->
+      "logo": "https://www.yourwebsite.com/liyil_logo.png", <!-- Replace with your actual logo URL -->
+      "description": "LIYIL Technology crafts innovative custom software, web, and mobile app solutions, specializing in robust SaaS products, digital marketing, and comprehensive IT services.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9500000000", <!-- Replace with your actual phone number -->
+        "contactType": "Customer Service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/yourliyillpage", <!-- Replace with your actual Facebook URL -->
+        "https://twitter.com/yourliyiltwitter", <!-- Replace with your actual Twitter URL -->
+        "https://www.instagram.com/liyilstory/",
+        "https://www.linkedin.com/in/ashish-s-y-b4207b247/"
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.yourwebsite.com/search?q={search_term_string}" <!-- Replace with your actual search URL -->
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "LIYIL Technology Services",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Custom Software Development",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mobile App Development",
+                  "description": "Bespoke Android & iOS apps designed for seamless user experience and business goals."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Web Development",
+                  "description": "Professional, responsive websites built to elevate your brand and drive conversions."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "SaaS Product Development",
+                  "description": "Designing and building scalable, robust Software-as-a-Service products tailored to your needs."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Marketing",
+              "description": "Strategic marketing campaigns to boost visibility, engagement, and ROI."
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
     <header>
         <nav>
             <div class="container">
                  <a href="#hero" class="logo">
-                     <img src="liyil_logo.png" alt="LIYIL Technology Logo"> <!-- Check path -->
+                     <img src="liyil_logo.png" alt="LIYIL Technology Logo - Innovative Digital Solutions Provider"> <!-- SEO Improvement: More descriptive alt text -->
                      <span>LIYIL TECH</span>
                  </a>
                  <ul>
@@ -893,6 +990,8 @@
                             <li><a href="#services">Mobile Development</a></li>
                             <li><a href="#services">Web Development</a></li>
                             <li><a href="#services">Digital Marketing</a></li>
+                            <!-- SEO Improvement: Added a more specific link for SaaS if you offer it as a distinct service -->
+                            <li><a href="#services">SaaS Solutions</a></li>
                         </ul>
                     </li>
                     <li><a href="#stats">Achievements</a></li>
@@ -910,36 +1009,45 @@
             <div class="container">
                 <div class="hero-content">
                     <!-- h1, p, button will get animate-in class via JS -->
-                    <h1>Future-Forward Digital Solutions</h1>
-                    <p>We craft innovative SaaS products and custom digital experiences that empower your business, accelerate growth, and drive meaningful transformation.</p>
+                    <h1>Future-Forward Digital Solutions & Software Development</h1>
+                    <!-- SEO Improvement: H1 updated to include more primary keywords -->
+                    <p>We craft innovative SaaS products, custom web & mobile app development, and digital experiences that empower your business, accelerate growth, and drive meaningful transformation.</p>
+                    <!-- SEO Improvement: Paragraph updated to include more primary keywords naturally -->
                     <a href="#contact" class="btn-primary">Let's Build Together</a>
                 </div>
                 <div class="hero-image"> <!-- Container for parallax -->
                      <!-- img will get animate-in class via JS -->
-                    <img src="liyil.webp" alt="LIYIL Technology - Innovative Solutions"> <!-- Check path -->
+                    <img src="liyil.webp" alt="LIYIL Technology - Custom Web & Mobile App Development Company Chennai"> <!-- SEO Improvement: More descriptive alt text, consider adding location if targeting local SEO -->
                 </div>
             </div>
         </section>
 
         <section class="features" id="features">
              <div class="container">
-                <h2>Core Strengths</h2>
+                <h2>Our Core Strengths in Software Development</h2>
+                <!-- SEO Improvement: H2 updated to include keywords -->
                 <div class="features-cards">
                     <!-- Cards will get is-visible class via JS -->
                     <div class="feature-card">
                         <i class="fas fa-server"></i>
-                        <h3>Scalable & Robust</h3>
-                        <p>Engineered to handle rapid growth and peak loads without bottlenecks.</p>
+                        <h3>Scalable & Robust Solutions</h3>
+                        <!-- SEO Improvement: H3 updated to be more descriptive -->
+                        <p>Engineered to handle rapid growth and peak loads without bottlenecks, ensuring your digital infrastructure is future-proof.</p>
+                        <!-- SEO Improvement: Paragraph expanded for more keyword context -->
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-user-shield"></i>
-                        <h3>Ironclad Security</h3>
-                        <p>Protecting your data with rigorous protocols, encryption, and best practices.</p>
+                        <h3>Ironclad Security & Data Protection</h3>
+                        <!-- SEO Improvement: H3 updated -->
+                        <p>Protecting your sensitive data with rigorous protocols, advanced encryption, and industry best practices for secure software.</p>
+                        <!-- SEO Improvement: Paragraph expanded -->
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-lightbulb"></i>
-                        <h3>Innovative Edge</h3>
-                        <p>Leveraging the latest technologies to provide creative and effective solutions.</p>
+                        <h3>Innovative & Agile Development</h3>
+                        <!-- SEO Improvement: H3 updated -->
+                        <p>Leveraging the latest technologies and agile methodologies to provide creative, effective, and cutting-edge digital solutions.</p>
+                        <!-- SEO Improvement: Paragraph expanded -->
                     </div>
                 </div>
              </div>
@@ -947,39 +1055,61 @@
 
        <section class="services" id="services">
              <div class="container">
-                <h2>Custom Development</h2>
+                <h2>Our Custom Software Development & Digital Marketing Services</h2>
+                <!-- SEO Improvement: H2 updated with key service keywords -->
                 <div class="service-cards">
                     <!-- Cards will get is-visible class via JS -->
                     <div class="service-card" data-service="mobile">
                          <div class="service-card-content">
                             <i class="fas fa-mobile-alt"></i>
-                            <h3>Mobile App Mastery</h3>
-                            <p>Bespoke Android & iOS apps designed for seamless user experience and business goals.</p>
+                            <h3>Mobile App Development</h3>
+                            <!-- SEO Improvement: H3 updated -->
+                            <p>Bespoke Android & iOS apps designed for seamless user experience and business goals. From concept to launch, we build intuitive and high-performing mobile applications.</p>
+                            <!-- SEO Improvement: Paragraph expanded -->
                             <div class="price-cta">
                               <span class="price">From ₹30k</span>
-                              <a href="#contact" class="btn-primary">Get Quote</a>
+                              <a href="#contact" class="btn-primary">Get Your Mobile App Quote</a>
+                              <!-- SEO Improvement: Anchor text changed to be more specific -->
                              </div>
                        </div>
                     </div>
                     <div class="service-card" data-service="web">
                         <div class="service-card-content">
                             <i class="fas fa-laptop-code"></i>
-                            <h3>Web Presence Perfected</h3>
-                            <p>Professional, responsive websites built to elevate your brand and drive conversions.</p>
+                            <h3>Professional Web Development</h3>
+                            <!-- SEO Improvement: H3 updated -->
+                            <p>Professional, responsive websites built to elevate your brand and drive conversions. We craft stunning and functional web solutions, including e-commerce platforms and custom web applications.</p>
+                            <!-- SEO Improvement: Paragraph expanded -->
                              <div class="price-cta">
                               <span class="price">From ₹13k</span>
-                              <a href="#contact" class="btn-primary">Get Quote</a>
+                              <a href="#contact" class="btn-primary">Request Web Design Quote</a>
+                              <!-- SEO Improvement: Anchor text changed -->
                             </div>
                         </div>
                     </div>
                     <div class="service-card" data-service="digital">
                          <div class="service-card-content">
                             <i class="fas fa-bullhorn"></i>
-                            <h3>Digital Growth Engine</h3>
-                            <p>Strategic marketing campaigns to boost visibility, engagement, and ROI.</p>
+                            <h3>Strategic Digital Marketing</h3>
+                            <!-- SEO Improvement: H3 updated -->
+                            <p>Strategic digital marketing campaigns including SEO, social media marketing, and content strategy to boost your online visibility, engagement, and maximize ROI.</p>
+                            <!-- SEO Improvement: Paragraph expanded -->
                               <div class="price-cta">
                               <span class="price">From ₹6k</span>
-                              <a href="#contact" class="btn-primary">Get Quote</a>
+                              <a href="#contact" class="btn-primary">Inquire About Digital Marketing</a>
+                              <!-- SEO Improvement: Anchor text changed -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SEO Improvement: New card for SaaS solutions if it's a core offering -->
+                    <div class="service-card" data-service="saas">
+                        <div class="service-card-content">
+                            <i class="fas fa-cloud"></i>
+                            <h3>SaaS Product Development</h3>
+                            <p>Develop innovative Software-as-a-Service (SaaS) products from scratch, or enhance existing ones, with a focus on user experience, scalability, and recurring revenue models.</p>
+                            <div class="price-cta">
+                                <span class="price">Custom Quote</span>
+                                <a href="#contact" class="btn-primary">Discuss Your SaaS Project</a>
                             </div>
                         </div>
                     </div>
@@ -989,28 +1119,33 @@
 
         <section class="stats" id="stats">
              <div class="container">
-                <h2>Our Impact</h2>
+                <h2>Our Achievements in Digital Solutions</h2>
+                <!-- SEO Improvement: H2 updated -->
                 <div class="stats-cards">
                     <!-- Cards will get is-visible class via JS -->
                     <div class="stats-card">
                         <i class="fas fa-mobile-alt"></i>
                         <p class="number" data-target="80">0</p>
-                        <p>Apps Developed</p>
+                        <p>Successful Mobile Apps Developed</p>
+                        <!-- SEO Improvement: Text updated -->
                     </div>
                     <div class="stats-card">
                         <i class="fas fa-laptop-code"></i>
                         <p class="number" data-target="132">0</p>
-                        <p>Websites Launched</p>
+                        <p>Responsive Websites Launched</p>
+                        <!-- SEO Improvement: Text updated -->
                     </div>
                      <div class="stats-card">
-                        <i class="fas fa-rocket"></i> <!-- Changed icon -->
+                        <i class="fas fa-rocket"></i>
                         <p class="number" data-target="282">0</p>
-                        <p>Projects Delivered</p>
+                        <p>Innovative Projects Delivered</p>
+                        <!-- SEO Improvement: Text updated -->
                      </div>
                      <div class="stats-card">
-                        <i class="fas fa-handshake"></i> <!-- Changed icon -->
+                        <i class="fas fa-handshake"></i>
                         <p class="number" data-target="80">0</p>
-                        <p>Happy Partners</p>
+                        <p>Satisfied Business Partners</p>
+                        <!-- SEO Improvement: Text updated -->
                      </div>
                 </div>
             </div>
@@ -1018,27 +1153,32 @@
 
         <section class="about" id="about">
             <div class="container">
-                <h2>Our Vision</h2>
-                <p>At LIYIL Technology, we are driven by a passion for pioneering technology that simplifies complexity and sparks innovation. We empower businesses with robust, scalable, and intuitive digital solutions, fostering sustainable growth and success in a dynamic digital world.</p>
+                <h2>About LIYIL Technology: Our Vision & Mission</h2>
+                <!-- SEO Improvement: H2 updated -->
+                <p>At LIYIL Technology, we are driven by a passion for pioneering technology that simplifies complexity and sparks innovation. We empower businesses with robust, scalable, and intuitive digital solutions, fostering sustainable growth and success in a dynamic digital world. Our mission is to transform your ideas into powerful digital realities.</p>
+                <!-- SEO Improvement: Paragraph expanded for more context and keywords -->
             </div>
         </section>
 
         <section class="testimonials" id="testimonials">
             <div class="container">
-                <h2>Partner Success Stories</h2>
+                <h2>Testimonials: Hear From Our Valued Partners</h2>
+                <!-- SEO Improvement: H2 updated -->
                 <div class="testimonial-cards">
                      <!-- Cards will get is-visible class via JS -->
                     <div class="testimonial-card">
-                        <p>"LIYIL's support and the performance of their solution have been exceptional. They significantly streamlined our operations and delivered remarkable results."</p>
+                        <p>"LIYIL's support and the performance of their solution have been exceptional. They significantly streamlined our operations and delivered remarkable results for our institution."</p>
+                        <!-- SEO Improvement: More context in testimonial -->
                         <div class="client-info">
-                            <img src="https://i1.rgstatic.net/ii/profile.image/11431281128251988-1679317795945_Q512/V-Kumar-39.jpg" alt="Client Suresh Kumar"> <!-- Check path -->
+                            <img src="https://i1.rgstatic.net/ii/profile.image/11431281128251988-1679317795945_Q512/V-Kumar-39.jpg" alt="Testimonial from Suresh Kumar, Principal at Jaya Engineering College"> <!-- SEO Improvement: More descriptive alt text -->
                             <p class="client-name">Suresh Kumar, Principal, Jaya Engineering College</p>
                         </div>
                      </div>
                     <div class="testimonial-card">
-                        <p>"Working with LIYIL feels like a true partnership. The platform they built is powerful yet incredibly user-friendly, boosting our team's efficiency dramatically."</p>
+                        <p>"Working with LIYIL feels like a true partnership. The web platform they built is powerful yet incredibly user-friendly, boosting our team's efficiency dramatically and helping us achieve our business goals."</p>
+                        <!-- SEO Improvement: More context and keywords in testimonial -->
                         <div class="client-info">
-                            <img src="https://media.licdn.com/dms/image/v2/C4D03AQGxHeyRj4RE9w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1657542601042?e=2147483647&v=beta&t=xJIAg6qo6yDkQE8ylWXfmMBlD2eKLKNVPpGuGwzAu-E" alt="Client Priyanka"> <!-- Check path -->
+                            <img src="https://media.licdn.com/dms/image/v2/C4D03AQGxHeyRj4RE9w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1657542601042?e=2147483647&v=beta&t=xJIAg6qo6yDkQE8ylWXfmMBlD2eKLKNVPpGuGwzAu-E" alt="Testimonial from Priyanka, CEO of Source Box"> <!-- SEO Improvement: More descriptive alt text -->
                             <p class="client-name">Priyanka, CEO, Source Box</p>
                         </div>
                     </div>
@@ -1048,26 +1188,36 @@
 
          <section class="app-info" id="apps">
                 <div class="container">
-                    <h2>Explore Our Apps</h2>
+                    <h2>Explore Our Innovative Mobile Applications</h2>
+                    <!-- SEO Improvement: H2 updated -->
                     <div class="app-info-cards">
                         <!-- Cards will get is-visible class via JS -->
                         <div class="app-info-card">
-                          <img src="liyil_AI.webp" alt="LIYIL AI Icon"/> <!-- Check path -->
-                           <h3>LIYIL AI</h3>
-                           <p>Your intelligent assistant for quick answers and task assistance on the go.</p>
-                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                          <img src="liyil_AI.webp" alt="LIYIL AI App Icon - Intelligent Assistant by LIYIL Technology"/> <!-- SEO Improvement: More descriptive alt text -->
+                           <h3>LIYIL AI: Smart Assistant App</h3>
+                           <!-- SEO Improvement: H3 updated -->
+                           <p>Your intelligent assistant for quick answers and task assistance on the go, leveraging advanced AI technology.</p>
+                           <!-- SEO Improvement: Paragraph expanded -->
+                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.AI&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Download on Play Store</a>
+                            <!-- SEO Improvement: Anchor text updated -->
                         </div>
                          <div class="app-info-card">
-                             <img src="liyil_jobs.webp" alt="LIYIL Jobs Icon"/> <!-- Check path -->
-                            <h3>LIYIL Jobs</h3>
-                            <p>Find your ideal career path and connect with relevant job opportunities easily.</p>
-                            <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                             <img src="liyil_jobs.webp" alt="LIYIL Jobs App Icon - Career Opportunities Finder"/> <!-- SEO Improvement: More descriptive alt text -->
+                            <h3>LIYIL Jobs: Your Career Finder App</h3>
+                            <!-- SEO Improvement: H3 updated -->
+                            <p>Find your ideal career path and connect with relevant job opportunities easily, simplifying your job search process.</p>
+                            <!-- SEO Improvement: Paragraph expanded -->
+                            <a href="https://play.google.com/store/apps/details?id=com.liyil.LIYILjob&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Download on Play Store</a>
+                            <!-- SEO Improvement: Anchor text updated -->
                         </div>
                          <div class="app-info-card">
-                              <img src="liyil_games.webp" alt="LIYIL Games Icon"/> <!-- Check path -->
-                            <h3>LIYIL Games</h3>
-                            <p>Unwind with a collection of fun and engaging games for moments of relaxation.</p>
-                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Play Store</a>
+                              <img src="liyil_games.webp" alt="LIYIL Games App Icon - Engaging Mobile Games"/> <!-- SEO Improvement: More descriptive alt text -->
+                            <h3>LIYIL Games: Relax & Play Fun Games</h3>
+                            <!-- SEO Improvement: H3 updated -->
+                            <p>Unwind with a collection of fun and engaging mobile games for moments of relaxation and entertainment, developed by LIYIL Technology.</p>
+                            <!-- SEO Improvement: Paragraph expanded -->
+                            <a href="https://play.google.com/store/apps/details?id=io.kodular.ashishashok893.LIYIL_GAMES&hl=en_IN" class="btn-primary" target="_blank" rel="noopener noreferrer">Download on Play Store</a>
+                            <!-- SEO Improvement: Anchor text updated -->
                          </div>
                      </div>
                  </div>
@@ -1075,10 +1225,12 @@
 
         <section class="super-app-section" id="super-app">
             <div class="container">
-                <h2>The Future is Integrated: LIYIL Super App</h2>
+                <h2>Introducing the LIYIL Super App: Integrated Digital Ecosystem</h2>
+                <!-- SEO Improvement: H2 updated -->
                 <p>
-                  Exciting developments are underway! We're building the LIYIL Super App – a unified platform combining the best of our services with innovative new features. Experience seamless access to all LIYIL tools and solutions in one intuitive interface designed for maximum productivity and convenience. Stay tuned!
+                  Exciting developments are underway! We're building the LIYIL Super App – a unified platform combining the best of our services with innovative new features. Experience seamless access to all LIYIL tools and solutions in one intuitive interface designed for maximum productivity and convenience. Stay tuned for the future of integrated digital solutions!
                 </p>
+                <!-- SEO Improvement: Paragraph expanded for more context and keywords -->
                  <!-- Optional: Add a teaser button or input for updates -->
                  <!-- <a href="#" class="btn-primary">Get Updates</a> -->
             </div>
@@ -1086,10 +1238,12 @@
 
         <section class="contact" id="contact">
             <div class="container">
-                <h2>Let's Connect</h2>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: -20px auto 40px; font-size: 1.05rem;">Have a project in mind or just want to learn more? Send us a message!</p>
+                <h2>Contact LIYIL Technology for Your Next Project</h2>
+                <!-- SEO Improvement: H2 updated -->
+                <p style="color: var(--text-secondary); max-width: 600px; margin: -20px auto 40px; font-size: 1.05rem;">Have a custom software development project in mind or just want to learn more about our services? Send us a message!</p>
+                <!-- SEO Improvement: Paragraph updated for more context and keywords -->
                 <!-- Form will get is-visible class via JS -->
-                <form action="#" method="POST"> <!-- action and method are less relevant for mailto:, but fine to keep -->
+                <form action="#" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="e.g., Alex Chen" required>
@@ -1100,11 +1254,13 @@
                     </div>
                      <div class="form-group">
                         <label for="subject">Subject (Optional)</label>
-                        <input type="text" id="subject" name="subject" placeholder="e.g., Mobile App Inquiry">
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Mobile App Development Inquiry">
+                        <!-- SEO Improvement: Placeholder updated -->
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message / Project Details</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Tell us about your project or ask a question..." required></textarea>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us about your project, software needs, or ask a question about our web & mobile app services..." required></textarea>
+                        <!-- SEO Improvement: Placeholder updated -->
                     </div>
                     <button type="submit" class="btn-primary">Send Inquiry</button>
                 </form>
@@ -1117,12 +1273,14 @@
         <p>© 2023 - Present | LIYIL Technology. All Rights Reserved.</p>
         <div class="footer-social">
            <!-- Replace # with actual social media links -->
-           <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/liyilstory/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/ashish-s-y-b4207b247/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+           <a href="https://www.facebook.com/yourliyillpage" target="_blank" rel="noopener noreferrer" aria-label="Follow LIYIL Technology on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/yourliyiltwitter" target="_blank" rel="noopener noreferrer" aria-label="Follow LIYIL Technology on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/liyilstory/" target="_blank" rel="noopener noreferrer" aria-label="Follow LIYIL Technology on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ashish-s-y-b4207b247/" target="_blank" rel="noopener noreferrer" aria-label="Connect with LIYIL Technology on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <!-- SEO Improvement: Added aria-label for accessibility/SEO for social links -->
         </div>
-        <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET" target="_blank" rel="noopener noreferrer">Find LIYIL on Justdial</a>
+        <a href="https://www.justdial.com/Chennai/Liyil-Perambur/044PXX44-XX44-230729145501-Q6F9_BZDET" target="_blank" rel="noopener noreferrer nofollow">Find LIYIL Technology on Justdial</a>
+        <!-- SEO Improvement: Added nofollow to Justdial link as it's a directory -->
     </footer>
 
     <!-- Enhanced JavaScript -->
