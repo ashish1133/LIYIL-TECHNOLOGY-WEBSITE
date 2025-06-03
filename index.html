@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Improvement: More descriptive and keyword-rich title, including AI -->
+    <!-- SEO Improvement: More descriptive and keyword-rich title, focusing on core services -->
     <title>LIYIL Technology | Custom Software, Web, Mobile & AI App Development Solutions</title>
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/webp" href="liyil.webp">
 
-    <!-- SEO Improvement: Meta Description (Crucial for snippets in search results), updated for AI -->
+    <!-- SEO Improvement: Meta Description (Crucial for snippets in search results), updated for core services -->
     <meta name="description" content="LIYIL Technology crafts innovative custom software, web, mobile, and AI solutions. We specialize in robust SaaS products, artificial intelligence development, digital marketing, and IT services to accelerate your business growth.">
 
-    <!-- SEO Improvement: Keywords (Less critical for Google, but still used by some engines/tools), updated for AI -->
+    <!-- SEO Improvement: Keywords (Less critical for Google, but still used by some engines/tools), updated for core services -->
     <meta name="keywords" content="LIYIL Technology, custom software development, web development, mobile app development, SaaS products, digital marketing, IT services, technology solutions, software company, web design, Android app development, iOS app development, digital transformation, AI development, artificial intelligence solutions, machine learning development, AI consulting, intelligent software">
 
-    <!-- SEO Improvement: Open Graph / Social Media Meta Tags (For better sharing on platforms like Facebook, LinkedIn), updated for AI -->
+    <!-- SEO Improvement: Open Graph / Social Media Meta Tags (For better sharing on platforms like Facebook, LinkedIn), updated for core services -->
     <meta property="og:title" content="LIYIL Technology | Custom Software, Web, Mobile & AI App Development Solutions">
     <meta property="og:description" content="LIYIL Technology crafts innovative custom software, web, mobile, and AI solutions. We specialize in robust SaaS products, artificial intelligence development, digital marketing, and IT services to accelerate your business growth.">
     <meta property="og:image" content="https://www.yourwebsite.com/liyil.webp"> <!-- Replace with your actual image URL -->
     <meta property="og:url" content="https://www.yourwebsite.com/"> <!-- Replace with your actual website URL -->
     <meta property="og:type" content="website">
 
-    <!-- SEO Improvement: Twitter Card Meta Tags (For Twitter sharing), updated for AI -->
+    <!-- SEO Improvement: Twitter Card Meta Tags (For Twitter sharing), updated for core services -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LIYIL Technology | Custom Software, Web, Mobile & AI App Development Solutions">
     <meta name="twitter:description" content="LIYIL Technology crafts innovative custom software, web, mobile, and AI solutions. We specialize in robust SaaS products, artificial intelligence development, digital marketing, and IT services to accelerate your business growth.">
@@ -813,12 +813,6 @@
 
 
         /* --- Apply Animations (JS adds 'is-visible' or 'animate-in') --- */
-        /* Elements start hidden if JS is enabled (handled in JS now) */
-        /* .feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card, .app-info-card, .contact form {
-            opacity: 0;
-            will-change: transform, opacity;
-        } */
-
         /* Style for when elements become visible (added by JS) */
         .is-visible {
             animation: cardEnter 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smooth cubic-bezier */
@@ -1012,7 +1006,9 @@
                     </li>
                     <li><a href="#stats">Achievements</a></li>
                     <li><a href="#about">About Us</a></li>
-                     <li><a href="#apps">Our Apps</a></li>
+                    <!-- New Navigation Link for AI Community, pointing to the new page -->
+                    <li><a href="ai-community.html">AI Community</a></li>
+                    <li><a href="#apps">Our Apps</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                <div class="hamburger-icon" aria-label="Toggle Menu" aria-expanded="false"><i></i></div>
@@ -1253,8 +1249,7 @@
                 <p>
                   Exciting developments are underway! We're building the LIYIL Super App – a unified platform combining the best of our services with innovative new features, potentially powered by **Artificial Intelligence**. Experience seamless access to all LIYIL tools and solutions in one intuitive interface designed for maximum productivity and convenience. Stay tuned for the future of integrated digital solutions and smart technology!
                 </p>
-                <!-- SEO Improvement: Paragraph expanded for more context and keywords, hinting at AI -->
-                 <!-- Optional: Add a teaser button or input for updates -->
+                <!-- Optional: Add a teaser button or input for updates -->
                  <!-- <a href="#" class="btn-primary">Get Updates</a> -->
             </div>
         </section>
@@ -1315,11 +1310,13 @@
             const navList = document.querySelector('nav ul');
             const hamburgerIcon = document.querySelector('.hamburger-icon');
             const header = document.querySelector('header');
-            const navLinks = document.querySelectorAll('nav ul li a:not(.dropdown-menu a)');
+            // Modified: navLinks for the main page should only target internal # links
+            const navLinks = document.querySelectorAll('nav ul li a[href^="#"]:not(.dropdown-menu a)');
             const sections = document.querySelectorAll('main section[id]'); // Target only main sections
             const counters = document.querySelectorAll('.stats-card .number'); // More specific selector
             const serviceCards = document.querySelectorAll('.service-card');
             const dropdowns = document.querySelectorAll('nav ul li.dropdown');
+            // Updated animatedElements to remove community section elements
             const animatedElements = document.querySelectorAll('.feature-card, .pricing-card, .service-card, .stats-card, .testimonial-card, .app-info-card, .contact form');
             const heroHeading = document.querySelector('.hero-content h1');
             const heroParagraph = document.querySelector('.hero-content p');
@@ -1467,6 +1464,18 @@
                     const linkHref = navLink.getAttribute('href');
                     const isActive = linkHref === `#${currentSectionId}`;
                     navLink.classList.toggle('active', isActive);
+                });
+
+                // Handle external link active state - If on a specific page, that nav link should be active
+                const currentPage = window.location.pathname.split('/').pop();
+                const externalLinks = document.querySelectorAll('nav ul li a[href^="http"], nav ul li a[href$=".html"]');
+                externalLinks.forEach(link => {
+                    const linkFilename = link.getAttribute('href').split('/').pop();
+                    if (linkFilename === currentPage) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
                 });
             }
 
@@ -1712,12 +1721,23 @@
                     const recipientEmail = 'liyilstory@gmail.com'; // << REPLACE WITH YOUR ACTUAL EMAIL
                     // ---
 
-                    let mailtoSubject = subjectInput.value.trim() ? subjectInput.value.trim() : 'New Inquiry from LIYIL Technology Website';
+                    // Check if subject is pre-filled from URL, e.g., #contact?subject=Interest%20in%20AI%20Developer%20Community
+                    const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);
+                    const prefilledSubject = urlParams.get('subject');
+
+                    let mailtoSubject = subjectInput.value.trim();
+                    if (!mailtoSubject && prefilledSubject) {
+                        mailtoSubject = decodeURIComponent(prefilledSubject); // Use pre-filled if available and not manually entered
+                    }
+                    if (!mailtoSubject) {
+                        mailtoSubject = 'New Inquiry from LIYIL Technology Website';
+                    }
+
                     let mailtoBody = `Hello LIYIL Technology,\n\nYou have a new message from your website contact form:\n\n`;
                     mailtoBody += `Name: ${nameInput.value.trim()}\n`;
                     mailtoBody += `Email: ${emailInput.value.trim()}\n`;
-                    if (subjectInput.value.trim()) {
-                        mailtoBody += `Subject: ${subjectInput.value.trim()}\n`;
+                    if (mailtoSubject) { // Only add subject if it's not empty
+                        mailtoBody += `Subject: ${mailtoSubject}\n`;
                     }
                     mailtoBody += `\nMessage:\n${messageInput.value.trim()}\n\n`;
                     mailtoBody += `-----\nThis email was generated from the contact form on liyil.com`;

@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Improvement: Title specific to AI Community -->
+    <title>LIYIL Technology | AI & Programming Developer Community</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="webp" href="liyil.webp">
+
+    <!-- SEO Improvement: Meta Description specific to AI Community -->
+    <meta name="description" content="Join LIYIL Technology's AI & Programming Developer Community! Connect with fellow developers, AI enthusiasts, share knowledge, and collaborate on cutting-edge artificial intelligence and programming projects.">
+
+    <!-- SEO Improvement: Keywords specific to AI Community -->
+    <meta name="keywords" content="AI developer community, programming community, machine learning forum, AI discussions, developer networking, artificial intelligence projects, AI learning, coding collaboration, LIYIL community, Python AI, TensorFlow community, PyTorch community, AI forum">
+
+    <!-- SEO Improvement: Open Graph / Social Media Meta Tags for AI Community -->
+    <meta property="og:title" content="LIYIL Technology | AI & Programming Developer Community">
+    <meta property="og:description" content="Join LIYIL Technology's AI & Programming Developer Community! Connect with fellow developers, AI enthusiasts, share knowledge, and collaborate on cutting-edge artificial intelligence and programming projects.">
+    <!-- IMPORTANT: Replace with your actual community banner image URL -->
+    <meta property="og:image" content="https://www.yourwebsite.com/liyil_community_banner.webp"> 
+    <!-- IMPORTANT: Replace with your actual community page URL -->
+    <meta property="og:url" content="https://www.yourwebsite.com/ai-community.html">
+    <meta property="og:type" content="website">
+
+    <!-- SEO Improvement: Twitter Card Meta Tags for AI Community -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LIYIL Technology | AI & Programming Developer Community">
+    <meta name="twitter:description" content="Join LIYIL Technology's AI & Programming Developer Community! Connect with fellow developers, AI enthusiasts, share knowledge, and collaborate on cutting-edge artificial intelligence and programming projects.">
+    <!-- IMPORTANT: Replace with your actual community banner image URL -->
+    <meta name="twitter:image" content="https://www.yourwebsite.com/liyil_community_banner.webp">
+
+    <!-- SEO Improvement: Canonical Tag -->
+    <!-- IMPORTANT: Replace with your actual community page URL -->
+    <link rel="canonical" href="https://www.yourwebsite.com/ai-community.html">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDK (Add these lines in your <head>) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <style>
+        /* Global Styles - Modified */
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #282828;
+            --accent-color: #26A69A; /* Teal */
+            --accent-darker: #2E7D32; /* Darker Green/Teal */
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0BEC5; /* Lighter Grey */
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --highlight-color-light: rgba(255, 255, 255, 0.2);
+            --shadow-color-dark: rgba(0, 0, 0, 0.4);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            line-height: 1.7;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed) ease;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--secondary-color); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-darker); }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0; /* Adjusted padding for container inside sections */
+        }
+
+        /* Header Styles - Modified */
+        header {
+            background-color: rgba(40, 40, 40, 0.8); /* Slightly transparent base */
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure header is on top */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(26, 26, 26, 0.85); /* Darker on scroll */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0; /* Reduced padding */
+            position: relative; /* Needed for absolute positioned mobile menu */
+        }
+
+        nav .container {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             position: relative;
+             padding: 0 15px; /* Padding inside nav container */
+        }
+
+        nav .logo {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: transform var(--transition-speed) ease-in-out;
+            flex-shrink: 0; /* Prevent shrinking */
+            margin-right: auto; /* Push nav items to the right */
+        }
+
+        nav .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav .logo img {
+            width: 45px; /* Smaller logo */
+            height: auto;
+            margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(38, 166, 154, 0.2);
+            border-radius: 3px;
+            transition: box-shadow var(--transition-speed) ease;
+        }
+
+        nav .logo:hover img {
+            box-shadow: 0 3px 7px rgba(38, 166, 154, 0.4);
+        }
+
+        nav .logo span {
+            font-size: 1.1rem; /* Smaller text */
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-speed) ease-in-out;
+        }
+
+        nav .logo:hover span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Center items */
+            align-items: center;
+            margin: 0;
+            flex-grow: 1; /* Allow menu to take space */
+        }
+
+        nav ul li {
+            margin-left: 20px; /* Reduced spacing */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-primary);
+            padding: 10px 15px; /* Reduced padding */
+            position: relative;
+            transition: all var(--transition-speed) ease;
+            display: block;
+            border-radius: 8px;
+            font-size: 1rem; /* Smaller font */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-color);
+            opacity: 0;
+            transition: opacity var(--transition-speed) ease;
+            z-index: -1;
+            border-radius: inherit;
+            transform: scale(0.8);
+        }
+
+        nav ul li a:hover::before, nav ul li a:focus::before {
+            opacity: 0.15;
+            transform: scale(1);
+        }
+
+        nav ul li a.active {
+            color: var(--accent-color); /* Use accent color for active link */
+            font-weight: 600;
+        }
+        /* Removed ::before override for active to keep it simple */
+
+        nav ul li.dropdown { position: relative; }
+        nav ul li.dropdown > a::after { /* Style the arrow on the main dropdown link */
+            content: '\25BC'; /* Down arrow */
+            font-size: 0.7em;
+            margin-left: 4px;
+            vertical-align: middle;
+            transition: transform var(--transition-speed) ease;
+            display: inline-block;
+        }
+        nav ul li.dropdown:hover > a::after { transform: rotate(180deg); }
+
+        nav ul li .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px); /* Position below link with gap */
+            left: 0;
+            background-color: rgba(40, 40, 40, 0.9); /* Match header */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 10px 0;
+            list-style: none;
+            display: none; /* Hidden by default */
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, visibility var(--transition-speed) ease;
+            min-width: 180px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            visibility: hidden;
+            z-index: 100; /* Above other nav items */
+        }
+        /* Show on hover/focus-within for desktop */
+        nav ul li.dropdown:hover .dropdown-menu,
+        nav ul li.dropdown:focus-within .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0px) scale(1);
+            visibility: visible;
+        }
+        nav ul li .dropdown-menu li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            color: var(--text-secondary); /* Slightly muted color */
+        }
+        nav ul li .dropdown-menu li a:hover,
+        nav ul li .dropdown-menu li a:focus {
+            background-color: rgba(38, 166, 154, 0.15);
+            color: var(--text-primary); /* Brighten on hover */
+        }
+        nav ul li .dropdown-menu li a::before { display: none; } /* No hover effect needed here */
+
+
+        .hamburger-icon {
+            display: none; /* Hidden by default */
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all var(--transition-speed) ease;
+            order: 3; /* Ensure it's last in flex order */
+            margin-left: 15px; /* Space from nav items */
+            padding: 10px;
+            line-height: 1;
+            z-index: 1001; /* Above overlay */
+        }
+        .hamburger-icon:hover { color: var(--accent-color); }
+
+        /* Hamburger Lines */
+        .hamburger-icon i {
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 3px;
+            background-color: currentColor;
+            transition: all var(--transition-speed) ease;
+            border-radius: 2px;
+        }
+        .hamburger-icon i::before, .hamburger-icon i::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: currentColor;
+            transition: all var(--transition-speed) ease;
+            border-radius: 2px;
+        }
+        .hamburger-icon i::before { top: -7px; }
+        .hamburger-icon i::after { top: 7px; }
+
+        /* Hamburger Active State (X) */
+        .hamburger-icon.active i { background-color: transparent; }
+        .hamburger-icon.active i::before { transform: translateY(7px) rotate(45deg); }
+        .hamburger-icon.active i::after { transform: translateY(-7px) rotate(-45deg); }
+
+         /* Mobile Menu Styles */
+         @media (max-width: 992px) {
+             nav ul {
+                 display: none; /* Hide by default, shown via JS */
+                 position: fixed; /* Full screen */
+                 top: 0;
+                 left: 0;
+                 width: 100%;
+                 height: 100vh; /* Full viewport height */
+                 background-color: rgba(26, 26, 26, 0.98); /* Darker overlay */
+                 backdrop-filter: blur(5px);
+                 -webkit-backdrop-filter: blur(5px);
+                 flex-direction: column;
+                 padding: 100px 0 50px; /* Padding top for header space, bottom */
+                 justify-content: flex-start; /* Align items top */
+                 align-items: center; /* Center items horizontally */
+                 text-align: center;
+                 box-shadow: none;
+                 margin-top: 0;
+                 opacity: 0;
+                 visibility: hidden;
+                 transform: translateX(100%); /* Slide in from right */
+                 transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+                 z-index: 999; /* Below header but above content */
+                 overflow-y: auto; /* Allow scrolling if content overflows */
+             }
+             nav ul.active { /* Class added by JS */
+                 display: flex;
+                 opacity: 1;
+                 visibility: visible;
+                 transform: translateX(0);
+             }
+             nav ul li { margin: 15px 0; margin-left: 0; width: 80%; }
+             nav ul li a { font-size: 1.4rem; padding: 15px 20px; justify-content: center; /* Center text */ }
+             .hamburger-icon { display: block; } /* Show hamburger */
+
+             /* Mobile Dropdown specific adjustments */
+             nav ul li.dropdown > a::after { /* Ensure arrow shows */
+                 transform: rotate(0deg); /* Reset rotation */
+                 transition: transform var(--transition-speed) ease; /* Add transition */
+             }
+             nav ul li.dropdown.menu-open > a::after { transform: rotate(180deg); } /* Rotate when open */
+
+             nav ul li .dropdown-menu {
+                 position: static; /* Not absolute on mobile */
+                 display: none; /* Controlled by JS click */
+                 background-color: transparent;
+                 box-shadow: none;
+                 padding: 10px 0 10px 30px; /* Indent sub-items */
+                 opacity: 1;
+                 transform: none;
+                 border: none;
+                 width: 100%;
+                 margin-top: 5px;
+                 text-align: center; /* Or left if preferred */
+                 visibility: visible; /* Always visible when parent is shown */
+             }
+              /* No hover effect needed to show mobile dropdown */
+              nav ul li.dropdown:hover .dropdown-menu,
+              nav ul li.dropdown:focus-within .dropdown-menu {
+                   display: none; /* Keep hidden unless clicked */
+              }
+              /* Style for when JS makes it visible */
+              nav ul li .dropdown-menu[style*="display: block"] {
+                   display: block !important; /* Ensure JS style takes precedence */
+              }
+              nav ul li .dropdown-menu li a {
+                  font-size: 1.1rem; /* Smaller sub-items */
+                  padding: 10px 15px;
+                  color: var(--text-secondary);
+              }
+              nav ul li .dropdown-menu li a:hover,
+              nav ul li .dropdown-menu li a:focus {
+                   background-color: rgba(38, 166, 154, 0.1);
+                   color: var(--text-primary);
+              }
+        }
+
+        /* Generic Section Styles - Modified */
+        .page-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden; /* Contain background elements */
+        }
+
+        /* Community Page Specific Styles */
+        .community-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh; /* Shorter than main hero */
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+        }
+
+        .community-hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .community-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            font-weight: 700;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+
+        .community-hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 800px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+
+        .community-card-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 15px;
+        }
+
+        .community-feature-card {
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            background-color: rgba(40, 40, 40, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 35px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left;
+            opacity: 0; /* For scroll animation */
+            will-change: transform, opacity;
+        }
+
+        .community-feature-card i {
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            display: block;
+            text-align: center;
+        }
+
+        .community-feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .community-feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .community-feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(38, 166, 154, 0.35);
+        }
+
+        @media (max-width: 1024px) {
+            .community-feature-card {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .community-hero { min-height: auto; padding: 100px 0 60px; }
+            .community-hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+            .community-hero p { font-size: clamp(0.9rem, 4vw, 1.1rem); }
+            .community-feature-card {
+                flex: 1 1 calc(100% - 30px);
+                max-width: 450px;
+            }
+             .page-section { padding: 80px 0; }
+        }
+
+        /* Section Headings (reused) */
+         h2 {
+            margin-bottom: 60px;
+            font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive heading */
+            letter-spacing: 0.5px;
+            position: relative;
+            color: var(--text-primary);
+            font-weight: 600;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+         }
+
+         h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* --- Button 3D Styles (reused) --- */
+        .btn-primary {
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-darker));
+            color: var(--text-primary);
+            padding: 16px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease, box-shadow var(--transition-speed) ease;
+            font-weight: 600;
+            box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.25), inset 0 1px 2px var(--highlight-color-light), 0 5px 12px var(--shadow-color-dark);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            transform: translateZ(0);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            overflow: hidden; /* For shine effect */
+            will-change: transform, box-shadow; /* Optimize */
+            opacity: 0; /* For scroll animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #2bc4b4, #388e3c); /* Slightly brighter hover */
+            transform: translateY(-5px) translateZ(20px) scale(1.03); /* Enhanced hover */
+            box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.25), inset 0 1px 2px var(--highlight-color-light), 0 12px 25px rgba(0, 0, 0, 0.5);
+        }
+        .btn-primary:active {
+            transform: translateY(1px) translateZ(5px) scale(1); /* Press effect */
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, var(--accent-darker), var(--accent-color));
+        }
+        /* --- Button Shine Effect (reused) --- */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 0;
+            width: 60px;
+            height: 120%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: translateX(-120%) skewX(-25deg);
+            opacity: 0;
+            transition: none;
+            pointer-events: none;
+        }
+        .btn-primary:hover::after {
+            animation: buttonShine 0.85s ease-out;
+        }
+
+        /* --- New Button Style for Google/Logout --- */
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(60, 60, 60, 0.8);
+            border-color: var(--accent-color);
+            color: var(--text-primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        .btn-secondary:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .btn-secondary.google-btn {
+            background-color: #4285f4; /* Google blue */
+            color: white;
+            border: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        .btn-secondary.google-btn:hover {
+            background-color: #357ae8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        .btn-secondary.google-btn i { color: white; } /* Ensure Google icon is white */
+
+
+        /* --- Keyframes for Animations --- (reused) */
+        @keyframes cardEnter {
+          from {
+            opacity: 0;
+            transform: perspective(1000px) rotateY(-25deg) scale(0.9) translateZ(-60px);
+          }
+          to {
+            opacity: 1;
+            transform: perspective(1000px) rotateY(0) scale(1) translateZ(0);
+          }
+        }
+        @keyframes fadeInSlideUp { /* New, simpler animation for text/buttons on this page */
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes buttonShine {
+          0% { transform: translateX(-110%) skewX(-25deg); opacity: 0.5; }
+          100% { transform: translateX(130%) skewX(-25deg); opacity: 0; }
+        }
+
+        /* Apply Animations */
+        .is-visible {
+            animation: cardEnter 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        /* Applied to elements with animate-on-scroll class */
+        .animate-on-scroll.is-visible { 
+             animation: fadeInSlideUp 0.8s ease-out forwards;
+             animation-delay: var(--animation-delay, 0s);
+        }
+
+
+        /* Footer Styles (reused) */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 40px 25px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+        .footer-social { margin-top: 15px; margin-bottom: 15px; }
+        .footer-social a {
+            display: inline-block; margin: 0 12px; font-size: 1.6rem; color: var(--text-secondary);
+            transition: color var(--transition-speed) ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .footer-social a:hover { color: var(--accent-color); transform: scale(1.2) translateY(-4px); }
+        footer a[href*="justdial"] { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; margin-top: 10px; transition: color var(--transition-speed) ease; }
+        footer a[href*="justdial"]:hover { color: var(--accent-color); text-decoration: underline; }
+
+
+        /* Firebase UI Specific Styles (NEW & IMPROVED) */
+        .auth-container, .chat-container {
+            background-color: var(--secondary-color);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px var(--shadow-color-dark);
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+
+        .auth-container h3, .chat-container h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .auth-form input[type="email"],
+        .auth-form input[type="password"],
+        .chat-input-area input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .auth-form input[type="email"]:focus,
+        .auth-form input[type="password"]:focus,
+        .chat-input-area input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.3);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .auth-buttons .btn-primary, .auth-buttons .btn-secondary {
+            flex-grow: 1;
+            min-width: 150px;
+        }
+
+        .auth-status {
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(38, 166, 154, 0.1);
+            color: var(--accent-color);
+            font-weight: 500;
+            display: none; /* Hidden by default, shown by JS */
+            word-wrap: break-word; /* Ensure long emails don't overflow */
+        }
+        .auth-status.error {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #FF5722; /* Deep Orange */
+        }
+
+        /* NEW: Chat Layout for Topics */
+        .chat-layout {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px; /* Wider for the two panels */
+            margin: 40px auto;
+            min-height: 550px; /* Ensure sufficient height for chat areas */
+            border-radius: 15px;
+            background-color: var(--secondary-color);
+            box-shadow: 0 10px 30px var(--shadow-color-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden; /* Contains inner elements */
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+
+        .topic-list-panel {
+            flex: 0 0 300px; /* Fixed width for topics */
+            background-color: var(--primary-color);
+            padding: 25px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        .topic-list-panel h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .create-topic-area {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .create-topic-area .btn-primary {
+            padding: 10px 20px; /* Smaller button */
+            font-size: 0.95rem;
+            opacity: 1; /* Override animation for internal elements */
+            transform: none; /* Override animation for internal elements */
+        }
+        .topics-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding-right: 5px; /* Space for scrollbar */
+        }
+        .topics-list::-webkit-scrollbar { width: 6px; }
+        .topics-list::-webkit-scrollbar-track { background: var(--primary-color); }
+        .topics-list::-webkit-scrollbar-thumb { background: rgba(38, 166, 154, 0.3); border-radius: 3px; }
+        .topics-list::-webkit-scrollbar-thumb:hover { background: rgba(38, 166, 154, 0.5); }
+
+        .topic-item {
+            background-color: rgba(60, 60, 60, 0.3); /* Slightly darker for items */
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-align: left;
+            border: 1px solid transparent; /* For active state */
+        }
+        .topic-item:hover {
+            background-color: rgba(38, 166, 154, 0.1);
+            transform: translateX(5px);
+        }
+        .topic-item.active {
+            background-color: rgba(38, 166, 154, 0.25);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 8px rgba(38, 166, 154, 0.3);
+            transform: translateX(0); /* Remove hover transform */
+        }
+        .topic-item h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        .topic-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chat-view-panel {
+            flex-grow: 1;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative; /* For scroll-to-bottom button */
+        }
+        .chat-view-panel h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .chat-messages-wrapper {
+            position: relative;
+            flex-grow: 1; /* Takes remaining space */
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+        .chat-messages::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track-piece { background: var(--primary-color); }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(38, 166, 154, 0.4); border-radius: 3px; }
+        .chat-messages::-webkit-scrollbar-thumb:hover { background: rgba(38, 166, 154, 0.6); }
+
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInSlideUpMessage 0.3s ease-out forwards;
+        }
+        
+        @keyframes fadeInSlideUpMessage {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.self {
+            flex-direction: row-reverse;
+            align-self: flex-end;
+            margin-left: auto;
+            max-width: 85%;
+        }
+
+        .chat-message.other {
+            flex-direction: row;
+            align-self: flex-start;
+            margin-right: auto;
+            max-width: 85%;
+        }
+
+        .chat-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #607D8B;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .chat-message.self .chat-avatar {
+            display: none; /* Hide avatar for self messages, common UX */
+        }
+
+        .chat-message-content {
+            display: flex;
+            flex-direction: column;
+            max-width: calc(100% - 45px); /* Account for avatar + gap */
+        }
+
+        .chat-message.self .chat-message-content {
+             max-width: 100%; /* No avatar to account for */
+             align-items: flex-end;
+        }
+
+        .chat-message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            gap: 10px;
+        }
+
+        .chat-message.self .chat-message-header {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message .username {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-message.self .username {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .chat-message .timestamp {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+            white-space: nowrap;
+            margin-left: auto;
+        }
+         .chat-message.self .timestamp {
+            margin-right: auto;
+            margin-left: 0;
+         }
+
+
+        .chat-message-text {
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            transition: background-color 0.2s ease;
+        }
+
+        .chat-message.self .chat-message-text {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border-bottom-right-radius: 4px;
+        }
+        .chat-message.other .chat-message-text {
+            background-color: rgba(96, 125, 139, 0.15);
+            color: var(--text-primary);
+            border-bottom-left-radius: 4px;
+        }
+
+        /* Scroll to Bottom Button */
+        #scroll-to-bottom-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: opacity var(--transition-speed) ease, transform 0.2s ease, background-color var(--transition-speed) ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 50;
+        }
+        #scroll-to-bottom-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #scroll-to-bottom-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent-darker);
+        }
+        #scroll-to-bottom-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        /* New message indicator state for scroll-to-bottom button */
+        #scroll-to-bottom-btn.new-messages-alert {
+            background-color: #EF5350; /* Red for alert */
+            animation: pulse 1.5s infinite;
+        }
+        #scroll-to-bottom-btn.new-messages-alert:hover {
+            background-color: #E53935;
+            animation: none;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 83, 80, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(239, 83, 80, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 83, 80, 0); }
+        }
+
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .chat-input-area input {
+            flex-grow: 1;
+            margin-bottom: 0;
+            padding: 14px 16px;
+            font-size: 1.05rem;
+            border-radius: 10px;
+        }
+        .chat-input-area button {
+            flex-shrink: 0;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+        }
+
+        /* Typing indicator */
+        #typing-indicator {
+            height: 25px;
+            line-height: 25px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #typing-indicator.visible {
+            opacity: 1;
+        }
+
+        #community-chat.logged-out #chat-interface {
+            display: none;
+        }
+
+        #community-chat.logged-in #auth-interface {
+            display: none;
+        }
+        /* Make sure logged-in state shows the chat layout */
+        #community-chat.logged-in #chat-interface {
+            display: flex; /* Override display: none */
+        }
+        /* Style when no topic is selected */
+        .chat-view-panel.no-topic-selected .chat-messages-wrapper,
+        .chat-view-panel.no-topic-selected .chat-input-area,
+        .chat-view-panel.no-topic-selected #typing-indicator {
+            display: none;
+        }
+        .chat-view-panel.no-topic-selected .chat-view-panel-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* NEW: Modal Styles for Create Topic */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .modal-content {
+            background-color: var(--secondary-color);
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px var(--shadow-color-dark);
+            position: relative;
+            animation: slideInFromTop 0.4s ease-out forwards;
+        }
+        .modal-content h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.7rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .modal-content label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .modal-content input[type="text"],
+        .modal-content textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        .modal-content input[type="text"]:focus,
+        .modal-content textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.3);
+        }
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .modal-buttons .btn-primary, .modal-buttons .btn-secondary {
+            padding: 10px 20px;
+            font-size: 1rem;
+            opacity: 1;
+            transform: none;
+            box-shadow: none; /* Remove shadows for modal buttons for cleaner look */
+        }
+        .modal-buttons .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+        .modal-buttons .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--text-secondary);
+            font-size: 2.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInFromTop {
+            from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+
+        @media (max-width: 992px) {
+            .chat-layout {
+                flex-direction: column;
+                margin: 20px auto;
+                min-height: 70vh; /* Adjust for mobile */
+                max-width: 95%;
+            }
+            .topic-list-panel {
+                flex: none;
+                width: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 15px;
+            }
+            .chat-view-panel {
+                padding: 15px;
+            }
+            .chat-messages-wrapper {
+                height: 300px; /* Shorter chat area on mobile */
+            }
+            .chat-input-area {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .chat-input-area input, .chat-input-area button {
+                width: 100%;
+            }
+            .chat-message.self, .chat-message.other {
+                max-width: 95%;
+            }
+            .chat-message-text {
+                padding: 8px 12px;
+                font-size: 0.95rem;
+            }
+            .chat-message .username, .chat-message .timestamp {
+                font-size: 0.7rem;
+            }
+            .chat-avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            #scroll-to-bottom-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            #typing-indicator {
+                font-size: 0.75rem;
+                height: 20px;
+                line-height: 20px;
+                margin-top: 5px;
+                margin-bottom: 0;
+            }
+            .modal-content {
+                margin: 5% auto;
+                padding: 20px;
+            }
+             .modal-content h3 {
+                 font-size: 1.5rem;
+                 margin-bottom: 20px;
+             }
+             .modal-buttons {
+                 flex-direction: column-reverse;
+                 gap: 10px;
+             }
+             .modal-buttons .btn-primary, .modal-buttons .btn-secondary {
+                 width: 100%;
+             }
+        }
+    </style>
+
+    <!-- SEO Improvement: JSON-LD for a CommunityPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CommunityPage",
+      "name": "LIYIL Technology AI & Programming Developer Community",
+      <!-- IMPORTANT: Replace with your actual community page URL -->
+      "url": "https://www.yourwebsite.com/ai-community.html",
+      "description": "A vibrant online community for developers and AI enthusiasts to discuss programming, share knowledge, and collaborate on artificial intelligence projects.",
+      "about": {
+        "@type": "WebPage",
+        "name": "Artificial Intelligence Development",
+        <!-- IMPORTANT: Replace with your actual AI/ML services URL if different -->
+        "url": "https://www.yourwebsite.com/index.html#services" 
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "LIYIL Technology",
+        <!-- IMPORTANT: Replace with your actual homepage URL -->
+        "url": "https://www.yourwebsite.com/" 
+      },
+      "interactionStatistic": [
+        {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/DiscussionForumPosting",
+          "userInteractionCount": "1000" <!-- Placeholder: Ideally dynamic, otherwise representative -->
+        },
+        {
+          "@type": "InteractionCounter",
+          "interactionType": "https://schema.org/LikeAction",
+          "userInteractionCount": "5000" <!-- Placeholder: Ideally dynamic, otherwise representative -->
+        }
+      ],
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "name": "Community Features",
+        "description": "Discussion Forums, Resource Sharing, Event Calendar, Project Showcase."
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                 <a href="index.html" class="logo">
+                     <img src="liyil_logo.png" alt="LIYIL Technology Logo - Innovative Digital Solutions Provider with AI">
+                     <span>LIYIL TECH</span>
+                 </a>
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#services">Mobile Development</a></li>
+                            <li><a href="index.html#services">Web Development</a></li>
+                            <li><a href="index.html#services">Digital Marketing</a></li>
+                            <li><a href="index.html#services">SaaS Solutions</a></li>
+                            <li><a href="index.html#services">AI & ML Solutions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#stats">Achievements</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <!-- Active link for this page -->
+                    <li><a href="ai-community.html" class="active">AI Community</a></li>
+                    <li><a href="index.html#apps">Our Apps</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+               <div class="hamburger-icon" aria-label="Toggle Menu" aria-expanded="false"><i></i></div>
+           </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="community-hero">
+            <div class="container">
+                <h1 class="animate-on-scroll" style="--animation-delay: 0.2s;">Ignite Your Potential: Join the LIYIL AI & Programming Community</h1>
+                <p class="animate-on-scroll" style="--animation-delay: 0.4s;">A vibrant hub for developers, data scientists, and AI enthusiasts. Share knowledge, discuss cutting-edge tech, collaborate on projects, and grow your skills with a supportive network.</p>
+                <!-- IMPORTANT: Link to your actual community platform (Discord, forum, etc.) -->
+                <a href="https://discord.gg/your-community-invite" target="_blank" rel="noopener noreferrer" class="btn-primary animate-on-scroll" style="--animation-delay: 0.6s;">Join Our Discord Community <i class="fab fa-discord"></i></a>
+            </div>
+        </section>
+
+        <section class="page-section" id="community-features">
+            <div class="container">
+                <h2 class="animate-on-scroll" style="--animation-delay: 0.1s;">What You'll Find in Our Community</h2>
+                <div class="community-card-grid">
+                    <div class="community-feature-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Active Discussion Forums</h3>
+                        <p>Engage in lively conversations about AI models, programming languages, development challenges, and emerging technologies.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Resource Sharing</h3>
+                        <p>Discover and share valuable tutorials, research papers, open-source projects, and learning materials on AI and software development.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Collaborative Projects</h3>
+                        <p>Find teammates for your next AI project, contribute to open-source initiatives, or seek advice on your current coding challenges.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Events & Workshops</h3>
+                        <p>Participate in webinars, coding challenges, and virtual workshops to deepen your understanding and practical skills in AI.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovation & Trends</h3>
+                        <p>Stay updated on the latest breakthroughs in AI, machine learning, and software development, and discuss their implications.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Peer Support & Mentorship</h3>
+                        <p>Get help when you're stuck, offer your expertise, and connect with experienced professionals who can guide your career.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section for Firebase Login & Chat -->
+        <section class="page-section" id="community-chat" style="padding-top: 60px;">
+            <div class="container">
+                <h2 class="animate-on-scroll" style="--animation-delay: 0.1s;">Connect with Fellow Developers</h2>
+                <p class="animate-on-scroll" style="max-width: 700px; margin: 0 auto 40px; color: var(--text-secondary); --animation-delay: 0.2s;">
+                    Join our real-time chat to connect instantly, ask questions, and share ideas with the LIYIL Technology community.
+                </p>
+
+                <!-- Authentication Interface -->
+                <div id="auth-interface" class="auth-container animate-on-scroll" style="--animation-delay: 0.3s;">
+                    <h3>Join the Conversation!</h3>
+                    <form id="auth-form" class="auth-form">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required placeholder="your.email@example.com">
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required placeholder="Minimum 6 characters">
+
+                        <div class="auth-buttons">
+                            <button type="submit" id="loginBtn" class="btn-primary">Login</button>
+                            <button type="button" id="signupBtn" class="btn-secondary">Sign Up</button>
+                            <button type="button" id="googleLoginBtn" class="btn-secondary google-btn"><i class="fab fa-google"></i> Sign in with Google</button>
+                        </div>
+                    </form>
+                    <div id="auth-status" class="auth-status"></div>
+                </div>
+
+                <!-- Chat Interface (Hidden until logged in) -->
+                <div id="chat-interface" class="chat-layout animate-on-scroll" style="--animation-delay: 0.3s; display: none;">
+                    <div class="topic-list-panel">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0;">Topics</h3>
+                            <button id="logoutBtn" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem; flex-shrink: 0;">Logout <i class="fas fa-sign-out-alt"></i></button>
+                        </div>
+                        <div class="create-topic-area">
+                            <button id="createTopicBtn" class="btn-primary"><i class="fas fa-plus-circle"></i> Create New Topic</button>
+                        </div>
+                        <div id="topics-list" class="topics-list">
+                            <!-- Topics will be dynamically loaded here -->
+                            <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 20px;" id="no-topics-message">No topics yet. Be the first to create one!</p>
+                        </div>
+                    </div>
+
+                    <div id="chat-view-panel" class="chat-view-panel no-topic-selected">
+                        <h3 id="current-topic-title">Select a Topic to Chat</h3>
+                        <div class="chat-view-panel-placeholder">
+                            <p><i class="fas fa-hand-point-left"></i> Choose a topic from the left panel to join the discussion.</p>
+                            <p>Or click "Create New Topic" to start a fresh conversation!</p>
+                        </div>
+
+                        <div class="chat-messages-wrapper">
+                            <div id="chat-messages" class="chat-messages">
+                                <!-- Chat messages will be dynamically added here -->
+                            </div>
+                            <button id="scroll-to-bottom-btn" title="Scroll to latest messages">
+                                <i class="fas fa-arrow-down"></i>
+                            </button>
+                        </div>
+                        <div id="typing-indicator"></div>
+                        <div class="chat-input-area">
+                            <input type="text" id="message-input" placeholder="Type your message here..." disabled>
+                            <button id="send-message-btn" class="btn-primary" disabled><i class="fas fa-paper-plane"></i> Send</button>
+                        </div>
+                        <div id="chat-status" class="auth-status"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="page-section" id="how-to-join">
+            <div class="container">
+                <h2 class="animate-on-scroll" style="--animation-delay: 0.1s;">Ready to Connect?</h2>
+                <p class="animate-on-scroll" style="max-width: 700px; margin: 0 auto 40px; color: var(--text-secondary); --animation-delay: 0.2s;">Joining our community is simple. Use the chat section above to log in or register, or join our Discord for broader discussions.</p>
+                <!-- IMPORTANT: Link to your actual community platform (Discord, forum, etc.) -->
+                <a href="https://discord.gg/your-community-invite" target="_blank" rel="noopener noreferrer" class="btn-primary animate-on-scroll" style="--animation-delay: 0.3s;">Join Our Discord Community <i class="fab fa-discord"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- NEW: Create Topic Modal -->
+    <div id="createTopicModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeTopicModal">&times;</span>
+            <h3>Create New Topic</h3>
+            <form id="topic-form">
+                <label for="topic-title">Topic Title:</label>
+                <input type="text" id="topic-title" placeholder="e.g., Discussing Latest AI Models" required maxlength="100">
+                
+                <label for="topic-description">Description (optional):</label>
+                <textarea id="topic-description" placeholder="A brief description of your topic..." maxlength="300"></textarea>
+
+                <div class="modal-buttons">
+                    <button type="button" id="cancelTopicBtn" class="btn-secondary">Cancel</button>
+                    <button type="submit" id="submitTopicBtn" class="btn-primary">Create Topic</button>
+                </div>
+            </form>
+            <div id="topic-status" class="auth-status"></div>
+        </div>
+    </div>
+
+
+    <!-- JavaScript for the Community Page -->
+    <script>
+        (function() {
+            'use strict';
+
+            const navList = document.querySelector('nav ul');
+            const hamburgerIcon = document.querySelector('.hamburger-icon');
+            const header = document.querySelector('header');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            // Only sections WITH an ID on THIS page will be considered for active link tracking
+            const sections = document.querySelectorAll('main section[id]'); 
+            const dropdowns = document.querySelectorAll('nav ul li.dropdown');
+
+            // Elements for scroll animation on THIS page (added 'animate-on-scroll' class for non-card items)
+            const animatedElements = document.querySelectorAll('.community-feature-card, .animate-on-scroll');
+
+            let isMobile = window.innerWidth <= 992;
+
+            // --- Debounce Function ---
+            function debounce(func, wait, immediate) {
+                let timeout;
+                return function executedFunction() {
+                    const context = this;
+                    const args = arguments;
+                    const later = function() {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply.apply(context, args);
+                };
+            }
+
+            // --- Window Resize Handler ---
+            const handleResize = debounce(() => {
+                isMobile = window.innerWidth <= 992;
+                if (!isMobile && navList.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            }, 250);
+            window.addEventListener('resize', handleResize);
+
+            // --- Hamburger Menu Toggle ---
+            if (hamburgerIcon && navList) {
+                hamburgerIcon.addEventListener('click', () => {
+                    const isActive = navList.classList.toggle('active');
+                    hamburgerIcon.classList.toggle('active');
+                    hamburgerIcon.setAttribute('aria-expanded', isActive);
+                    document.body.style.overflow = isActive ? 'hidden' : ''; // Prevent scroll behind menu
+
+                    if (!isActive) {
+                        closeAllMobileDropdowns();
+                    }
+                });
+            }
+            function closeMobileMenu() {
+                navList.classList.remove('active');
+                hamburgerIcon.classList.remove('active');
+                hamburgerIcon.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                closeAllMobileDropdowns();
+            }
+
+            function closeAllMobileDropdowns() {
+                dropdowns.forEach(d => {
+                    d.classList.remove('menu-open');
+                    const menu = d.querySelector('.dropdown-menu');
+                    if (menu) {
+                        menu.style.display = 'none'; // Explicitly hide
+                    }
+                });
+            }
+
+            // --- Mobile Dropdown Toggle ---
+            function setupMobileDropdowns() {
+                dropdowns.forEach(dropdown => {
+                    const link = dropdown.querySelector('a:not(.dropdown-menu a)'); // Main dropdown link
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (link && menu) {
+                        link.addEventListener('click', (event) => {
+                            if (isMobile) {
+                                // Prevent navigating directly to the #services link on mobile
+                                // and instead toggle the dropdown
+                                if (link.getAttribute('href').startsWith('index.html#services') || link.getAttribute('href') === '#') {
+                                    event.preventDefault(); 
+                                }
+                                
+                                const isCurrentlyOpen = dropdown.classList.contains('menu-open');
+
+                                // Close all other dropdowns if opening a new one
+                                if (!isCurrentlyOpen) {
+                                    closeAllMobileDropdowns(); 
+                                }
+
+                                // Toggle the current dropdown
+                                dropdown.classList.toggle('menu-open', !isCurrentlyOpen);
+                                menu.style.display = isCurrentlyOpen ? 'none' : 'block';
+                            }
+                        });
+                    }
+                });
+            }
+
+            // --- Active Nav Link Highlighting ---
+            function trackActiveMenuItem() {
+                const currentPage = window.location.pathname.split('/').pop();
+
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active'); // Remove active from all first
+                    const linkHref = navLink.getAttribute('href');
+                    const linkFilename = linkHref.split('/').pop().split('#')[0];
+                    const linkHash = linkHref.split('#')[1];
+
+                    // Check for current page link (e.g., ai-community.html)
+                    if (linkFilename === currentPage || (linkHref === "index.html" && currentPage === "")) {
+                        navLink.classList.add('active');
+                    }
+                    
+                    // For internal # links on THIS page (e.g., #community-features)
+                    if (currentPage === "ai-community.html" && linkHref.startsWith('#')) {
+                        let currentSectionId = '';
+                        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+                        const headerHeight = header ? header.offsetHeight : 70;
+                        const triggerOffset = headerHeight + 50; // Offset for section activation
+
+                        for (let i = sections.length - 1; i >= 0; i--) {
+                            const section = sections[i];
+                            // Check if the section is in view, adjusted for header height
+                            if (scrollPosition >= section.offsetTop - triggerOffset) {
+                                currentSectionId = section.id;
+                                break;
+                            }
+                        }
+                        // Only add active class if the link matches the current active section ID
+                        if (linkHash && linkHash === currentSectionId) {
+                            navLink.classList.add('active');
+                        } else if (!linkHash && currentPage === "ai-community.html") { // If it's the main page link and no hash
+                             // This handles cases where 'ai-community.html' (without hash) is active
+                             // but we don't want it to conflict with an active section link
+                             if (document.querySelector('nav ul li a.active[href*="#"]')) {
+                                 navLink.classList.remove('active');
+                             }
+                        }
+                    }
+                });
+            }
+
+            // --- Smooth Scrolling ---
+            navLinks.forEach(navLink => {
+                navLink.addEventListener('click', (event) => {
+                    const targetHref = navLink.getAttribute('href');
+                    const currentPage = window.location.pathname.split('/').pop();
+
+                    if (targetHref.startsWith('#') && currentPage === "ai-community.html") { // Internal link on THIS page (e.g., #community-features)
+                        const targetElement = document.querySelector(targetHref);
+                        if (targetElement) {
+                            event.preventDefault(); // Prevent default hash jump
+                            const headerOffset = (header ? header.offsetHeight : 70) + 15; // Account for fixed header
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (targetHref.includes('index.html#')) { 
+                        // Allow default navigation for index.html section links
+                        // The browser will load index.html and then scroll if the hash is present
+                    } 
+                    // For other .html pages or external links, allow default behavior
+
+                    // Close mobile menu after click
+                    if (isMobile && navList.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+            });
+
+
+            // --- Header Scroll Effect ---
+            function handleHeaderScroll() {
+                const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+                header.classList.toggle('scrolled', currentScrollTop > 50);
+            }
+
+            // --- Intersection Observer for Scroll Animations ---
+            function setupScrollAnimations() {
+                if (!('IntersectionObserver' in window)) {
+                    console.warn("IntersectionObserver not supported. Animations disabled.");
+                    animatedElements.forEach(el => el.style.opacity = '1'); // Fallback: show elements immediately
+                    return;
+                }
+
+                const observerOptions = {
+                    root: null, // viewport
+                    rootMargin: '0px 0px -15% 0px', // Trigger when 15% of element is in view
+                    threshold: 0.1 // 10% of the element visible
+                };
+
+                const animationObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const element = entry.target;
+                            
+                            // Check if it's a card or a general animated element
+                            if (element.classList.contains('community-feature-card')) {
+                                const cardParent = element.closest('.community-card-grid');
+                                if(cardParent) {
+                                    const cardsInGroup = Array.from(cardParent.children);
+                                    const cardIndex = cardsInGroup.indexOf(element);
+                                    // Stagger by row (3 cards per row normally)
+                                    element.style.animationDelay = `${(cardIndex % 3) * 120}ms`; 
+                                }
+                            } else {
+                                // For other elements, use a general delay if defined via style attribute or default
+                                const delay = element.style.getPropertyValue('--animation-delay');
+                                if (!delay) {
+                                     // Assign a default if not already set, to prevent elements popping in at once
+                                     element.style.animationDelay = '0s'; 
+                                }
+                            }
+                            element.classList.add('is-visible');
+                            observer.unobserve(element); // Stop observing once animated
+                        }
+                    });
+                }, observerOptions);
+
+                animatedElements.forEach(el => {
+                     // Ensure elements are initially hidden by CSS before observer takes over
+                     // This is already set in CSS for most, but explicitly confirm here for robustness.
+                     if (el.style.opacity === '' || el.style.opacity === '1') {
+                         el.style.opacity = '0';
+                         if (!el.classList.contains('community-feature-card')) {
+                             el.style.transform = 'translateY(30px)';
+                         }
+                     }
+                     animationObserver.observe(el);
+                });
+            }
+
+            // --- Firebase Integration (NEW & IMPROVED) ---
+
+            // !!! IMPORTANT: Replace with YOUR Firebase config from Step 1 !!!
+            const firebaseConfig = {
+                apiKey: "AIzaSyAywRO6CEtFxGdbFV6gQMLBi7z9dkYW-ss",
+                authDomain: "liyl-website.firebaseapp.com",
+                projectId: "liyl-website",
+                storageBucket: "liyl-website.firebasestorage.app",
+                messagingSenderId: "1085958088862",
+                appId: "1:1085958088862:web:6eb223dd7cf5ea129c738f",
+                measurementId: "G-68NP6B5NVT"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+
+            // DOM Elements for Auth & Chat
+            const communityChatSection = document.getElementById('community-chat');
+            const authInterface = document.getElementById('auth-interface');
+            const chatInterface = document.getElementById('chat-interface');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const googleLoginBtn = document.getElementById('googleLoginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const authStatusDiv = document.getElementById('auth-status');
+            
+            // NEW: Topic related elements
+            const createTopicBtn = document.getElementById('createTopicBtn');
+            const topicsListDiv = document.getElementById('topics-list');
+            const noTopicsMessage = document.getElementById('no-topics-message');
+            const currentTopicTitleHeader = document.getElementById('current-topic-title');
+            const chatViewPanel = document.getElementById('chat-view-panel');
+            const chatViewPanelPlaceholder = document.querySelector('.chat-view-panel-placeholder');
+
+            const chatMessagesDiv = document.getElementById('chat-messages');
+            const messageInput = document.getElementById('message-input');
+            const sendMessageBtn = document.getElementById('send-message-btn');
+            const chatStatusDiv = document.getElementById('chat-status');
+            const scrollToBottomBtn = document.getElementById('scroll-to-bottom-btn');
+            const typingIndicatorDiv = document.getElementById('typing-indicator');
+
+            // NEW: Modal elements
+            const createTopicModal = document.getElementById('createTopicModal');
+            const closeTopicModalBtn = document.getElementById('closeTopicModal');
+            const cancelTopicBtn = document.getElementById('cancelTopicBtn');
+            const topicForm = document.getElementById('topic-form');
+            const topicTitleInput = document.getElementById('topic-title');
+            const topicDescriptionInput = document.getElementById('topic-description');
+            const submitTopicBtn = document.getElementById('submitTopicBtn');
+            const topicStatusDiv = document.getElementById('topic-status');
+
+            let currentUser = null; // To store current logged-in user
+            let unsubscribeFromTopics = null; // To store the unsubscribe function for topics listener
+            let unsubscribeFromChat = null; // To store the unsubscribe function for chat listener
+            let unsubscribeFromTyping = null; // To store the unsubscribe function for typing listener
+
+            let currentTopicId = null; // NEW: Track currently active topic
+            let currentTopicData = null; // NEW: Store current topic's data
+            let typingTimeout; // For debouncing typing status updates
+
+            // Display messages (success/error)
+            function showStatus(element, message, isError = false) {
+                clearTimeout(element.hideTimeout); // Clear any existing hide timeout
+                element.textContent = message;
+                element.classList.remove('error');
+                if (isError) {
+                    element.classList.add('error');
+                }
+                element.style.display = 'block';
+                element.hideTimeout = setTimeout(() => { // Store timeout ID on the element
+                    element.style.display = 'none';
+                    element.textContent = '';
+                }, 5000); // Hide after 5 seconds
+            }
+
+            // --- Authentication Functions ---
+            loginBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                if (!email || !password) {
+                    showStatus(authStatusDiv, 'Please enter email and password.', true);
+                    return;
+                }
+                authStatusDiv.style.display = 'none'; // Hide previous status
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    showStatus(authStatusDiv, 'Logged in successfully!');
+                } catch (error) {
+                    showStatus(authStatusDiv, `Login failed: ${error.message}`, true);
+                    console.error("Login error:", error);
+                }
+            });
+
+            signupBtn.addEventListener('click', async () => {
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                if (!email || !password) {
+                    showStatus(authStatusDiv, 'Please enter email and password.', true);
+                    return;
+                }
+                if (password.length < 6) {
+                    showStatus(authStatusDiv, 'Password must be at least 6 characters long.', true);
+                    return;
+                }
+                authStatusDiv.style.display = 'none'; // Hide previous status
+                try {
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    // Set display name for new email/password users if not already set
+                    if (!userCredential.user.displayName) {
+                        await userCredential.user.updateProfile({
+                            displayName: email.split('@')[0] // Use email prefix as default display name
+                        });
+                    }
+                    showStatus(authStatusDiv, 'Account created and logged in successfully!');
+                } catch (error) {
+                    showStatus(authStatusDiv, `Signup failed: ${error.message}`, true);
+                    console.error("Signup error:", error);
+                }
+            });
+
+            googleLoginBtn.addEventListener('click', async () => {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                authStatusDiv.style.display = 'none'; // Hide previous status
+                try {
+                    await auth.signInWithPopup(provider);
+                    showStatus(authStatusDiv, 'Logged in with Google successfully!');
+                } catch (error) {
+                    showStatus(authStatusDiv, `Google login failed: ${error.message}`, true);
+                    console.error("Google login error:", error);
+                }
+            });
+
+            logoutBtn.addEventListener('click', async () => {
+                showStatus(authStatusDiv, 'Logging out...');
+                try {
+                    // Clear user's typing status from any active topic before logging out
+                    if (currentUser && currentTopicId) {
+                         await db.collection('topics').doc(currentTopicId).collection('typingUsers').doc(currentUser.uid).delete()
+                            .catch(e => console.error("Error clearing typing status for previous topic on logout:", e));
+                    }
+                    await auth.signOut();
+                    showStatus(authStatusDiv, 'Logged out successfully!');
+                } catch (error) {
+                    showStatus(authStatusDiv, `Logout failed: ${error.message}`, true);
+                    console.error("Logout error:", error);
+                }
+            });
+
+            // --- Auth State Change Listener (Crucial for UI updates) ---
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is signed in.
+                    currentUser = user;
+                    communityChatSection.classList.add('logged-in');
+                    communityChatSection.classList.remove('logged-out');
+                    chatInterface.style.display = 'flex'; // Changed to flex for new layout
+                    authInterface.style.display = 'none';
+
+                    // Start listening for topics
+                    if (!unsubscribeFromTopics) {
+                        listenForTopics();
+                    }
+                    // Add beforeunload listener
+                    window.addEventListener('beforeunload', clearTypingStatusOnUnload);
+                   
+                } else {
+                    // User is signed out.
+                    currentUser = null;
+                    communityChatSection.classList.add('logged-out');
+                    communityChatSection.classList.remove('logged-in');
+                    chatInterface.style.display = 'none';
+                    authInterface.style.display = 'block';
+                    emailInput.value = '';
+                    passwordInput.value = '';
+
+                    // Clear and stop all listeners
+                    currentTopicId = null;
+                    currentTopicData = null;
+                    chatMessagesDiv.innerHTML = '';
+                    currentTopicTitleHeader.textContent = 'Select a Topic to Chat';
+                    chatViewPanel.classList.add('no-topic-selected');
+                    messageInput.disabled = true;
+                    sendMessageBtn.disabled = true;
+                    typingIndicatorDiv.classList.remove('visible'); // Hide typing indicator
+                    topicsListDiv.innerHTML = '<p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 20px;" id="no-topics-message">No topics yet. Be the first to create one!</p>'; // Reset topic list
+
+                    if (unsubscribeFromTopics) {
+                        unsubscribeFromTopics();
+                        unsubscribeFromTopics = null;
+                    }
+                    if (unsubscribeFromChat) {
+                        unsubscribeFromChat();
+                        unsubscribeFromChat = null;
+                    }
+                    if (unsubscribeFromTyping) {
+                        unsubscribeFromTyping();
+                        unsubscribeFromTyping = null;
+                    }
+                    stopTimestampUpdates(); // Stop interval if running
+
+                    // Remove unload listener
+                    window.removeEventListener('beforeunload', clearTypingStatusOnUnload);
+                }
+            });
+
+            // --- Topic Management Functions ---
+            createTopicBtn.addEventListener('click', () => {
+                if (!currentUser) {
+                    showStatus(authStatusDiv, 'You must be logged in to create a topic.', true);
+                    return;
+                }
+                createTopicModal.style.display = 'block';
+                topicTitleInput.value = '';
+                topicDescriptionInput.value = '';
+                topicStatusDiv.style.display = 'none';
+                topicTitleInput.focus();
+            });
+
+            closeTopicModalBtn.addEventListener('click', () => {
+                createTopicModal.style.display = 'none';
+            });
+            cancelTopicBtn.addEventListener('click', () => {
+                createTopicModal.style.display = 'none';
+            });
+
+            topicForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const title = topicTitleInput.value.trim();
+                const description = topicDescriptionInput.value.trim();
+
+                if (!title) {
+                    showStatus(topicStatusDiv, 'Topic title is required!', true);
+                    return;
+                }
+                if (!currentUser) {
+                    showStatus(topicStatusDiv, 'You must be logged in to create a topic.', true);
+                    return;
+                }
+
+                showStatus(topicStatusDiv, 'Creating topic...');
+                try {
+                    let displayName = currentUser.displayName;
+                    if (!displayName && currentUser.email) {
+                        displayName = currentUser.email.split('@')[0];
+                    }
+                    if (!displayName) { 
+                        displayName = 'Anonymous';
+                    }
+
+                    const newTopicRef = await db.collection('topics').add({
+                        title: title,
+                        description: description,
+                        createdBy: currentUser.uid,
+                        createdByName: displayName,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        lastMessageAt: firebase.firestore.FieldValue.serverTimestamp() // Initial timestamp
+                    });
+
+                    showStatus(topicStatusDiv, 'Topic created successfully!');
+                    createTopicModal.style.display = 'none';
+                    selectTopic(newTopicRef.id, title); // Automatically select the new topic
+                } catch (error) {
+                    showStatus(topicStatusDiv, `Error creating topic: ${error.message}`, true);
+                    console.error("Error creating topic:", error); // Log the full error
+                }
+            });
+
+            function listenForTopics() {
+                if (unsubscribeFromTopics) {
+                    unsubscribeFromTopics(); // Unsubscribe from previous listener if exists
+                }
+                unsubscribeFromTopics = db.collection('topics')
+                    .orderBy('lastMessageAt', 'desc') // Order by most recent message
+                    .limit(50) // Limit number of topics shown
+                    .onSnapshot((snapshot) => {
+                        topicsListDiv.innerHTML = ''; // Clear existing topics
+                        if (snapshot.empty) {
+                            noTopicsMessage.style.display = 'block';
+                        } else {
+                            noTopicsMessage.style.display = 'none';
+                            snapshot.forEach(doc => {
+                                displayTopicItem({ id: doc.id, ...doc.data() });
+                            });
+
+                            // If no topic is currently selected, or if the selected topic was deleted,
+                            // automatically select the first one from the list.
+                            if (!currentTopicId || !document.querySelector(`.topic-item[data-topic-id="${currentTopicId}"]`)) {
+                                const firstTopic = snapshot.docs[0];
+                                if (firstTopic) {
+                                    selectTopic(firstTopic.id, firstTopic.data().title);
+                                } else {
+                                    // No topics left, reset chat view
+                                    currentTopicId = null;
+                                    currentTopicData = null;
+                                    chatMessagesDiv.innerHTML = '';
+                                    currentTopicTitleHeader.textContent = 'Select a Topic to Chat';
+                                    chatViewPanel.classList.add('no-topic-selected');
+                                    messageInput.disabled = true;
+                                    sendMessageBtn.disabled = true;
+                                    typingIndicatorDiv.classList.remove('visible');
+                                    if (unsubscribeFromChat) unsubscribeFromChat();
+                                    if (unsubscribeFromTyping) unsubscribeFromTyping();
+                                    stopTimestampUpdates();
+                                }
+                            }
+                        }
+                    }, (error) => {
+                        console.error("Error listening to topics:", error);
+                        showStatus(chatStatusDiv, `Error loading topics: ${error.message}`, true);
+                    });
+            }
+
+            function displayTopicItem(topic) {
+                const topicItem = document.createElement('div');
+                topicItem.classList.add('topic-item');
+                topicItem.dataset.topicId = topic.id;
+                topicItem.innerHTML = `
+                    <h4>${topic.title}</h4>
+                    <p>${topic.description || 'No description'}</p>
+                `;
+                topicItem.addEventListener('click', () => selectTopic(topic.id, topic.title));
+                topicsListDiv.appendChild(topicItem);
+
+                // Highlight if it's the currently selected topic
+                if (topic.id === currentTopicId) {
+                    topicItem.classList.add('active');
+                }
+            }
+
+            function selectTopic(topicId, topicTitle) {
+                // First, clean up previous topic's state
+                if (currentTopicId) {
+                    // Clear typing status from the previous topic for this user
+                    if (currentUser) {
+                        db.collection('topics').doc(currentTopicId).collection('typingUsers').doc(currentUser.uid).delete()
+                            .catch(e => console.error("Error clearing typing status for previous topic:", e));
+                    }
+                    // Unsubscribe from previous chat and typing listeners
+                    if (unsubscribeFromChat) {
+                        unsubscribeFromChat();
+                        unsubscribeFromChat = null;
+                    }
+                    if (unsubscribeFromTyping) {
+                        unsubscribeFromTyping();
+                        unsubscribeFromTyping = null;
+                    }
+                    stopTimestampUpdates();
+                }
+
+                // Update current topic
+                currentTopicId = topicId;
+                currentTopicTitleHeader.textContent = `Chatting in: ${topicTitle}`;
+                chatViewPanel.classList.remove('no-topic-selected');
+                messageInput.disabled = false;
+                sendMessageBtn.disabled = false;
+                chatMessagesDiv.innerHTML = ''; // Clear old messages
+
+                // Highlight selected topic in the list
+                document.querySelectorAll('.topic-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                const selectedTopicElement = document.querySelector(`.topic-item[data-topic-id="${topicId}"]`);
+                if (selectedTopicElement) {
+                    selectedTopicElement.classList.add('active');
+                }
+
+                // Start new chat and typing listeners for the selected topic
+                listenForChatMessages();
+                listenForTypingStatus();
+
+                messageInput.focus(); // Focus on input field
+            }
+
+
+            // --- Chat Functions ---
+            sendMessageBtn.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Debounced typing status update
+            const updateTypingStatus = debounce(() => {
+                if (!currentUser || !currentTopicId) return;
+
+                const displayName = currentUser.displayName || currentUser.email.split('@')[0] || 'Anonymous';
+                
+                if (messageInput.value.trim() !== '') {
+                    db.collection('topics').doc(currentTopicId).collection('typingUsers').doc(currentUser.uid).set({
+                        username: displayName,
+                        isTyping: true,
+                        lastActivity: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true }).catch(e => console.error("Error setting typing status:", e));
+                } else {
+                    // If input is empty, ensure typing status is false
+                    stopTyping();
+                }
+            }, 500); // Update every 500ms while typing
+
+            messageInput.addEventListener('input', () => {
+                if (currentUser && currentTopicId) {
+                    updateTypingStatus();
+                }
+            });
+
+            function stopTyping() {
+                if (currentUser && currentTopicId) {
+                    db.collection('topics').doc(currentTopicId).collection('typingUsers').doc(currentUser.uid).update({
+                        isTyping: false
+                    }).catch(e => console.error("Error stopping typing status:", e));
+                }
+            }
+
+            // Attempt to clear typing status when user closes tab/browser
+            function clearTypingStatusOnUnload() {
+                // This is a best-effort. `onDisconnect` from Realtime Database is more robust for online status.
+                // For Firestore, a clean logout or explicit call is usually needed.
+                if (currentUser && currentTopicId) {
+                    db.collection('topics').doc(currentTopicId).collection('typingUsers').doc(currentUser.uid).delete().catch(e => console.error("Error clearing typing status on unload:", e));
+                }
+            }
+
+
+            async function sendMessage() {
+                const messageText = messageInput.value.trim();
+                if (messageText === '' || !currentUser || !currentTopicId) {
+                    showStatus(chatStatusDiv, 'Please select a topic and type a message.', true);
+                    return;
+                }
+
+                try {
+                    let displayName = currentUser.displayName;
+                    if (!displayName && currentUser.email) {
+                        displayName = currentUser.email.split('@')[0];
+                    }
+                    if (!displayName) { 
+                        displayName = 'Anonymous';
+                    }
+
+                    // Add message to the current topic's messages sub-collection
+                    await db.collection('topics').doc(currentTopicId).collection('messages').add({
+                        text: messageText,
+                        userId: currentUser.uid,
+                        username: displayName, 
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Update the parent topic's lastMessageAt timestamp
+                    await db.collection('topics').doc(currentTopicId).update({
+                        lastMessageAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    messageInput.value = ''; // Clear input
+                    stopTyping(); // Stop typing immediately after sending
+                } catch (error) {
+                    showStatus(chatStatusDiv, `Error sending message: ${error.message}`, true);
+                    console.error("Error sending message:", error);
+                }
+            }
+
+            // Function to generate a consistent color based on user ID
+            function getAvatarColor(userId) {
+                let hash = 0;
+                for (let i = 0; i < userId.length; i++) {
+                    hash = userId.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                const hue = Math.abs(hash % 360);
+                return `hsl(${hue}, 60%, 45%)`; 
+            }
+
+            // Function to format timestamp
+            function formatTimestamp(timestamp) {
+                if (!timestamp) return '';
+                const date = (timestamp.toDate instanceof Function) ? timestamp.toDate() : new Date(timestamp); // Handle Firebase Timestamp objects or Date objects
+                const now = new Date();
+                const diffMs = now.getTime() - date.getTime();
+                const diffMins = Math.round(diffMs / (1000 * 60));
+                const diffHours = Math.round(diffMs / (1000 * 60 * 60));
+                const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+
+                if (diffMins < 1) return 'Just now';
+                if (diffMins < 60) return `${diffMins} min${diffMins === 1 ? '' : 's'} ago`;
+                if (diffHours < 24) return `${diffHours} hour${diffHours === 1 ? '' : 's'} ago`;
+                if (diffDays < 2) return `Yesterday at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                
+                return date.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+
+            // Periodically update timestamps for all messages
+            let timestampUpdateInterval;
+            function startTimestampUpdates() {
+                if (timestampUpdateInterval) clearInterval(timestampUpdateInterval);
+                timestampUpdateInterval = setInterval(() => {
+                    document.querySelectorAll('.chat-message .timestamp').forEach(tsElement => {
+                        // Retrieve original timestamp from data attribute
+                        const originalTimestamp = tsElement.dataset.originalTimestamp;
+                        if (originalTimestamp) {
+                            tsElement.textContent = formatTimestamp(new Date(parseInt(originalTimestamp)));
+                        }
+                    });
+                }, 30000); // Update every 30 seconds
+            }
+
+            function stopTimestampUpdates() {
+                if (timestampUpdateInterval) {
+                    clearInterval(timestampUpdateInterval);
+                    timestampUpdateInterval = null;
+                }
+            }
+
+
+            function listenForChatMessages() {
+                if (!currentTopicId) return; // Must have a topic selected
+
+                if (unsubscribeFromChat) {
+                    unsubscribeFromChat(); // Unsubscribe from previous listener
+                }
+
+                unsubscribeFromChat = db.collection('topics').doc(currentTopicId).collection('messages')
+                    .orderBy('timestamp', 'asc')
+                    .limit(50) 
+                    .onSnapshot((snapshot) => {
+                        const isNearBottom = chatMessagesDiv.scrollHeight - chatMessagesDiv.clientHeight <= chatMessagesDiv.scrollTop + 100;
+                        let newMessagesArrived = false;
+
+                        // Only mark as new if new messages are actually added
+                        snapshot.docChanges().forEach(change => {
+                            if (change.type === 'added') {
+                                newMessagesArrived = true;
+                            }
+                        });
+
+                        chatMessagesDiv.innerHTML = ''; // Clear existing messages
+                        snapshot.forEach(doc => {
+                            displayMessage({ id: doc.id, ...doc.data() });
+                        });
+
+                        // Only auto-scroll if user was already near the bottom
+                        if (isNearBottom) { 
+                            scrollToBottom();
+                            // Also clear alert if user was at bottom and new messages arrived
+                            scrollToBottomBtn.classList.remove('new-messages-alert');
+                            scrollToBottomBtn.querySelector('i').className = 'fas fa-arrow-down';
+                        } else if (newMessagesArrived) {
+                            // If user is scrolled up and new messages arrive, show alert
+                            scrollToBottomBtn.classList.add('new-messages-alert');
+                            scrollToBottomBtn.querySelector('i').className = 'fas fa-envelope-open-text';
+                        }
+
+                        // Start real-time timestamp updates if not already running
+                        if (!timestampUpdateInterval) {
+                            startTimestampUpdates();
+                        }
+
+                    }, (error) => {
+                        showStatus(chatStatusDiv, `Error loading messages: ${error.message}`, true);
+                        console.error("Error loading chat messages:", error);
+                    });
+            }
+
+            function displayMessage(message) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message');
+                const isSelf = message.userId === (currentUser ? currentUser.uid : null);
+                messageElement.classList.add(isSelf ? 'self' : 'other');
+
+                const username = message.username || 'Anonymous';
+                const initial = username.charAt(0).toUpperCase();
+                const avatarColor = getAvatarColor(message.userId);
+                const timestampVal = message.timestamp ? (message.timestamp.toDate instanceof Function ? message.timestamp.toDate().getTime() : new Date(message.timestamp).getTime()) : Date.now(); // Store ms for easy re-formatting
+
+                messageElement.innerHTML = `
+                    <div class="chat-avatar" style="background-color: ${avatarColor}">${initial}</div>
+                    <div class="chat-message-content">
+                        <div class="chat-message-header">
+                            <span class="username">${username}</span>
+                            <span class="timestamp" data-original-timestamp="${timestampVal}">${formatTimestamp(timestampVal)}</span>
+                        </div>
+                        <div class="chat-message-text">
+                            <p>${message.text}</p>
+                        </div>
+                    </div>
+                `;
+                chatMessagesDiv.appendChild(messageElement);
+            }
+
+            function scrollToBottom() {
+                chatMessagesDiv.scrollTo({ top: chatMessagesDiv.scrollHeight, behavior: 'smooth' });
+                // Reset button state immediately after scrolling to bottom
+                scrollToBottomBtn.classList.remove('new-messages-alert');
+                scrollToBottomBtn.querySelector('i').className = 'fas fa-arrow-down';
+            }
+
+            // Scroll to Bottom Button Logic
+            scrollToBottomBtn.addEventListener('click', scrollToBottom);
+
+            chatMessagesDiv.addEventListener('scroll', debounce(() => {
+                const { scrollTop, scrollHeight, clientHeight } = chatMessagesDiv;
+                // Show button if not at the very bottom
+                if (scrollHeight - clientHeight - scrollTop > 200) { // If user is more than 200px from bottom
+                    scrollToBottomBtn.classList.add('visible');
+                } else {
+                    scrollToBottomBtn.classList.remove('visible');
+                    // If user manually scrolls to bottom, clear alert
+                    if (scrollHeight - clientHeight - scrollTop <= 10) { 
+                        scrollToBottomBtn.classList.remove('new-messages-alert');
+                        scrollToBottomBtn.querySelector('i').className = 'fas fa-arrow-down';
+                    }
+                }
+            }, 100)); // Debounce scroll event
+
+
+            // --- Typing Indicator Listener ---
+            function listenForTypingStatus() {
+                if (!currentUser || !currentTopicId) return; // Only listen if logged in and topic selected
+
+                if (unsubscribeFromTyping) {
+                    unsubscribeFromTyping(); // Unsubscribe from previous listener
+                }
+
+                const TYPING_TIMEOUT_MS = 2000; // Consider user stopped typing after 2 seconds of inactivity
+
+                unsubscribeFromTyping = db.collection('topics').doc(currentTopicId).collection('typingUsers')
+                    .onSnapshot((snapshot) => {
+                        const typingUsers = [];
+                        snapshot.forEach(doc => {
+                            const data = doc.data();
+                            // Check if it's not the current user and they are actively typing
+                            if (doc.id !== currentUser.uid && data.isTyping && data.lastActivity) {
+                                const lastActivityTime = data.lastActivity.toDate().getTime();
+                                const currentTime = new Date().getTime();
+                                if (currentTime - lastActivityTime < TYPING_TIMEOUT_MS) {
+                                    typingUsers.push(data.username);
+                                }
+                            }
+                        });
+
+                        if (typingUsers.length > 0) {
+                            let indicatorText;
+                            if (typingUsers.length === 1) {
+                                indicatorText = `${typingUsers[0]} is typing...`;
+                            } else if (typingUsers.length === 2) {
+                                indicatorText = `${typingUsers[0]} and ${typingUsers[1]} are typing...`;
+                            } else {
+                                indicatorText = `${typingUsers.slice(0, 2).join(', ')} and ${typingUsers.length - 2} others are typing...`;
+                            }
+                            typingIndicatorDiv.textContent = indicatorText;
+                            typingIndicatorDiv.classList.add('visible');
+                        } else {
+                            typingIndicatorDiv.classList.remove('visible');
+                        }
+                    }, (error) => {
+                        console.error("Error listening to typing status:", error);
+                    });
+            }
+
+
+            // --- Initialization ---
+            document.addEventListener('DOMContentLoaded', () => {
+                 isMobile = window.innerWidth <= 992; // Set initial mobile state
+
+                 setupScrollAnimations();
+                 setupMobileDropdowns();
+
+                 trackActiveMenuItem(); // Initial active state
+                 handleHeaderScroll(); // Initial header state
+
+                 // Event listeners for scroll and click outside menu
+                 window.addEventListener('scroll', debounce(() => {
+                    trackActiveMenuItem();
+                    handleHeaderScroll();
+                 }, 15), { passive: true }); // Passive for scroll optimization
+
+                 document.addEventListener('click', (event) => {
+                      if (isMobile && navList.classList.contains('active')) {
+                          // If mobile menu is open and click is outside header/hamburger
+                          if (!header.contains(event.target) && !hamburgerIcon.contains(event.target)) {
+                                closeMobileMenu();
+                          }
+                      }
+                      // Close modal if click outside content
+                      if (event.target == createTopicModal) {
+                        createTopicModal.style.display = 'none';
+                      }
+                  });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>  Connect with Fellow Developers
+Join our real-time chat to connect instantly, ask questions, and share ideas with the LIYIL Technology community. make this concept main on this page remove very thing
